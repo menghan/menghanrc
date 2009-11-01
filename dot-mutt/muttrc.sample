@@ -1,0 +1,1108 @@
+#
+# The ultimate Mutt settings
+#
+# (c) 1997-2002 Roland Rosenfeld <roland@spinnaker.de> 
+#
+# $ Id: muttrc,v 1.88 2002/12/08 14:32:47 roland Exp roland $
+#
+
+reset all		# reset all variables to system defaults.
+unhook *		# remove all hooks
+
+
+#
+# Boolean Variables:
+#	set foo
+# or	unset foo
+# or	toggle foo
+# or	reset foo (reset to compile time default)
+# or	set nofoo  or set invfoo (inverts actual value)
+#	    ^^		  ^^^
+#
+
+unset allow_8bit	# use QP or Base64 if unset.
+set allow_ansi		# allow ANSI color codes in messages.
+unset arrow_cursor	# "->" as cursor (faster on slow networks).
+set ascii_chars=yes	# Use ASCII chars for threading arrows.
+unset askbcc		# ask to fill out Bcc on mesg-send?
+unset askcc		# ask to fill out CC on mesg-send?
+set attach_split	# handle every single attachment instead of concat
+unset autoedit		# start editor without asking for to, subject,...
+unset auto_tag		# if something is tagged, run commands on tagged msgs.
+set beep		# beep on certain user errors and other errors
+set beep_new		# beep on new mail
+set bounce_delivered	# unset => remove Delivered-To: when bouncing.
+set check_new		# search for new messages in maildir/MH folders.
+unset collapse_unread	# don't collapse threads with unread mails
+set confirmappend=no	# prompt for confirm when appending message to ex. mbox
+set confirmcreate	# prompt for confirm when saving to non existing mbox
+set delete_untag	# untag messages when marking them for deletion
+set digest_collapse	# show digest parts in 'v' submenu
+set duplicate_threads	# thread messages with same message-id together
+set edit_headers=no	# put headers in editor when composing messages
+set encode_from 	# use Quoted-Printable, if ^From in a mail.
+set envelope_from=yes	# don't set envelope from via -f option of sendmail
+set fast_reply		# do not ask for to, subject,... when replying.
+set fcc_attach		# store attachments too when doing a Fcc
+set followup_to		# Add Mail-Followup-To header.
+unset force_name	# outgoing mail to be saved in folder of "login name"
+set forward_decode	# decode messages when forwarding without MIME
+set forward_decrypt	# decrypt PGP message, when mime_forward and !mime_fw_d
+unset forward_quote	# quote forwarded message, if not $mime_forward
+set hdrs		# nohdrs implies not to write my_hdr into mail.
+unset header		# quote full header on reply
+set help		# show help in first line of the display
+unset hidden_host	# when set, skip the host name part of hostname
+unset hide_limited	# don't hide presence of missing messages in thread
+unset hide_missing	# don'thide messages hidden by limit in thread
+unset hide_top_limited	# don't hide hide missing messages at top of thread
+set hide_top_missing	# hide messages hidden by limit at top of thread
+set ignore_list_reply_to	# ignore Reply-To pointing back to mailinglist
+unset implicit_autoview	# use autoview, if a "copiousoutput" is in mailcap.
+unset keep_flagged	# don't move flagged mail to $mbox via mbox-hook
+set mailcap_sanitize	# remove ugly chars from mailcap % expands.
+unset maildir_trash	# if set: use maildir trash flag instead of removing
+set markers		# put a '+' at the beginning of wrapped lines.	
+unset mark_old		# mark new articles as old, when leaving mbox
+unset menu_scroll	# scroll on last line of menu (set) or do a nextpage?
+unset meta_key		# Don't interpret Alt-x as ESC x
+unset metoo		# should we keep ourselves in group replies?
+set mh_purge		# remove messages marked as deleted from MH folders.
+unset mime_forward_decode	# decode messages when forwarding with MIME
+unset narrow_tree	# Don't make tree narrower
+set pager_stop		# Don't jump to next message at end of message.
+unset pipe_decode	# Weed headers and PGP-decode message before piping
+unset pipe_split	# split tagged messages (or don't) when using "|"
+set print_decode	# decode before sending to $print_command
+unset print_split	# if set, run the print command for every single mail
+set prompt_after	# display prompt after exit from pager
+unset read_only		# folders not read only
+unset reply_self	# if unset, a reply to yourself implies reply to other
+set resolve=yes		# go to next undeleted message after modifying actual
+set reverse_alias	# use realname from reverse alias lookup
+unset reverse_name	# Set "From" to address, where replied mail was sent to
+unset reverse_realname	# Do not reuse realname from original message.
+set rfc2047_parameters=yes 	# don't encode RFC2047 parameters
+#set create_rfc2047_parameters=yes
+unset save_address	# Use full mail adress (with domain) as default folder.
+unset save_empty	# remove mailbox when last message is removed.
+unset save_name		# Fcc, if ~/Mail/<to> exists.
+set sig_dashes	# Don't prepend "-- \n" to the signature
+set sig_on_top	# place signature above text (if set).
+set smart_wrap		# wrap long lines at word boundary.
+set sort_re		# set: only put a child in a thread, if starts with Re:
+unset status_on_top	# status line at the top or button?
+unset strict_threads	# thread only by In-Reply-To/References or by Subject.
+set suspend		# Ctrl-Z is able to suspend mutt.
+unset text_flowed	# generate "text/plain; format=flowed"
+set thorough_search	# MIME decode before searching.
+set thread_received	# Use received date instead of Date: for threading
+unset tilde		# Internal Pager: ~~~~ at and of message?
+unset uncollapse_jump	# don't move pointer, when uncollapsing thread
+unset use_8bitmime	# run sendmail 8.8.x with -B8BITMIME to enable 8bit 
+set use_domain		# add $domain to all addresses without @host
+set use_from		# generate a "From:" header (unless my_hdr From:)
+unset use_ipv6		# Only use IPv4 address resolution.
+set user_agent		# Create User-Agent: Mutt/<Version> header.
+set wait_key=yes	# Only "press a key" if return value non-zero
+set weed		# weed headers, when forwarding with forward_decode
+set wrap_search		# Wrap search to top/bottom.
+unset write_bcc		# send Bcc: line to $sendmail 
+
+
+
+#
+# Quadoptions 
+#	set foo=yes
+#  or	set foo=ask-yes
+#  or	set foo=no
+#  or	set foo=ask-no
+#  or	reset foo (reset to compile time default)	
+
+set abort_nosubject=no	# Abort, if message has no subject.
+set abort_unmodified=ask-yes	# Abort, if message wasn't edited.
+set copy=ask-no		# ask to save a copy of outgoing message?
+set delete=yes		# ask for confirmation when deleting messages?
+set forward_edit=yes	# automatically start editor when forwarding.
+set honor_followup_to=ask-yes	# Ask whether to honor Mail-Followup-To header.
+set include=yes		# quote message, when replying
+set mime_forward=ask-yes	# use MIME when forwarding mails.
+set mime_forward_rest=ask-yes	# forward attachments w/o autoview from attmenu
+set move=no		# Move mail-spool to $mbox?
+set postpone=ask-yes	# ask for postponing when doing an Abort.
+set print=ask-yes	# ask whether you really want to print.
+set quit=ask-yes		# ask before quitting.
+set recall=no		# don't ask for using postponed message.
+set reply_to=ask-yes	# Use or ignore Reply-To.
+
+
+
+#
+# Integers:
+#
+
+set connect_timeout=30	# timeout (seconds) before reconnect. -1 => indefinite
+set history=200		# Size of the history buffer
+set mail_check=3	# time (in seconds) how often buffy checks for new mail
+set pager_context=0	# number of lines, to display twice on PgUp/Down
+set pager_index_lines=4	# add small message index at top of pager (4)
+#set pager_index_lines=`zsh -c 'temp=($(stty size)) ; expr $temp[1] / 5 + 1'`
+#set pager_index_lines=`((stty size 2>/dev/null||echo 24 80);echo s0 5/1+p)|dc`
+set read_inc=10		# Mutt will notify when reading mailbox messages
+reset sendmail
+set sleep_time=2	# pause (in seconds) while showing info messages
+set timeout=60		# time in seconds, till Mutt looks for new mail
+set wrapmargin=0	# margin left at right when doing smart line wrapping
+set write_inc=10	# Mutt will notify when writing mailbox messages
+#set sendmail = "/usr/bin/msmtp -d -S -X ~/.mail/.msmtplog"
+set sendmail = "/usr/bin/msmtp"
+#set sendmail = "/usr/bin/esmtp -v -X ~/.mail/.esmtplog"
+
+
+#
+# Sorting:
+# (date-received, date-sent, from, mailbox-order, size, subject, threads, 
+#  to, score) (and everything with a prefixed "reverse-")
+# (sort_aux can be prefixed with "last-" to use last element in thread 
+#  instead of first one)
+#
+
+set sort=threads		# sorting the mails in threads
+set sort_aux=reverse-date	# sorting the threads
+
+
+#
+# Sorting in File-Browser:
+# (date, alpha, reverse-date, reverse-alpha)
+#
+
+set sort_browser=alpha
+
+
+#
+# Sorting of aliases:
+# (alias, address, unsorted)
+#
+set sort_alias=alias
+
+
+#
+# Paths:
+# ("unset" implies the compile time defaults)
+#
+
+set display_filter=""	# pipe message through this filter before displaying
+reset dotlock_program	# where to find mutt_dotlock (reset uses default)
+#set editor="exec emacsclient +\`awk '/^$/ {print NR+1; exit}' %s\` %s"
+			# start 1 line after first empty line
+#set editor="emacsclient +8 %s"	# start editor in line 8
+set editor="emacs -nw"
+set folder=~/.mail	# where are the mailboxes (+ and = are shortcuts)
+#set folder="{luv}Mail"	# where are the mailboxes (+ and = are shortcuts)
+reset ispell		# ispell binary (compile time default)
+set mbox=+inbox		# not used if "set move=no"
+set pager=builtin	# internal pager: "builtin" or e.g. "less -e" 
+set postponed=+postponed	# folder for postponed messages
+#set print_command="sed s/\f// | a2ps -kmail -ns -HMail -Ploki"
+			# print using a2ps to printer loki (strip FormFeed)
+#set print_command=lpr			# simple print command
+#set print_command=prmail		# print using tricky script prmail
+#set print_command="a2ps -gEmail"	# print using a2ps to default printer
+set print_command="a2psmail"		# print using a2ps to default printer
+set query_command="lbdbq %s"	# query tlr's little brothers database.
+set record="+sent-mail-`date +%Y-%m`"		# Don't save a copy of outgoing messages (Fcc)
+#reset sendmail
+			# Default-Sendmail with options ("-oem -oi")
+reset shell		# Take shell from /etc/passwd 
+#set signature='~/.sig/.tschoeee-sig'	# Signature (See send-hook!)
+#set signature='~/.mutt/signature'
+#reset spoolfile	# Default spool-file (e.g. /var/spool/mail/user)
+set spoolfile=+inbox	# Maildir incoming file (~/Mail/incoming)
+reset tmpdir		# tmp-Dir (use compile time default)
+reset visual		# use $VISUAL as builtin editor.
+
+
+#
+# Addresses:
+#
+#set from="user@gmail.com"		# From: address (see send-hook my_hdr From)
+
+
+#
+# Strings:
+# ("reset" implies compile time defaults)
+#
+
+set attach_sep="\n"	# Separator to add between tagged attachements
+#set charset="zh_CN.GB2312"	# Charset of Terminal (for display)
+set content_type="text/plain"	# default Content-Type of message body
+#set dsn_notify="failure,delay"	# delivery status notification 
+				# (never, failure, delay, succes)
+#set dsn_return="hdrs"	# what to return with DSN (hdrs or full)
+reset escape		# ESC-char for internal editor (use default).
+reset hostname		# FQDN (use default).
+set indent_string="> "	# Quoting mails with this string.
+set locale="zh_CN.UTF-8"	# locale settings (See send-hook section for changes!)
+set mailcap_path='~/.mutt/mailcap'	# Use local mailcap only for mutt
+set mh_seq_flagged="flagged"	# Name of MH sequence used for flagged msgs.
+set mh_seq_replied="replied"	# Name of MH sequence used for replied msgs.
+set mh_seq_unseen="unseen"	# Name of MH sequence used for unseen msgs.
+reset pipe_sep		# separator between tagged mails (default: \n)
+reset realname		# get realname from /etc/passwd.
+set send_charset="us-ascii:iso-8859-1:gb2312:gbk:gb18030:utf-8"  # Charsets for outgoing messages.
+set simple_search="~f %s | ~C %s | ~s %s"	# default pattern (Fr|To|Cc|Su)
+set status_chars="-*%A"	# status of mbox (unchanged, changed, readonly, attach)
+set to_chars=" +TCFL "	# no to me, only to me, not only to me, Cc: to me, 
+			# from me, to subscribed mailinglist.
+ 
+
+
+#
+# Magic (mailbox type):
+# allowed values: mbox, MMDF, MH, Maildir
+#
+
+set mbox_type=mbox
+
+
+
+#
+# RegExps:
+#
+unalternates *
+#alternates ^((roland(\\.rosenfeld)?)(\\+.*)?@(.*\\.)?spinnaker\\.de)$
+#alternates ^(roland(\\+.*)?@(.*\\.)?debian\\.org)$
+#alternates ^(roland(\\+.*)?@(.*\\.)?does-not-exist\\.org)$
+#alternates ^((roland\\.)?rosenfeld@(epost|gmx)\\.de)$
+#alternates ^(r?rosenfeld@netcologne\\.de)$
+#alternates ^(roro@.*(sourceforge|sf)\\.net)$
+########### My alternates   #####################
+#alternates ^sakulaqi@163.com
+#alternates ^200345038@stud.buct.edu.cn
+#alternates ^sakulaqi@gmail.com
+#alternates ^eric941@163.com
+##########  End of My alternates  ###############
+set gecos_mask="^[^,]*"		# Parse the GECOS field from passwd file.
+
+set mask="."			# Show these files in the file browser
+#set mask="!^\\.[^.]"		# Default
+
+set quote_regexp="^( {0,5}[>|:%]| {0,5}[a-z0-9]+[>|]+)+"
+				# for color quotes
+
+#set reply_regexp="^((re(\\^[0-9]|\\[[0-9]\\])? ?:|a(nt)?w(ort)?:|wg:|\\(fwd\\))[ \t]*)*"
+set reply_regexp="^(\\[ ijbswa[^]]*\\] )?((re(\\^[0-9]|\\[[0-9]\\])? ?:|a(nt)?w(ort)?:|wg:|\\(fwd\\))[ \t]*)*"
+			# Subject prefixes (removed on answering and threading)
+#set reply_regexp="^(re|aw):[ \t]+"	# Default
+
+set smileys="(>From )|(:[-^]?[][)(><}{|/DP])"
+			# Special chars, which are not quote regexps, but :-)
+
+
+#
+# Format-Strings:
+# 
+
+set date_format="!%a %b %d, %Y at %I:%M:%S%p %Z"
+			# control output of %d in index_format. strftime(3)
+			# here: Monday Dec 06, 1997 at 08:30:42pm CET
+
+# Allows escape sequences: 
+#     (\n = newline, \r = carriage-return, \t = tab, \f = formfeed)
+# 
+# %a Author address	%b original mbox	%B destination list or mbox
+# %c bytes in message	%C Message number
+# %d date and time in senders timezone ($date_format)
+# %D date and time in local timezone ($date_format)
+# %e curr. msg no in thread	%E number of msgs in curr. thread
+# %f address+real name	%F address+realname (unless self)
+# %i Message-ID		%l number of lines	%L list-from function
+# %m # of msg in mbox	%M number of hidden messages in collapsed thread
+# %n author real name	%N score		%s subject of msg     
+# %S status of message (N/D/d/!/*/r)		
+# %t `to:' field	%T char from tochars	%u login name of author
+# %v author's firstname	%y X-Label		%Y X-Label, if changed
+# %Z message status flags
+# %>X	  right justify the rest of the string and pad with character "X"
+# %|X	  pad to the end of the line with character "X"
+# %{<s>} sent time+date in senders timezone  (<s> is an strftime(3) expression)
+# %[<s>] sent time+date in local timezone    (<s> is an strftime(3) expression)
+# %(<s>) receive time+date in local timezone (<s> is an strftime(3) expression)
+# %<<s>> current time in local timezone      (<s> is an strftime(3) expression)
+#	 if first char in <s> is "!", do not use locale.
+
+set forward_format="(fwd) %s"
+			# subject of forwarded mails
+
+set index_format="%4C %Z %[!%d.%m.%y] %-15.15F (%?M?C%3M&%4l?) %s"
+			# message line in the index
+			# don't use locales here, because it's not needed and 
+			# it runs in a memory leak in Linux libc5 
+			# use %[!...] or %{!...} instead
+# In local folders display lines:
+#folder-hook . \
+#	'set index_format="%4C %Z %[!%d.%m.%y] %-15.15F (%?M?C%3M&%4l?) %s"'
+# In IMAP folders display KByte (because lines are not available):
+#folder-hook ^{ \
+#	'set index_format="%4C %Z %[!%d.%m.%y] %-15.15F (%?M?C%3M&%4c?) %s"'
+
+set message_format="%-.16n: %s"
+			# string for message/rfc822 in attachment list
+
+set pager_format="-%Z- %C/%m [%[%H:%M]] %-17.17n   %s"
+			# status line of the pager
+			# (show time here, date can be seen in "pil")
+####### My Footer QMD   ##########################################
+# Footer (after quotes, before signature).
+set post_indent_string="\n\n\n\
+			 致\n\
+敬!\n\\n\
+			XX XX \n\
+   	           %{%a, %d %b %Y}\n\
+-----------------------------------------------------\n\
+		user AT gmail.com\n\
+		user  AT 163.com \n"
+
+######## End My qmd  #############################################
+set attribution='On %{%a, %d %b %Y}, %n wrote:\n'
+			# Default Reply-Intro (See send-hook for changes!)
+
+# %C current number	%d last modified	%f filename
+# %F permissions	%g group		%l number of hard links
+# %N "N" if new mail	%s size in bytes	%t "*" if tagged
+# %u owner name		%>X right justify the rest and pad with "X"
+# %|X pad to the end of the line with character "X"
+set folder_format="%3C %t%N %F %-8.8u %-8.8g %8s %d %f"
+			# file browser menu
+
+
+#
+# status_format
+#
+
+# %b # of folders with new mail			%d # of deleted msgs
+# %f mbox path		%F # of flagged msgs	%h hostname
+# %m total# of messages %M # of shown msgs	%n # of new msgs
+# %l bytes in mbox	%L size of limited msgs %o # of old msgs
+# %p # of postponed. msgs	%P percentage of the display             
+# %r readonly/changed   %s sorting method	%S sort_aux method
+# %t # of tagged msgs	%u # of unread msgs	%v Mutt version
+# %>X = right justify and pad with "X"	 %|X = pad with "X" to end of line
+# %?<sequence_char>?<optional_string>?   print <opt> iff <seq> is non zero
+# %?<sequence_char>?<if_string>&<else_string>?
+
+#set status_format="-%r-%v--[%?M?%M/?%m msgs%?n?, %n new?%?d?, %d del?%?F?, %F flag?%?t?, %t tag?%?p?, %p postp?%?b?, %b inc?%?l?, %l?]--(%f)--%s/%S-%>-%P-"
+#set status_format="-%r-%v--[%?M?%M/?%m msgs%?n?, %n new?%?d?, %d del?%?F?, %F flag?%?t?, %t tag?%?p?, %p postp?%?b?, %b inc?%?l?, ?%?L?%L/?%?l?%l?]--(%f)--%s/%S-%>-%P-"
+set status_format="-%r-%v--[%?M?%M/?%m msgs%?n?, %n new?%?d?, %d del?%?F?, %F flag?%?t?, %t tag?%?p?, %p postp?%?b?, %b inc?%?l?, %l?]--(%f)--%s-%>-%P-"
+
+
+#
+# alias_format
+# (format of data displayed for the alias menu)
+# %a alias name    %n index number    %r address    %t tag-character 
+# %f flags (d for deleted)
+#
+set alias_format="%4n %2f %t %-12a  %r"
+
+
+#
+# attach_format
+# (controls the look of the compose and attach menu)
+# %c = requires charset conversion (n or c)	%C = Charset
+# %d = description	%D = deleted flag
+# %e = MIME content-transfer-encoding		%f = filename   
+# %I = disposition (I=inline, A=attachment)
+# %m = major MIME type	%M = MIME subtype	%n = attachment number
+# %s = size		%t = tagged flag	%T = tree
+# %u = unlink
+# %>X = right justify and pad with "X"	 %|X = pad with "X" to end of line
+#
+#set attach_format="%u%D%t%4n %T%.40d%> [%.7m/%.10M, %.6e%?C?, %C?, %s] "
+set attach_format="%u%D%I %t%4n %T%.40d%> [%.7m/%.10M, %.6e%?C?, %C?, %s] "
+
+
+#
+# compose_format
+# (Controls the status line of the compose menu)
+# %a = number of attachments	%h = local hostname
+# %l = approx. size of msg	%v = Mutt version
+#
+set compose_format="-- %v-- Compose  [Approximate Message Size: %l   Attachments: %a]%>-"
+
+
+#
+# POP (only if compiled with --enable-pop)
+# 
+
+set pop_authenticators=""	# colon separted list of user, apop, 
+				# digest-md5', 'gssapi' or 'cram-md5
+set pop_auth_try_all	# try all available auth methods.
+set pop_checkinterval=60	# how often (seconds) look for new mail via POP
+set pop_delete=ask-no	# keep POP messages at the server.
+set pop_host="pop://"	# [pop[s]://][username[:password]@]popserver[:port]
+unset pop_last		# Don't try to use "LAST" for retrieving only unread
+set pop_reconnect=ask-yes	# try to reconnect to POP server when c. lost.
+reset pop_user		# POP user
+reset pop_pass		# POP password
+
+#
+# IMAP (only if compiled with --enable-imap)
+#
+#set imap_authenticators=""	# :-separated list of authentication methods
+#set imap_delim_chars="/."	# list of chars to use as folder separators
+#set imap_home_namespace=""	# IMAP path to your folders
+#set imap_keepalive=900	# connect server at least all 30 mins to keep connect
+#unset imap_list_subscribed	# do no display only subscribed folders.
+#set imap_passive	# don't open new IMAP to look for new mail when set.
+#set imap_peek		# avoid implicitly marking mail as read when fetching
+#set imap_servernoise	# display warnings from IMAP server.
+#reset imap_user		# IMAP user
+#reset imap_pass		# IMAP password (don't store it here...)
+
+#set preconnect=""	# exec this cmd before establishing IMAP/POP connect
+#set tunnel=""		# exec remote command and communicate with it directly
+
+#
+# SSL (only if compiled with --enable-ssl)
+#
+#reset certifcate_file	# SSL certificate file
+#reset entropy_file	# random device
+#unset imap_force_ssl	# always use SSL for connections to IMAP servers
+#set ssl_starttls=yes	# use STARTTLS if available on server
+#set ssl_use_sslv2	# use SSLv2 authentication?
+#set ssl_use_sslv3	# use SSLv3 authentication?
+#set ssl_use_tlsv1	# use TLSv1 authentication?
+#set ssl_use_systemcerts	# use system wide certificates?
+
+#
+# NNTP (only with NNTP-Patch from 
+#	http://www.fiction.net/blong/programs/mutt/#nntp
+#	and compiled with --enable-nntp)
+#
+#set nntp_inews="/usr/bin/inews	-h"	# inews Binary
+#set nntp_user=""			# NNTP user
+#set nntp_pass=""			# NNTP password
+#set nntp_newsrc=~/.tin/.newsrc.mutt	# .newsrc location
+#set nntp_context=10000		# Number of messages to read in a newsgroup.
+##server-hook
+
+#
+# NNTP (with patch from "Andrej N. Gritsenko" <andrej@lucky.net>)
+#
+#set catchup_newsgroup=ask-yes	# catchup articles when leaving newsgroup
+#set group_index_format="%4C %M%N %5s  %-35.35f %d"
+#				# newsgroup browser format
+#reset inews			# inews command with headers (use default!)
+#set mime_subject		# Use MIME-Quoted-Printable in news headers
+#set news_cache_dir=~/.mutt/news-cache	# Cache files
+#set news_server=luv.does-not-exist.org	# News server (defaults to $NNTPSERVER)
+#set newsrc=~/.tin/.newsrc.mutt	# newsrc file
+#set nntp_attempts=10		# number of attempts to connect to NNTP server
+#set nntp_context=100		# number of articles in entered newsgroup
+#set nntp_load_description	# load newsgroup descriptions
+#set nntp_user=""		# NNTP username
+#set nntp_pass=""		# NNTP password
+#set nntp_poll=30		# time (in seconds) to check for new news
+#set post_moderated=ask-yes	# Post articles to moderated newsgroups?
+#set reconnect_news=ask-yes	# reconnect when nntp connection was lost?
+#unset save_unsubscribed 	# save info about unsubscr. groups in newsrc?
+#set show_new_news		# ask for new newsgroups when entering server?
+#unset x_comment_to		# add X-Comment-To: Realname?
+##server-hook [!]regexp command
+
+
+#
+# Mixmaster Support (only when --with-mixmaster)
+#
+# %n = number	%c = capabilities	%s = short name		%a = address
+set mix_entry_format="%4n %c %-16s %a"	# Format of mixmaster list
+set mixmaster="mixmaster"		# Mixmaster binary
+
+
+
+#
+# PGP and S/MIME:
+#
+
+unset fcc_clear		# encrypt Fcc of PGP encrypted messages?
+unset crypt_autosign	# pgp/smime sign every outgoing mail. (send-hook?)
+unset crypt_autoencrypt	# pgp/smime encrypt every outgoing mail. (send-hook?)
+set crypt_autopgp	# pgp encryption/sign of messages
+set crypt_autosmime	# S/MIME encrypt/sign of messages
+set crypt_replyencrypt	# Encrypt replies on encrypted mail
+set crypt_replysign	# Sign replies on signed mail
+set crypt_replysignencrypted	# Sign replies on encrypted mail
+set crypt_timestamp	# include timestamp in pgp/smime output (antispoof)
+set crypt_verify_sig=yes	# ask whether I want to check a pgp signature
+
+
+#
+# PGP:
+#
+
+set pgp_check_exit	# check return value of PGP process
+set pgp_create_traditional=no	# Use old-style PGP? (don't do it!)
+set pgp_ignore_subkeys	# On OpenPGP keys only show the main key, not the sub.
+unset pgp_long_ids	# display 64bit PGP key-ids (don't change this!)
+unset pgp_retainable_sigs	# disable retainable signatures.
+set pgp_show_unusable	# show unusable PGP keys in menu
+set pgp_strict_enc	# allway use QP enc. with PGP.
+set pgp_timeout=7200	# forget PGP passphrase after 7200 seconds (=2 hours)
+
+# use my RSA key as default:
+#set pgp_sign_as="0xDD08DD6D"	# UserID/KeyID for signing
+
+# use my DSA key as default:
+set pgp_sign_as="0xBD8B050D"	# UserID/KeyID for signing
+
+#source ~/.mutt/pgp2.rc
+source ~/.mutt/gpg.rc		# Start up with GnuPG by default
+
+# %n = number	%k = key id	%K = key id of the principal key
+# %u = user id	%a = algorithm	%A = algorithm of the princ. key
+# %l = length	%L = length of the princ. key	
+# %f = flags	%F = flags of the princ. key	
+# %c = capabilities		%C = capabilities of the princ. key
+# %t = trust/validity of the key-uid association
+#set pgp_entry_format="%4n %t%f %4l/0x%k %-4a %2c %u"
+set pgp_entry_format="%4n %t%f %[%y/%m/%d] %4l/0x%k %-4a %2c %u"
+
+#
+# Sorting of PGP keys:
+# (address, keyid, date, trust) and reverse-*
+#
+set pgp_sort_keys=trust
+
+#
+# S/MIME:
+#
+
+unset smime_is_default		# PGP is the default, not S/MIME
+set smime_timeout=7200		# forget SMIME passphrase after 2 hours
+set smime_ask_cert_label	# ask me for a label to a cert
+
+set smime_default_key="f4da42a0.0"	# my KeyID
+set smime_decrypt_use_default_key	# Use default key for decrypting
+
+set smime_ca_location="/etc/ssl/certs"	# CA certs (file or dir)
+set smime_certificates="~/.smime/certificates"	# known certs (dir)
+set smime_keys="~/.smime/keys"			# private keys (dir)
+set smime_encrypt_with="des3"	# rc2-40, rc2-64, rc2-128, des, des3
+
+set smime_pk7out_command="openssl smime -verify -in %f -noverify -pk7out"
+				# generate a PKCS#7 structure from message
+set smime_get_cert_command="openssl pkcs7 -print_certs -in %f"
+				# Extract cert from a PKCS#7 structure
+set smime_get_signer_cert_command="openssl smime -verify -in %f -noverify -signer %c -out /dev/null"
+				# Extract signer's cert from S/MIME sig
+set smime_get_cert_email_command="openssl x509 -in  %f -noout -email"
+				# Get the email, certificate was issued to
+set smime_import_cert_command="smime_keys add_cert %f"
+				# Add cert to database using smime_keys
+set smime_encrypt_command="openssl smime -encrypt -%a -outform DER -in %f %c"
+				# Encrypt message. Input file is a MIME entity
+set smime_sign_command="openssl smime -sign -signer %c -inkey %k -passin stdin -in %f -certfile %i -outform DER"
+				# Sign message
+set smime_decrypt_command="openssl smime -decrypt  -passin stdin -inform DER -in %f -inkey %k -recip %c"
+				# Decrypt a message. Output is a MIME entity
+set smime_verify_command="openssl smime -verify -inform DER -in %s %C -content %f"
+				# Verify signature of type multipart/signed
+set smime_verify_opaque_command="openssl smime -verify -inform DER -in %s %C"
+				# Verify sig of type application/x-pkcs7-mime
+
+
+#
+# score <pattern> <value>
+# unscore <pattern>
+#
+# (pattern is something like '~A' (all), '~f aol\.com$', '~s mutt' ...)
+# (value is between -9999 and 9999. A prefix '=' sets otherwise incr/decr)
+#
+unscore *
+
+set score			# turn off scoring
+set score_threshold_delete=-1	# mark messages with score <=value deleted
+set score_threshold_flag=9999	# mark messages with score >=value flagged
+set score_threshold_read=-1	# mark messages with score <=value read
+########### My score set     ################
+score "~N" +4
+score "~D" -5
+score "~s 通知" +2
+score "~s user" +5
+score "~O" +1 
+########### End score set    ################
+#
+# Show or suppress headers:
+# 
+
+ignore lines precedence status
+ignore nntp-posting-host path old-return-path received >received references
+ignore content- errors-to in-reply-to mime-version
+ignore resent-message-id return-path xref path
+ignore x-keywords x-uid x-ftn-via x-ftn-domain x-ftn-seen-by x-ftn-path
+ignore x-gateway x-loop x-sender x-priority x-spam-level x-spam-checker-version
+ignore mbox-line x-pop3-rcpt x-mailing-list x400- dl-expansion-history
+ignore priority alternate-recipient x-zc-via 
+ignore x-received x-envelope-sender x-return-path x-authentication-warning
+ignore resent-message-id resent-sender resent-date resent-cc
+ignore x-envelope-from x-envelope-to x-delivery-time
+ignore x-egroups-return list-unsubscribe list-archive list-help
+ignore list-post list-subscribe x-msmail-priority x-mimeole x-beenthere
+ignore from
+unignore from:
+
+
+
+#
+# Extra headers that I would like added to all my outgoing mail messages.
+# Attention: !!! No comments in the (un)my_hdr lines !!!
+#
+
+unmy_hdr *		
+			# remove all extra headers first.
+
+#my_hdr Organization: Wonderland
+#my_hdr Reply-To: username@domain.com
+#my_hdr Bcc: Roland Rosenfeld <roland@luv.sail.does-not-exist.org>
+
+######## My Reply-To ##############
+#my_hdr Reply-To: user@gmail.com
+######## End of My Reply-To #######
+
+# Additional headers can be set using send-hook!
+
+
+#
+# MIME-Types which should be automatically displayed. If a copiousoutput
+# exists, use it and display it in internal pager.
+# (if $implicit_autoview is set, this is automated for MIME types where
+#  an entry with copiousoutput exists in the mailcap)
+#
+
+unauto_view *		# remove all old entries
+auto_view text/richtext text/html text/x-sgml text/x-vcard text/x-sh \
+	text/x-csrc text/tex text/-xtex text/english \
+	application/x-tex application/x-dvi \
+	application/x-gzip-dvi application/x-diff-gzip application/x-gzip \
+	application/x-gunzip application/x-bzip2 \
+	application/x-cpio application/x-gtar \
+	application/x-tar application/x-tar-gz application/x-rar-compressed \
+	application/x-zip-compressed application/zip application/x-csh \
+	application/x-sh application/x-script application/x-shellscript \
+	application/x-latex application/x-tex application/x-shar \
+	application/x-troff application/x-troff-man application/x-troff-me \
+	application/x-pgp-message application/msword \
+	application/ms-tnef application/ms-word application/excel \
+	application/vnd.ms-excel application/rtf \
+	application/octet-stream application/x-tcl application/x-perl \
+	application/x-debian-package message/partial
+
+
+#
+# MIME Lookup: Don't use mailcap directly for these MIME types but
+# look into mime-types first to find a better MIME-Type:
+#
+ unmime_lookup *			# remove all from list
+ mime_lookup application/octet-stream
+
+
+
+#
+# List of MIME-Types to give a priority when reading multipart/alternative
+#
+
+unalternative_order *		# remove all old entries
+alternative_order text/enriched text/plain text/html
+
+
+
+#
+# mbox-hook pattern mailbox
+# (save all "read" messages from pattern to mailbox)
+#
+
+
+
+#
+# Mailinglists:
+# lists       adds a mailing list to the list of known mailing lists.  
+# subscribe   adds a mailing list to the list of subscribed mailing lists 
+#                                     _and_ to the list of known lists.
+# unlists     removes a mailing list from _both_ lists.
+# unsubscribe removes a mailing list from the list of subscribed
+#
+unlists *		# remove all old entries first
+subscribe news-admins mutt-users mutt-dev mutt-po mutt-announce
+subscribe debian-private debian-devel-announce
+subscribe debian-events-eu sw-wml openldap-software radiator dhcp-server fs-l
+
+subscribe tin-dev linux-users bolug linux-security de-cache 
+subscribe debian-devel debian-user-de debian-alpha debian-security
+subscribe bugtraq junkbuster-users wwwoffle-users perdition-users vdr
+subscribe debian-announce debian-chinese-gb debian-laptop debian-news debian-embedded  debian-toolchain
+#
+# mailboxes filename [ filename ... ]
+# (check the files for new mails.  Space cycles between them)
+#
+unmailboxes *		# remove all lod entries first
+#mailboxes ! =postmaster =nc =debian-devel-announce =vdr =debian-events-eu \
+	=privoxy-devel =perdition-users =news-admins =sw-wml \
+	=mutt-dev =mutt-users =debian-private =debian-security \
+	=openldap-software =radiator \
+	=dhcp-server =duplicates =spamblock =spamblock10 =spamblock15 \
+	=ericsson =bounces =autoresponder =viren
+mailboxes inbox newsmth  linuxsir misc Trash
+#
+# send-hook regexp command
+# reply-hook regexp command
+# (execute command, if regexp matches recipients of the message)
+# (multiple regexp-matches are executed in the given order!)
+# (reply-hook is matched against message, I replay to)
+# (send-hook is matched against all messages (new and replies).
+#
+
+#
+# only match "To" address for send-hooks:
+#
+set default_hook="~t %s"
+
+# First we define some defaults (english):
+#send-hook . \
+#	"set signature=~/.sig/tschoeee-sig \
+#	     locale=C \
+#	     attribution='Hi %v!\n\nOn %{%a, %d %b %Y}, %n wrote:\n'"
+			# On Mon, 16 Jun 1997, Roland Rosenfeld wrote:
+			# On Mon, 16 Jun 1997, Roland Rosenfeld wrote:
+########## My signature  #################
+send-hook . \
+	"set signature=~/.mutt/signature \
+	     attribution='Hi %v!\n\nOn %{%a, %d %b %Y}, %n wrote:\n'"
+			# On Mon, 16 Jun 1997, Roland Rosenfeld wrote:
+
+######### End of My signature  ###########
+# German specials:
+#send-hook [.@](de|ch|at|(akk|tin|detebe|karlsruhe|hiss|z2\\.fidonet|argh|waldherr|does-not-exist)\\.org|(de\\.oracle|ndh|gtn|westend|kens|debis)\\.com|(ndh|gmx|rpv|ivm|wor|socha|oeko)\\.net)$ \
+	"set locale=de_DE \
+	     attribution='Moin %v!\n\n%n schrieb am %{%A, den %d. %B %Y}:\n'"
+		# Roland Rosenfeld schrieb am Montag, den 16. Juni 1997:
+
+# Special signature/attribution/locale for robots:
+send-hook ^(majordomo|pgp|newsupd|gup@|areafix|areamgr|gecho|filescan|filemgr|mail2news|request|de-alt-netdigest) \
+	'set signature="" attribution="" locale="C"'
+			
+send-hook ^ws@.*uni-bonn\.de$ \
+	"set signature=~/.sig/tschoeee \
+	     locale=de_DE \
+	     attribution='%n schrieb am %{%A, den %d. %B %Y}:\n'"
+
+#
+# Check "To" and "Cc" address for address send hooks:
+#
+set default_hook="~C %s"
+
+###send-hook . 'unmy_hdr From'
+#send-hook . \
+#	'my_hdr From: Roland Rosenfeld <roland@spinnaker.de>'
+##send-hook [.@]informatik\\.uni-bonn\\.de$ \
+##	'my_hdr From: Roland Rosenfeld <rosenfel@uran.informatik.uni-bonn.de>'
+#send-hook @(bugs|vote)\\.debian\\.org$ \
+#	'my_hdr From: Roland Rosenfeld <roland@debian.org>'
+#send-hook submit@bugs\\.debian\\.org$ \
+#	'my_hdr From: Roland Rosenfeld <roland@spinnaker.de>'
+#send-hook (mutt\\.org|sw-wml@engelschall\\.com)$ \
+#	'my_hdr From: Roland Rosenfeld <roland@spinnaker.de>'
+#send-hook (majordomo|request|subscribe)@ \
+#	'my_hdr From: Roland Rosenfeld <lists@spinnaker.de>'
+
+############## My send-hook ######################################
+
+send-hook . 'my_hdr From: xx <user@gmail.com>'
+send-hook . 'my_hdr Reply-To: xx <user@gmail.com>'
+############## End My send-hook  #################################
+
+# Handle Fido robots:
+#send-hook . 'unmy_hdr X-Flags'		# no X-Flags per default
+#send-hook areafix|areamgr|gecho|filescan|filemgr|votemgr 'my_hdr X-Flags: MN'
+#					# X-Flags: MN for Fido robots
+#send-hook f418\\.n2435\\.z2\\.fidonet\\.org 'my_hdr X-Flags: C'
+
+# PGP Sign/Encrypt mail to special people
+#send-hook . 'set nopgp_autoencrypt nopgp_autosign'	# Default (no sign/enc)
+#send-hook roessler 'set pgp_autoencrypt pgp_autosign'
+#send-hook th@hansa\\.rhein\\.de 'set pgp_autoencrypt pgp_autosign'
+
+
+#
+# save-hook regexp filename
+# (save all messages from regexp or addressed to regexp to filename)
+# (~L matches From, To, Cc, Sender)
+
+#
+# Match From or To address for save-hooks by default:
+#
+set default_hook="~f %s | ~t %s"
+
+save-hook vote|voting|wahlleiter|ballot =vote.gz
+save-hook newsupd|gup@ =gup.gz
+
+#
+# fcc-save-hook
+# (don't forget to set default_hook first!)
+#
+
+
+#
+# crypt-hook pattern keyid
+#
+#crypt-hook roessler@guug\\.de 0xCE6AC6C1
+
+
+#
+# charset-hook alias charset
+# (define charset aliases)
+#
+#charset-hook x-unknown ISO-8859-1
+#charset-hook windows-1250 CP1250
+#charset-hook windows-1251 CP1251
+#charset-hook windows-1252 CP1252
+#charset-hook windows-1253 CP1253
+#charset-hook windows-1254 CP1254
+#charset-hook windows-1255 CP1255
+#charset-hook windows-1256 CP1256
+#charset-hook windows-1257 CP1257
+#charset-hook windows-1258 CP1258
+
+unset strict_mime
+set assumed_charset="gbk"
+charset-hook !utf-8 gbk 
+charset-hook ^us-ascii$ gbk
+charset-hook ^iso-8859-1$ gbk
+charset-hook ^UTF-8$ UTF-8
+charset-hook .* gbk
+charset-hook ^BIG5 gbk
+######## Trash and  Delete folder-hook  ################
+folder-hook . 'macro index d "<save-message>=Trash\r"'
+folder-hook ~/.mail/Trash 'bind index d delete-message'
+######## End of Delete and Trash folder-hook ###########
+########  macro index y                #################
+# show the incoming mailboxes list (just like "mutt -y") and back when pressing"y"
+macro index,pager y "<change-folder>?<toggle-mailboxes>" "show incoming mailboxes list"
+bind browser y exit
+######## End          y                #################
+#
+# iconv-hook charset local-charset
+# (define system specific name for a charset)
+#
+
+
+#
+# folder-hook pattern command
+# (pattern "." sets the default)
+# (command part has to be quoted "..." now)
+#
+
+#folder-hook . set sort=threads
+#folder-hook "!" set sort=date-received
+
+
+#
+# Tag "old" messages in mailinglists for "expiring" them.
+# Simply press "d", after entering one of the folders, iff mutt asks "tag-"
+#
+
+folder-hook =debian-(private|mentors)$ 'push T~r>1m!~F\n\;'	# 1 month
+folder-hook =debian-policy$ 'push T~r>2m!~F\n\;'		# 2 months
+folder-hook =mutt-dev$ 'push T~r>2m!~F\n\;'			# 2 months
+folder-hook =mutt-users$ 'push T~r>1m!~F\n\;'			# 1 months
+folder-hook =posted$ 'push T~r>6m!~F\n\;'			# 6 months
+folder-hook =openldap-software$ 'push T~r>1m!~F\n\;'		# 1 month
+
+#folder-hook . 'push \eV' #collapse all threads when entering a folder
+
+
+
+#
+# fcc-hook [!]regexp mailbox
+# (save sent message to mailbox if regexp matches (or not))
+#
+
+
+#
+# message-hook [!]pattern command
+# (exec command before displaying message, if pattern matches (or not))
+#
+
+
+#
+# account-hook pattern command
+# (change settings depending on IMAP/POP account)
+#
+
+
+#
+# append-hook, open-hook, close-hook
+# (support for compressed folders)
+# (only with compressed folders patch from 
+#  http://www.spinnaker.de/mutt/compressed/)
+#
+
+# gzip:
+#append-hook	\\.gz$	"gzip -c '%t' >> '%f'"
+#open-hook	\\.gz$	"gzip -cd '%f' > '%t'"
+#close-hook	\\.gz$	"gzip -c '%t' > '%f'"
+
+# bzip2:
+#open-hook	\\.bz2$	"bzip2 -cd '%f' > '%t'"
+#close-hook	\\.bz2$	"bzip2 -c '%t' > '%f'"
+# no appending possible with bzip2
+
+# PGP (compression and encryption of the folder):
+#open-hook  \\.pgp$ "pgp -f < %f > %t"
+#close-hook \\.pgp$ "pgp -fe roland@spinnaker.de < %t > %f"
+# no appending possible with pgp
+
+# PGP with IDEA only (compression and encryption of the folder):
+#open-hook  \\.idea$ "pgp -f < %f > %t"
+#close-hook \\.idea$ "pgp -cf < %t > %f"
+# no appending possible with pgp
+
+
+
+#
+# hdr_order header1 header2 header3
+# (order in which mutt will attempt to present headers)
+# 
+
+unhdr_order *			# reset header order
+hdr_order From: Subject: To: Cc: Bcc:
+
+
+
+#
+# monochrom terminals:
+# (none, bold, underline, reverse, standout)
+#
+#    object		attribute
+#
+mono normal		none		# normal text
+mono indicator		reverse		# actual message
+mono tree		none		# thread arrows
+mono status		reverse		# status line
+mono error		bold		# errors
+mono message		none		# info messages
+mono quoted		bold		# quoted text
+mono signature		none		# signature
+mono attachment		underline	# MIME attachments
+mono search		reverse		# search matches
+mono tilde		none		# ~ at bottom of msg
+mono markers		bold		# + at beginning of wrapped lines
+mono hdrdefault		none		# default header lines
+mono bold		bold		# hiliting bold patterns in body
+mono underline		underline	# hiliting underlined patterns in body
+#
+#    object	 attribute	RegExp
+#
+mono header	 bold		"^(from|subject):"
+#mono body	 underline	"((ftp|http|https)://|news:)[^ >)\"\t]+"
+mono body	 underline	"((ftp|http|https)://|(file|news):|www\\.)[-a-z0-9_.:]*[a-z0-9](/[^][{} \t\n\r\"<>()]*[^][{} \t\n\r\"<>().,:!])?/?"
+mono body	 underline	"[-a-z_0-9.]+@[-a-z_0-9.]+"
+mono body	 bold		"(^| )\\*[-a-z0-9äöüß*]+\\*[,.?]?[ \n]"
+mono body	 underline	"(^| )_[-a-z0-9äöüß_]+_[,.?]?[ \n]"
+
+#unmono index *				# unset all mono index entries
+
+
+#
+# color terminals:
+# (default, white, black, green, magenta, blue, cyan, yellow, red)
+# (bright...)
+# (color1,color2,...,colorN-1)
+#
+#     object	 foreground	background
+#
+color normal	 default	default	# normal text
+color indicator	 brightyellow	red	# actual message
+color tree	 brightmagenta	default	# thread arrows
+color status	 brightgreen	blue	# status line
+color error	 brightred	default	# errors
+color message	 red		default	# info messages
+color signature	 red		default	# signature
+color attachment brightyellow	red	# MIME attachments
+color search	 brightyellow	red	# search matches
+color tilde	 brightmagenta	default	# ~ at bottom of msg
+color markers	 red		default	# + at beginning of wrapped lines
+color hdrdefault blue		default	# default header lines
+color bold	 red		default	# hiliting bold patterns in body
+color underline	 green		default	# hiliting underlined patterns in body
+color quoted	 blue		default	# quoted text
+color quoted1	 magenta	default
+color quoted2	 red		default
+color quoted3	 green		default
+color quoted4	 cyan		default
+color quoted5	 blue		default
+color quoted6	 magenta	default
+color quoted7	 red		default
+color quoted8	 green		default
+color quoted9	 cyan		default
+#
+#     object	 foreground backg.   RegExp
+#
+color header	 red	    default  "^(from|subject):"
+#color body	 cyan	    default  "((ftp|http|https)://|news:)[^ >)\"\t]+"
+color body	 cyan	    default  "((ftp|http|https)://|(file|news):|www\\.)[-a-z0-9_.:]*[a-z0-9](/[^][{} \t\n\r\"<>()]*[^][{} \t\n\r\"<>().,:!])?/?"
+color body	 cyan	    default  "[-a-z_0-9.+]+@[-a-z_0-9.]+"
+#color body	 red	    default  "(^| )\\*[-a-z0-9äöüß*]+\\*[,.?]?[ \n]"
+#color body	 green	    default  "(^| )_[-a-z0-9äöüß_]+_[,.?]?[ \n]"
+color body	 red	    default  "(^| )\\*[-a-z0-9*]+\\*[,.?]?[ \n]"
+color body	 green	    default  "(^| )_[-a-z0-9_]+_[,.?]?[ \n]"
+
+# Firewall (iptables) logs:
+color body       magenta    default "(PROTO=[A-Z]+)|(DPT=[0-9]+)|(SRC=[0-9.]+)"
+
+# Colorize (German) GnuPG messages:
+color body	 red	    default  "Korrekte Unterschrift"
+color body	 brightyellow black  "(Öffentlicher Schlüssel nicht gefunden|keine vertrauenswürdige Signatur|Dieser Schlüssel ist verfallen)"
+color body	 brightred   black   "FALSCHE Unterschrift"
+color body	 brightgreen black   "nicht durch hinreichend vertrauenswürdige Signaturen zertifiziert"
+
+uncolor index *					# unset all color index entries
+color index	 blue	    default  ~F		# Flagged
+color index	 red	    default  ~N		# New
+color index	 magenta    default  ~T		# Tagged
+color index	 yellow	    default  ~D		# Deleted
+
+
+
+#
+# Include other files:
+#
+
+source ~/.mutt/keybind			# my ultimative key bindings
+
+
+
+#
+# push string
+# (execute "string" keystrokes when starting)
+#
+
+
+#
+# exec command
+# (execute the mutt command "command" when starting)
+#
+
+
+#
+# Aliases:
+# (called in ~/.muttrc to load them only once)
+#
+
+set alias_file=~/.mutt/mutt.aliases		# add the Aliases here
+source ~/.mutt/mutt.aliases			# and include all existing aliases
+
+# slrnface patch:
+#set xface
+#ignore x-face
+
+######################## end of file ######################################
