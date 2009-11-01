@@ -1,0 +1,37 @@
+alignment top_right
+gap_x 0
+gap_y 0
+own_window yes
+own_window_class Conky
+own_window_type desktop
+background no
+double_buffer yes
+use_xft yes
+xftfont DejaVu Sans Mono:size=10
+uppercase no
+override_utf8_locale yes
+update_interval 1.0
+TEXT
+${time %F %H:%M:%S}
+${color grey}Load: $color$loadavg
+\
+${color grey}CPU: $color$cpu%  \
+$alignr${color grey}Temp: $color$acpitemp
+\
+${color grey}RAM: $color$memperc% \
+$alignr${color grey}Swap: $color$swapperc%
+${color green}${cpugraph 000000 5000a0}\
+\
+$hr
+${color grey}IP: ${color DDAA00}${addr eth0}${color}
+\
+${color grey}upspeed/s: ${color db7093}${upspeed eth0}
+${upspeedgraph eth0 20 dcff82 ffffff}
+\
+${color grey}downspeed/s: ${color ddaa00}${downspeed eth0}
+${downspeedgraph eth0 20 dcff82 ffffff}
+\
+${color grey}  CPU% NAME           
+${top cpu 1} ${top name 1}
+${top cpu 2} ${top name 2}
+${top cpu 3} ${top name 3}
