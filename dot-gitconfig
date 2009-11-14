@@ -1,0 +1,21 @@
+[alias]
+	co = checkout
+	ci = commit -a -v
+	st = status
+	br = branch
+	rb = rebase
+	cl = clean -f
+	sci = svn dcommit
+	srb = svn rebase
+	oneline = log --pretty=oneline --since='2 days ago'
+	onelog = log -p -1
+	unstage = reset HEAD --
+	last = log -1 HEAD
+[color]
+	status = auto
+	branch = auto
+	ui = auto
+[core]
+	pager = less -FRSX
+[gui]
+	fontui = -family \"dejavu sans\" -size 9 -weight bold -slant roman -underline 0 -overstrike 0
