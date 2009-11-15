@@ -48,14 +48,6 @@ bind K kill
 bind I login on
 bind O login off
 bind } history
-bind = resize =
-bind + resize +1
-bind - resize -1
-bind _ resize max
-bind j focus down
-bind k focus up
-bind t focus top
-bind b focus bottom
 
 # An example of a "screen scraper" which will launch urlview on the current
 # screen window
@@ -70,14 +62,11 @@ bind b focus bottom
 termcapinfo vt100 dl=5\E[M
 
 # turn sending of screen messages to hardstatus off
+hardstatus off
 # Set the hardstatus prop on gui terms to set the titlebar/icon title
 termcapinfo xterm*|rxvt*|kterm*|Eterm* hs:ts=\E]0;:fs=\007:ds=\E]0;\007
-# hardstatus alwayslastline
-hardstatus off
 # use this for the hard status string
-# hardstatus string "%h%? users: %u%?"
-# hardstatus string '%{= mK}%-Lw%{= KW}%50>%n%f* %t%{= mK}%+Lw%< %{= kG}%-=%D %d %M %Y %c:%s%{-}'
-# hardstatus string '%{= kG}[%{G}%H%{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B}%d/%m %{G}%C%A]'
+hardstatus string "%h%? users: %u%?"
 
 # An alternative hardstatus to display a bar at the bottom listing the
 # windownames and highlighting the current windowname in blue. (This is only
@@ -97,7 +86,7 @@ termcapinfo xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
 # following termcapinfo line which tells xterm to use the normal screen buffer
 # (which has scrollback), not the alternate screen buffer.
 #
-#termcapinfo xterm|xterms|xs|rxvt ti@:te@
+termcapinfo xterm|xterms|xs|rxvt ti@:te@
 
 # Enable non-blocking mode to better cope with flaky ssh connections.
 defnonblock 5
@@ -117,5 +106,3 @@ defnonblock 5
 # screen -t mail 8 mutt
 # screen -t daemon 9 tail -f /var/log/daemon.log
 
-defescape ^Jj
-escape ^Jj
