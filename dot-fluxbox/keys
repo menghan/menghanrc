@@ -1,0 +1,45 @@
+OnDesktop Mouse1	:HideMenus
+OnDesktop Mouse2	:workspaceMenu
+OnDesktop Mouse3	:rootMenu
+
+# workspace
+Control Mod1 Right	:nextWorkspace
+Control Mod1 Left	:prevWorkspace
+Control Mod1 Down	:ShowDesktop
+# Control Mod1 Up		:ArrangeWindows
+OnDesktop Mouse4	:nextWorkspace
+OnDesktop Mouse5	:prevWorkspace
+Shift Mouse4		:nextWorkspace
+Shift Mouse5		:prevWorkspace
+OnTitlebar Mouse4	:takeToNextWorkspace
+OnTitlebar Mouse5	:takeToPrevWorkspace
+
+# tab
+Control Mouse4		:nextTab
+Control Mouse5		:prevTab
+Control Tab		:nextTab
+Control Shift Tab	:prevTab
+
+# window
+Mod1 Tab		:NextWindow {groups}
+Mod1 Shift Tab		:PrevWindow {groups}
+OnToolbar Mouse4	:NextWindow {groups}
+OnToolbar Mouse5	:PrevWindow {groups}
+
+OnTitlebar Mouse3	:WindowMenu
+OnTitlebar Mouse2	:StartTabbing
+
+Mod1 Mouse1		:MacroCmd {Raise} {Focus} {StartMoving}
+Mod1 Mouse3		:MacroCmd {Raise} {Focus} {StartResizing NearestCorner}
+Mod1 F2			:Exec fbrun
+Mod1 F3			:Exec urxvtc
+Mod1 F5			:Exec urxvtc -e ipython
+Mod1 F8			:Exec urxvtc -geometry 80x40+386+0 -e bash -c 'cd ~/.Maildir; mutt -f pycn'
+Mod1 F4			:close
+Mod1 m			:minimize
+Mod1 u			:maximize
+Mod1 F11		:fullscreen
+
+None 176		:Exec amixer sset Master,0 1+
+None 174		:Exec amixer sset Master,0 1-
+None 160		:Exec amixer sset Master,0 toggle
