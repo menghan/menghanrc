@@ -1,0 +1,4 @@
+source /home/sky/.vimrcs/vimrc_basic.vim
+source /home/sky/.vimrcs/vimrc_encoding.vim
+source /home/sky/.vimrcs/vimrc_utilities.vim
+source /home/sky/.vimrcs/vimrc_filetype.vim
