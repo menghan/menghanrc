@@ -1,32 +1,27 @@
 "my cpp config
 
-" "functions
-" function! WMakeRun()
-	" w
-	" make
-        " if has('win32')
-            " !%<.exe
-        " endif
-" endfunction
+"functions
+function! WMakeRun()
+	w
+	make
+	if has('win32')
+	    !%<.exe
+	endif
+endfunction
 
-" setlocal completeopt=longest,menu
+setlocal completeopt=longest,menu
 setlocal expandtab
 setlocal number
 setlocal shiftwidth=4
 setlocal cino+=:0 "dont' indent case:
 setlocal cino+=g0 "indent c++ public private etc...
 setlocal foldmethod=syntax
-" nnoremap <buffer> <F5> :call WMakeRun()<CR>
-nnoremap <buffer> ,cpptg :silent !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-" nnoremap <buffer> ,modeline m`Go/* vim:setlocal tw=0 sw=4 et ft=c fdm=syntax: */<ESC>'`
-if !has('win32')
-    nnoremap <buffer> ,as :silent !astyle --style=kr -p --suffix=none %<CR>
-    setlocal path+=/usr/include
-else
-    nnoremap <buffer> ,as :silent !astyle.exe --style=kr -p --suffix=none %<CR>
+
+if has('win32')
     setlocal tags+=$VIM/../../MinGW/include/tags
+else
+    setlocal path+=/usr/include
 endif
-nnoremap <buffer> ,tg :silent !ctags -R . && cscope -Rbkq<CR>
 
 if has('win32')
     if filereadable('Makefile')
@@ -41,10 +36,15 @@ else
         compile gcc | setlocal makeprg=g++\ -g\ -Wall\ -o\ %<\ %
     endif
 endif
+nnoremap <buffer> <F5> :call WMakeRun()<CR>
+
 nnoremap <buffer> ,dbg O#ifdef DEBUG_SKY<ESC>o#endif<ESC>Ocout << "DEBUG: " << endl;<ESC>9hi
 nnoremap <buffer> ,db0 Ousing namespace std;<CR>#define DEBUG_SKY<ESC>
 
-"for cscope
+" for ctags
+" nnoremap <buffer> ,tg :silent !ctags -R . && cscope -Rbkq<CR>
+nnoremap <buffer> ,cpptg :silent !ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+" for cscope
 if has("cscope")
 	set csprg=/usr/bin/cscope
 	set csto=0
