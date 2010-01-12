@@ -1,0 +1,75 @@
+diff -ur monit-5.0.3/contrib/rc.monit monit-5.0.3.menghan/contrib/rc.monit
+--- monit-5.0.3/contrib/rc.monit	2008-04-11 03:06:31.000000000 +0800
++++ monit-5.0.3.menghan/contrib/rc.monit	2010-01-12 13:13:09.000000000 +0800
+@@ -17,7 +17,7 @@
+ # Source networking configuration.
+ . /etc/sysconfig/network
+ 
+-MONIT=/usr/bin/monit
++MONIT=/usr/local/bin/monit
+ 
+ # Source monit configuration.
+ if [ -f /etc/sysconfig/monit ] ; then
+Only in monit-5.0.3.menghan/contrib: .rc.monit.swp
+diff -ur monit-5.0.3/monitrc monit-5.0.3.menghan/monitrc
+--- monit-5.0.3/monitrc	2008-11-09 06:10:26.000000000 +0800
++++ monit-5.0.3.menghan/monitrc	2010-01-12 13:12:31.000000000 +0800
+@@ -16,23 +16,23 @@
+ ##
+ ## Start monit in the background (run as a daemon):
+ #
+-# set daemon  120           # check services at 2-minute intervals
+-#     with start delay 240  # optional: delay the first check by 4-minutes
+-#                           # (by default check immediately after monit start)
++set daemon  120           # check services at 2-minute intervals
++    with start delay 240  # optional: delay the first check by 4-minutes
++			  # (by default check immediately after monit start)
+ #
+ #
+ ## Set syslog logging with the 'daemon' facility. If the FACILITY option is
+ ## omitted, monit will use 'user' facility by default. If you want to log to 
+ ## a stand alone log file instead, specify the path to a log file
+ #
+-# set logfile syslog facility log_daemon                       
+-#
++set logfile syslog facility log_daemon                       
++
+ #
+ ### Set the location of monit id file which saves the unique id specific for
+ ### given monit. The id is generated and stored on first monit start.
+ ### By default the file is placed in $HOME/.monit.id.
+ #
+-# set idfile /var/.monit.id
++set idfile /var/.monit.id
+ #
+ ### Set the location of monit state file which saves the monitoring state
+ ### on each cycle. By default the file is placed in $HOME/.monit.state. If
+@@ -40,7 +40,7 @@
+ ### monitoring state across reboots. If it is on temporary filesystem, the
+ ### state will be lost on reboot.
+ #
+-# set statefile /var/.monit.state
++set statefile /var/.monit.state
+ #
+ ## Set the list of mail servers for alert delivery. Multiple servers may be 
+ ## specified using comma separator. By default monit uses port 25 - this
+@@ -49,6 +49,8 @@
+ # set mailserver mail.bar.baz,               # primary mailserver
+ #                backup.bar.baz port 10025,  # backup mailserver on port 10025
+ #                localhost                   # fallback relay
++
++set mailserver localhost
+ #
+ #
+ ## By default monit will drop alert events if no mail servers are available. 
+@@ -234,7 +236,7 @@
+ ##
+ ## It is possible to include additional configuration parts from other files or
+ ## directories.
+-#
+-#  include /etc/monit.d/*
+-#
++
++include /etc/monit.d/*
++
+ #
