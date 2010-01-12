@@ -25,3 +25,10 @@ mv -f $TMPDIR/vim2ansi/plugin/* ~/.vim/plugin/
 mv -f $TMPDIR/vim2ansi/syntax/* ~/.vim/syntax/
 dos2unix ~/.vim/plugin/toansi.vim > /dev/null
 rm -rf $TMPDIR
+
+mkdir -p ~/.vim/ftplugin
+cd ~/.vim/ftplugin
+for i in `ls ~/.vimrcs/ftplugins/`
+do
+	ln -s ~/.vimrcs/ftplugins/$i .
+done

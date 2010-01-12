@@ -1,9 +1,8 @@
 urxvt.scrollBar:	false
 urxvt.transparent:	false
-! make it start very quick! but ime can't follow
 urxvt.preeditType:	Root
 urxvt.background:	black
 urxvt.foreground:	white
 urxvt.font:		xft:Inconsolata:pixelsize=15:antialias=true,xft:黑体
-urxvt.geometry:		+320+408
+urxvt.geometry:		+320+248
 urxvt.termName:		rxvt

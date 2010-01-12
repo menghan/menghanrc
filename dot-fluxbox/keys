@@ -34,7 +34,6 @@ Mod1 Mouse3		:MacroCmd {Raise} {Focus} {StartResizing NearestCorner}
 Mod1 F2			:Exec fbrun
 Mod1 F3			:Exec urxvtc
 Mod1 F5			:Exec urxvtc -e ipython
-Mod1 F8			:Exec urxvtc -geometry 80x40+386+0 -e bash -c 'cd ~/.Maildir; mutt -f pycn'
 Mod1 F4			:close
 Mod1 m			:minimize
 Mod1 u			:maximize

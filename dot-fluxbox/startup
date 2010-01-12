@@ -14,19 +14,14 @@
 # wmnd &
 # wmsmixer -w &
 
-/home/sky/client/conky/src/conky &
-/home/sky/bin/conkymsg &
+# xrandr --output VGA --auto --output LVDS --off
+# xrandr --output LVDS --auto --rotate normal --pos 0x0 --panning 1366x768+0+132 --output VGA --auto --right-of LVDS
+conky &
 if ! pidof urxvtd &> /dev/null; then
     urxvtd -q -o -f &
 fi
-if ! pidof mytunet &> /dev/null; then
-	/etc/init.d/mytunetd start
-fi
 fbpanel &
 xrdb < ~/.Xresource
-pcmanx &
-firefox &
-urxvt -title proxy -e ssh ucenter -D 2008 &
 # And last but not least we start fluxbox.
 # Because it is the last app you have to run it with ''exec'' before it.
 
