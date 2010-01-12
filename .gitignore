@@ -1,1 +1,5 @@
 *.swp
+/dot-fluxbox/apps
+/dot-fluxbox/fbrun_history
+/dot-fluxbox/slitlist
+/dot-fluxbox/lastwallpaper
