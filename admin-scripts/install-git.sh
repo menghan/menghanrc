@@ -23,3 +23,9 @@ if ! test $?; then
 	exit 1
 fi
 git clone http://github.com/thuskyblue/menghanrc.git
+rm -f $HOME/.bashrc.basic && ln -s $HOME/codespace/menghanrc/bashrcs/bashrc.basic $HOME/.bashrc.basic
+rm -f $HOME/.bashrc.aliases && ln -s $HOME/codespace/menghanrc/bashrcs/bashrc.aliases $HOME/.bashrc.aliases
+rm -f $HOME/.screenrc && ln -s $HOME/codespace/menghanrc/dot-screenrc $HOME/.screenrc
+rm -f $HOME/.vimrc && ln -s $HOME/codespace/menghanrc/dot-vimrc $HOME/.vimrc
+rm -f $HOME/.vimrcs && ln -s $HOME/codespace/menghanrc/dot-vimrcs $HOME/.vimrcs
+cd $HOME/.vimrcs/plugins_src && ./install.sh
