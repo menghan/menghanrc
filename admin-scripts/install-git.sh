@@ -25,6 +25,12 @@ fi
 git clone http://github.com/thuskyblue/menghanrc.git
 rm -f $HOME/.bashrc.basic && ln -s $HOME/codespace/menghanrc/bashrcs/bashrc.basic $HOME/.bashrc.basic
 rm -f $HOME/.bashrc.aliases && ln -s $HOME/codespace/menghanrc/bashrcs/bashrc.aliases $HOME/.bashrc.aliases
+if ! grep -q '.bashrc.basic' ~/.bashrc; then
+	echo "source ~/.bashrc.basic" >> ~/.bashrc
+fi
+if ! grep -q '.bashrc.aliases' ~/.bashrc; then
+	echo "source ~/.bashrc.aliases" >> ~/.bashrc
+fi
 rm -f $HOME/.screenrc && ln -s $HOME/codespace/menghanrc/dot-screenrc $HOME/.screenrc
 rm -f $HOME/.vimrc && ln -s $HOME/codespace/menghanrc/dot-vimrc $HOME/.vimrc
 rm -f $HOME/.vimrcs && ln -s $HOME/codespace/menghanrc/dot-vimrcs $HOME/.vimrcs
