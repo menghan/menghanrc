@@ -22,7 +22,8 @@ mkdir -p ${HOME}/codespace && cd ${HOME}/codespace
 if ! test $?; then
 	exit 1
 fi
-git clone http://github.com/thuskyblue/menghanrc.git
+git clone git://github.com/thuskyblue/menghanrc.git
+# git clone http://github.com/thuskyblue/menghanrc.git
 rm -f $HOME/.bashrc.basic && ln -s $HOME/codespace/menghanrc/bashrcs/bashrc.basic $HOME/.bashrc.basic
 rm -f $HOME/.bashrc.aliases && ln -s $HOME/codespace/menghanrc/bashrcs/bashrc.aliases $HOME/.bashrc.aliases
 if ! grep -q '.bashrc.basic' ~/.bashrc; then
