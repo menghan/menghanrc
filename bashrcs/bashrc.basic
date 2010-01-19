@@ -30,3 +30,8 @@ uptag ()
 }
 export -f uptag
 
+if test -e $HOME/.bashrc.IP; then
+	. $HOME/.bashrc.IP
+	export PS1="[\u@$SOMEIP(\h) \W]\$ "
+fi
+# vi:ft=sh:
