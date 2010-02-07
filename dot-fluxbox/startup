@@ -21,6 +21,7 @@ if ! pidof urxvtd &> /dev/null; then
     urxvtd -q -o -f &
 fi
 fbpanel &
+xscreensaver -no-splash &
 xrdb < ~/.Xresource
 # And last but not least we start fluxbox.
 # Because it is the last app you have to run it with ''exec'' before it.
