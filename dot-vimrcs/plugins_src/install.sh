@@ -31,5 +31,11 @@ mkdir -p ~/.vim/ftplugin
 cd ~/.vim/ftplugin
 for i in `ls ~/.vimrcs/ftplugins/`
 do
+	rm -f ~/.vim/ftplugin/$i
 	ln -s ~/.vimrcs/ftplugins/$i .
+done
+for i in `ls ~/.vimrcs/snippets/`
+do
+	rm -f ~/.vim/snippets/$i
+	ln -s $HOME/.vimrcs/snippets/$i $HOME/.vim/snippets/$i
 done

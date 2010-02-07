@@ -28,26 +28,26 @@ snippet cl
 	private:
 		${3:/* data */}
 	};
-snippet usaco usaco的模板文件
-	/*
-	ID: zhengme2
-	PROG: `Filename("$1")`
-	LANG: C++
-	*/
-	#include <fstream>
-	#include <algorithm>
-
-	using namespace std;
-	ifstream fin("`Filename("$1")`.in");
-	ofstream fout("`Filename("$1")`.out");
-
-
-	int main()
-	{
-	    ${1};
-	
-	    return 0;
-	}
+# snippet usaco usaco的模板文件
+# 	/*
+# 	ID: zhengme2
+# 	PROG: `Filename("$1")`
+# 	LANG: C++
+# 	*/
+# 	#include <fstream>
+# 	#include <algorithm>
+#
+# 	using namespace std;
+# 	ifstream fin("`Filename("$1")`.in");
+# 	ofstream fout("`Filename("$1")`.out");
+#
+#
+# 	int main()
+# 	{
+# 	    ${1};
+#
+# 	    return 0;
+# 	}
 snippet fori
 	for (int ${2:i} = 0; $2 < ${1:count}; $2${3:++}) {
 	    ${4:/* code */}

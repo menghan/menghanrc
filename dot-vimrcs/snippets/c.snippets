@@ -120,3 +120,27 @@ snippet skelc
 	    ${1};
 	    return 0;
 	}
+snippet usaco
+	/*
+	ID: zhengme2
+	PROG: `Filename()`
+	LANG: C++
+	*/
+	#include <cstdio>
+	#include <cstdlib>
+	#include <cassert>
+
+	FILE *pfin, *pfout;
+
+	int main(int argc, const char *argv[])
+	{
+	    pfin = freopen("`Filename()`.in", "r", stdin);
+	    pfin = freopen("`Filename()`.out", "w", stdout);
+	    assert(pfin && pfout);
+
+	    ${1}
+
+	    fclose(pfin);
+	    fclose(pfout);
+	    return 0;
+	}
