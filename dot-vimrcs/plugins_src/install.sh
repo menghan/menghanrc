@@ -24,6 +24,7 @@ mv -f $TMPDIR/crefvim/doc/* ~/.vim/doc/
 mv -f $TMPDIR/vim2ansi/plugin/* ~/.vim/plugin/
 mv -f $TMPDIR/vim2ansi/syntax/* ~/.vim/syntax/
 dos2unix ~/.vim/plugin/toansi.vim > /dev/null
+fromdos ~/.vim/plugin/toansi.vim > /dev/null
 rm -rf $TMPDIR
 
 mkdir -p ~/.vim/ftplugin
