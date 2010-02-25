@@ -29,7 +29,7 @@ endif
 if has('win32')
 	setlocal makeprg=\"D:\\Python25\\python.exe\ %\"
 else
-	setlocal makeprg=python\ %
+	setlocal makeprg=python\ -m\ py_compile\ %
 endif
 
 "for smart indent

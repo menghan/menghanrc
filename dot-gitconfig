@@ -5,6 +5,9 @@
 	br = branch
 	rb = rebase
 	cl = clean -f
+	ru = remote update origin
+	pu = push
+	rs = remote show origin
 	sci = svn dcommit
 	srb = svn rebase
 	oneline = log --pretty=oneline --since='2 days ago'
