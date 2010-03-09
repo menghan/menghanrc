@@ -126,21 +126,18 @@ snippet usaco
 	PROG: `Filename()`
 	LANG: C++
 	*/
-	#include <cstdio>
-	#include <cstdlib>
 	#include <cassert>
-
-	FILE *pfin, *pfout;
+	#include <fstream>
 
 	int main(int argc, const char *argv[])
 	{
-	    pfin = freopen("`Filename()`.in", "r", stdin);
-	    pfout = freopen("`Filename()`.out", "w", stdout);
-	    assert(pfin && pfout);
+	    std::ifstream fin("`Filename()`.in");
+	    std::ofstream fout("`Filename()`.out");
+	    assert(fin && fout);
 
 	    ${1}
 
-	    fclose(pfin);
-	    fclose(pfout);
+	    fin.close();
+	    fout.close();
 	    return 0;
 	}
