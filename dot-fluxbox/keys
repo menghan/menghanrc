@@ -42,4 +42,6 @@ Mod4 L			:Exec xscreensaver-command -lock
 
 None 176		:Exec amixer sset Master,0 1+
 None 174		:Exec amixer sset Master,0 1-
+None 123		:Exec amixer sset Master,0 1+
+None 122		:Exec amixer sset Master,0 1-
 None 160		:Exec amixer sset Master,0 toggle

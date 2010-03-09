@@ -30,8 +30,11 @@ uptag ()
 }
 export -f uptag
 
-if test -e $HOME/.bashrc.IP; then
-	. $HOME/.bashrc.IP
+if [ -f ~/.bashrc.IP ]; then
+	. ~/.bashrc.IP
 	export PS1="[\u@$SOMEIP(\h) \W]\$ "
+fi
+if [ -f ~/.pythonstartup ]; then
+	export PYTHONSTARTUP=~/.pythonstartup
 fi
 # vi:ft=sh:
