@@ -1,4 +1,4 @@
-set locale="zh_CN.UTF-8"
+set locale="en_US.UTF-8"
 set charset="utf-8"
 set send_charset="us-ascii:iso-8859-1:utf-8:gbk"
 #charset-hook x-gbk utf-8
@@ -22,35 +22,35 @@ set folder="~/.Maildir"
 # set mail_check=30
 folder-hook . "ignore *; unignore from: to: Subject X-mailer Date User-Agent:"
 
-#ÕâÊÇÒ»¸öboolĞÍ±äÁ¿¡£Ëü±íÃ÷ÄãÔÚ»ØĞÅÊ±ÒıÓÃÔ­ÎÄÊÇ·ñ¼ÓÈëÔ­ÎÄµÄÓÊ¼şÍ·¡£
+#è¿™æ˜¯ä¸€ä¸ªboolå‹å˜é‡ã€‚å®ƒè¡¨æ˜ä½ åœ¨å›ä¿¡æ—¶å¼•ç”¨åŸæ–‡æ˜¯å¦åŠ å…¥åŸæ–‡çš„é‚®ä»¶å¤´ã€‚
 set header=no
-#ÊÇ·ñÌáÊ¾Äã°ÑĞÅ¼ş´Ó spool ÒÆ¶¯µ½µÄ mbox ÎÄ¼ş¡£
+#æ˜¯å¦æç¤ºä½ æŠŠä¿¡ä»¶ä» spool ç§»åŠ¨åˆ°çš„ mbox æ–‡ä»¶ã€‚
 set move=no
-#µ± Mutt ÓÃ thread ·½Ê½ÏÔÊ¾Ê±£¬ÊÇ·ñÓÃ´¿ ascii ±íÊ¾Ê÷×´ÁĞ±í¡£
+#å½“ Mutt ç”¨ thread æ–¹å¼æ˜¾ç¤ºæ—¶ï¼Œæ˜¯å¦ç”¨çº¯ ascii è¡¨ç¤ºæ ‘çŠ¶åˆ—è¡¨ã€‚
 set ascii_chars=yes
-#»ØĞÅÊ±ÊÇ·ñ°üº¬Ô­ÎÄ¡£
+#å›ä¿¡æ—¶æ˜¯å¦åŒ…å«åŸæ–‡ã€‚
 set include
-#»ØĞÅµÄÒıÎÄÖ®Ç°²åÈëÄÇ¸ö·ûºÅ£¿
+#å›ä¿¡çš„å¼•æ–‡ä¹‹å‰æ’å…¥é‚£ä¸ªç¬¦å·ï¼Ÿ
 set indent_str="> "
-#Èç¹û·­µ½×îºó£¬ÔÙ°´ÍùÏÂ·­Ò²²»»á·­µ½ÏÂÒ»·âĞÅ¼ş
+#å¦‚æœç¿»åˆ°æœ€åï¼Œå†æŒ‰å¾€ä¸‹ç¿»ä¹Ÿä¸ä¼šç¿»åˆ°ä¸‹ä¸€å°ä¿¡ä»¶
 set pager_stop
-#Èç¹ûÉèÖÃ£¬µ±Äã°´"r"»ØĞÅÊ±£¬¾Í²»»áÔÙÌáÊ¾ÄãÊäÈë»ØĞÅµØÖ·ºÍÖ÷Ìâ£¬Ö±½Ó½øÈë±à¼­Ä£Ê½¡£
+#å¦‚æœè®¾ç½®ï¼Œå½“ä½ æŒ‰"r"å›ä¿¡æ—¶ï¼Œå°±ä¸ä¼šå†æç¤ºä½ è¾“å…¥å›ä¿¡åœ°å€å’Œä¸»é¢˜ï¼Œç›´æ¥è¿›å…¥ç¼–è¾‘æ¨¡å¼ã€‚
 set nofast_reply
-#µ±Äã°´"t"»òÕß"D"Ö®ÀàµÄ±ê¼Ç²Ù×÷Ê±£¬ÊÇ·ñ×Ô¶¯°Ñ¹â±êÒÆ¶¯µ½ÏÂÒ»·âĞÅ¼ş¡£
+#å½“ä½ æŒ‰"t"æˆ–è€…"D"ä¹‹ç±»çš„æ ‡è®°æ“ä½œæ—¶ï¼Œæ˜¯å¦è‡ªåŠ¨æŠŠå…‰æ ‡ç§»åŠ¨åˆ°ä¸‹ä¸€å°ä¿¡ä»¶ã€‚
 set resolve=yes
-#Íâ²¿³ÌĞòÍË³öÊ±£¬ÊÇ·ñÒªÇóÓÃ»§°´Ò»¸ö¼ü²Å·µ»Ø¡£·ñÔòËüÃÇÒ»ÏÂ¾ÍÏûÊ§ÁË¡£
+#å¤–éƒ¨ç¨‹åºé€€å‡ºæ—¶ï¼Œæ˜¯å¦è¦æ±‚ç”¨æˆ·æŒ‰ä¸€ä¸ªé”®æ‰è¿”å›ã€‚å¦åˆ™å®ƒä»¬ä¸€ä¸‹å°±æ¶ˆå¤±äº†ã€‚
 set wait_key=yes
-#µ±ÄãÒª°ÑĞÅ¼ş´æµ½ÁíÒ»¸öĞÅÏä£¬¶øÕâ¸öĞÅÏäÒÑ¾­´æÔÚÊ±£¬ÊÇ·ñÌáÊ¾¸½¼Ó£¿
+#å½“ä½ è¦æŠŠä¿¡ä»¶å­˜åˆ°å¦ä¸€ä¸ªä¿¡ç®±ï¼Œè€Œè¿™ä¸ªä¿¡ç®±å·²ç»å­˜åœ¨æ—¶ï¼Œæ˜¯å¦æç¤ºé™„åŠ ï¼Ÿ
 set noconfirmappend
-#ÊÇ·ñ°ÑÓÊ¼şÍ·Ò²·ÅÔÚ±à¼­Æ÷Àï¿ÉÒÔĞŞ¸Ä£¿
+#æ˜¯å¦æŠŠé‚®ä»¶å¤´ä¹Ÿæ”¾åœ¨ç¼–è¾‘å™¨é‡Œå¯ä»¥ä¿®æ”¹ï¼Ÿ
 set edit_headers=no
-#µ±ÄãÔÚÓÃ pager ¿´ĞÅ¼şÊ±£¬ÔÚ index Áô³ö¶àÉÙĞĞÏÔÊ¾ÓÊ¼şÁĞ±í£¿
+#å½“ä½ åœ¨ç”¨ pager çœ‹ä¿¡ä»¶æ—¶ï¼Œåœ¨ index ç•™å‡ºå¤šå°‘è¡Œæ˜¾ç¤ºé‚®ä»¶åˆ—è¡¨ï¼Ÿ
 set pager_index_lines=6
 set quit = yes
-#µ±ÓÃ thread ÅÅĞò·½Ê½Ê±£¬ÎÒÃÇ¶Ô¸÷¸ö thread µÄÏà¶ÔÅÅĞòË³Ğò¡£ 
+#å½“ç”¨ thread æ’åºæ–¹å¼æ—¶ï¼Œæˆ‘ä»¬å¯¹å„ä¸ª thread çš„ç›¸å¯¹æ’åºé¡ºåºã€‚ 
 set index_format="%3C%Z%{%b%d} %-15.15L (%4l) %s"
-set header_cache="~/.mutt/cache/"
-set maildir_header_cache_verify=no 
+# set header_cache="~/.mutt/cache/"
+# set maildir_header_cache_verify=no 
 hdr_order from to subject date
 set hidden_host                           # Hide host details.
 set postpone=ask-no                       # Ask about postponing.
@@ -68,7 +68,7 @@ set delete_untag       # untag messages when marking them for deletion.
 
 #hook
 
-# ×¢ÊÍµô£¬ÒòÎªÓĞÂÒÂë
+# æ³¨é‡Šæ‰ï¼Œå› ä¸ºæœ‰ä¹±ç 
 # auto_view text/html
 
 source ~/.mutt/alias
@@ -79,5 +79,5 @@ source ~/.mutt/color
 #send2-hook '~f @yahoo\.com\.cn' 'set sendmail="/usr/sbin/sendmail -oem -oi"'
 #send2-hook '~f @gmail\.com' 'set sendmail="/usr/local/bin/msmtp"'
 
-# mboxesµÄÉè¶¨
+# mboxesçš„è®¾å®š
 source ~/.mutt/muttrc.mboxes
