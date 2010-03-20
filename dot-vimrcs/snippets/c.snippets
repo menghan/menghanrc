@@ -149,3 +149,22 @@ snippet usaco
 	    fout.close();
 	    return 0;
 	}
+snippet tjuoj
+	#include <cassert>
+	#include <fstream>
+	#include <string>
+	#include <vector>
+	#include <algorithm>
+
+	int main(int argc, const char *argv[])
+	{
+	    std::ifstream fin("`Filename()`.in");
+	    std::ofstream fout("`Filename()`.out");
+	    assert(fin && fout);
+
+	    ${1}
+
+	    fin.close();
+	    fout.close();
+	    return 0;
+	}
