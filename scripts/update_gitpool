@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+code="$HOME/codespace"
+
+for p in $(ls $code)
+do
+	cd "$code/$p"
+	if ! ls .git > /dev/null 2>&1; then
+		continue
+	fi
+	if git br -a | grep -q trunk; then
+		git svn fetch
+	else
+		git remote update origin 2>/dev/null | sed '1d'
+	fi
+done
