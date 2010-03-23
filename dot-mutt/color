@@ -16,15 +16,15 @@ color attachment brightyellow	red	# MIME attachments
 color search	 brightyellow	red	# search matches
 color tilde	 brightmagenta	default	# ~ at bottom of msg
 color markers	 red		default	# + at beginning of wrapped lines
-color hdrdefault blue		default	# default header lines
+color hdrdefault brightblue	default	# default header lines
 color bold	 red		default	# hiliting bold patterns in body
 color underline	 green		default	# hiliting underlined patterns in body
-color quoted	 blue		default	# quoted text
+color quoted	 brightblue	default	# quoted text
 color quoted1	 magenta	default
 color quoted2	 red		default
 color quoted3	 green		default
 color quoted4	 cyan		default
-color quoted5	 blue		default
+color quoted5	 brightblue	default
 color quoted6	 magenta	default
 color quoted7	 red		default
 color quoted8	 green		default
