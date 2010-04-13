@@ -22,3 +22,6 @@
 	pager = less -FRSX
 [gui]
 	fontui = -family \"dejavu sans\" -size 9 -weight bold -slant roman -underline 0 -overstrike 0
+[user]
+	name = Menghan Zheng
+	email = menghan412@gmail.com

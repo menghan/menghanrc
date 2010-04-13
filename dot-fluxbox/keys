@@ -38,6 +38,7 @@ Mod1 F4			:close
 Mod1 m			:minimize
 Mod1 u			:maximize
 Mod1 F11		:fullscreen
+Mod1 Return		:fullscreen
 Mod4 L			:Exec xscreensaver-command -lock
 
 None 176		:Exec amixer sset Master,0 1+
