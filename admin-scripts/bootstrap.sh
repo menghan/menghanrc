@@ -26,6 +26,7 @@ setup ()
 
 # install essential softwares..
 
+sudo aptitude update
 sudo aptitude install -y \
 	git-core tig git-doc git-svn subversion \
 	vim-gtk exuberant-ctags cscope vim-doc tofrodos \
@@ -62,7 +63,6 @@ EOF
 fi
 setup codespace/menghanrc/bashrcs/bashrc.basic .bashrc.basic
 setup codespace/menghanrc/bashrcs/bashrc.aliases .bashrc.aliases
-setup codespace/menghanrc/dot-screenrc .screenrc
 
 # setup vim env
 cd
