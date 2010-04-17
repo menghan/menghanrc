@@ -24,6 +24,19 @@ setup ()
 	ln -s $from $target
 }
 
+# install essential softwares..
+
+sudo aptitude install -y \
+	git-core tig git-doc git-svn subversion \
+	vim-gtk exuberant-ctags cscope vim-doc tofrodos \
+	build-essential manpages manpages-dev \
+	lftp apache2 openssh-server openssh-client \
+	postfix procmail mutt \
+	evince ibus ibus-table-extraphrase ibus-table-wubi im-switch conky \
+	ntfs-3g pcmanx-gtk2 rdesktop \
+	bash-completion unzip gawk less lsof screen sudo telnet wget
+
+# get menghanrc
 if [ -d $HOME/codespace/menghanrc ]; then
 	backup $HOME/codespace/menghanrc
 fi
@@ -53,7 +66,6 @@ setup codespace/menghanrc/dot-screenrc .screenrc
 
 # setup vim env
 cd
-sudo aptitude install vim-gtk ctags cscope vim-doc tofrodos -y
 setup codespace/menghanrc/dot-vimrc .vimrc
 setup codespace/menghanrc/dot-vimrcs .vimrcs
 cd $HOME/.vimrcs/plugins_src && ./install.sh
