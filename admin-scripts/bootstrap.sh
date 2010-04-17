@@ -41,7 +41,7 @@ sudo aptitude install -y \
 if [ -d $HOME/codespace/menghanrc ]; then
 	backup $HOME/codespace/menghanrc
 fi
-mkdir -p $HOME/codespace && cd $HOME/codespace && git clone skybluee@59.66.122.88:.gitroot/menghanrc.git
+mkdir -p $HOME/codespace && cd $HOME/codespace && git clone menghanrchost:.gitroot/menghanrc.git
 if ! test $?; then
 	exit 1
 fi
