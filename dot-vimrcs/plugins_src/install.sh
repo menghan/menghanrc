@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 
-PLUGINSRCDIR=~/.vimrcs/plugins_src
+PLUGINSRCDIR=$HOME/.vimrcs/plugins_src
 TMPDIR="/tmp/installvimscripts$$.dir"
 
-mkdir -p ~/.vim/{after/syntax,doc,syntax,plugin}
+mkdir -p $HOME/.vim/{after/syntax,doc,syntax,plugin}
 
-cp $PLUGINSRCDIR/*.vim ~/.vim/plugin
+cp $PLUGINSRCDIR/*.vim $HOME/.vim/plugin
 for i in ColorSamplerPack.zip NERD_commenter.zip omnicppcomplete-0.41.zip \
 	bufexplorer.zip vst.zip snipMate.zip
 do
-	yes|unzip $PLUGINSRCDIR/$i -d ~/.vim >/dev/null
+	yes|unzip $PLUGINSRCDIR/$i -d $HOME/.vim >/dev/null
 done
 
 mkdir -p $TMPDIR
@@ -18,24 +18,27 @@ do
 	yes|unzip $PLUGINSRCDIR/$i -d $TMPDIR >/dev/null
 done
 
-mv -f $TMPDIR/crefvim/after/syntax/* ~/.vim/after/syntax/
-mv -f $TMPDIR/crefvim/plugin/* ~/.vim/plugin/
-mv -f $TMPDIR/crefvim/doc/* ~/.vim/doc/
-mv -f $TMPDIR/vim2ansi/plugin/* ~/.vim/plugin/
-mv -f $TMPDIR/vim2ansi/syntax/* ~/.vim/syntax/
-dos2unix ~/.vim/plugin/toansi.vim > /dev/null
-fromdos ~/.vim/plugin/toansi.vim > /dev/null
+mv -f $TMPDIR/crefvim/after/syntax/* $HOME/.vim/after/syntax/
+mv -f $TMPDIR/crefvim/plugin/* $HOME/.vim/plugin/
+mv -f $TMPDIR/crefvim/doc/* $HOME/.vim/doc/
+mv -f $TMPDIR/vim2ansi/plugin/* $HOME/.vim/plugin/
+mv -f $TMPDIR/vim2ansi/syntax/* $HOME/.vim/syntax/
+if type -a fromdos &> /dev/null; then
+	fromdos $HOME/.vim/plugin/toansi.vim > /dev/null
+else
+	dos2unix $HOME/.vim/plugin/toansi.vim > /dev/null
+fi
 rm -rf $TMPDIR
 
-mkdir -p ~/.vim/ftplugin
-cd ~/.vim/ftplugin
-for i in `ls ~/.vimrcs/ftplugins/`
+mkdir -p $HOME/.vim/ftplugin
+cd $HOME/.vim/ftplugin
+for i in `ls $HOME/.vimrcs/ftplugins/`
 do
-	rm -f ~/.vim/ftplugin/$i
-	ln -s ~/.vimrcs/ftplugins/$i .
+	rm -f $HOME/.vim/ftplugin/$i
+	ln -s $HOME/.vimrcs/ftplugins/$i .
 done
-for i in `ls ~/.vimrcs/snippets/`
+for i in `ls $HOME/.vimrcs/snippets/`
 do
-	rm -f ~/.vim/snippets/$i
+	rm -f $HOME/.vim/snippets/$i
 	ln -s $HOME/.vimrcs/snippets/$i $HOME/.vim/snippets/$i
 done
