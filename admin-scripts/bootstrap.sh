@@ -35,12 +35,20 @@ sudo aptitude install -y \
 	postfix procmail mutt \
 	evince ibus ibus-table-extraphrase ibus-table-wubi im-switch conky \
 	ntfs-3g pcmanx-gtk2 rdesktop \
-	bash-completion unzip gawk less lsof screen sudo telnet wget
+	bash-completion unzip gawk less lsof screen sudo telnet wget curl
+
+# if with --new argument, it means bootstrap from the scratch
+if [[ "$1" != "--new" ]]; then
+	exit 0
+fi
 
 # get menghanrc
 if [ -d $HOME/codespace/menghanrc ]; then
 	backup $HOME/codespace/menghanrc
 fi
+echo 'please setup .ssh/config to make sure menghanrchost:.gitroot/menghanrc.git exists'
+echo 'after done, press Enter to continue'
+read
 mkdir -p $HOME/codespace && cd $HOME/codespace && git clone menghanrchost:.gitroot/menghanrc.git
 if ! test $?; then
 	exit 1
@@ -64,11 +72,15 @@ fi
 setup codespace/menghanrc/bashrcs/bashrc.basic .bashrc.basic
 setup codespace/menghanrc/bashrcs/bashrc.aliases .bashrc.aliases
 
+# setup bin/ scripts
+cd
+mkdir -p bin
+
 # setup vim env
 cd
 setup codespace/menghanrc/dot-vimrc .vimrc
 setup codespace/menghanrc/dot-vimrcs .vimrcs
-cd $HOME/.vimrcs/plugins_src && ./install.sh
+cd .vimrcs/plugins_src && ./install.sh
 
 # setup git env
 cd
