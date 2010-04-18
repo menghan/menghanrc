@@ -13,28 +13,30 @@ backup ()
 
 setup ()
 {
-	from=$1
-	target=$2
+	src=$1
+	dst=$2
 
-	if test -z $from -o -z $target; then
+	if test -z $src -o -z $dst; then
 		return
 	fi
-	backup $HOME/$target
-	rm -rf $HOME/$target
-	ln -s $from $target
+	backup $dst
+	rm -rf $dst
+	ln -s $src $dst
 }
 
 # install essential softwares..
 
 sudo aptitude update
 sudo aptitude install -y \
-	git-core tig git-doc git-svn subversion \
-	vim-gtk exuberant-ctags cscope vim-doc tofrodos \
+	git-core tig git-svn subversion \
+	vim-gtk exuberant-ctags cscope tofrodos \
 	build-essential manpages manpages-dev \
 	lftp apache2 openssh-server openssh-client \
 	postfix procmail mutt \
 	evince ibus ibus-table-extraphrase ibus-table-wubi im-switch conky \
 	ntfs-3g pcmanx-gtk2 rdesktop \
+	ttf-inconsolata \
+	python-doc vim-doc git-doc \
 	bash-completion unzip gawk less lsof screen sudo telnet wget curl
 
 # if with --new argument, it means bootstrap from the scratch
@@ -74,7 +76,15 @@ setup codespace/menghanrc/bashrcs/bashrc.aliases .bashrc.aliases
 
 # setup bin/ scripts
 cd
-mkdir -p bin
+mkdir -p bin && cd bin
+if test $?; then
+	for f in $(ls ../codespace/menghanrc/scripts)
+	do
+		setup ../codespace/menghanrc/scripts/$f $f
+	done
+else
+	echo 'Failed to cd "~/bin"'
+fi
 
 # setup vim env
 cd
