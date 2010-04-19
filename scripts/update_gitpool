@@ -4,7 +4,10 @@ code="$HOME/codespace"
 
 for p in $(ls $code)
 do
-	cd "$code/$p"
+	cd "$code/$p" > /dev/null 2>&1
+	if ! test $?; then
+		continue
+	fi
 	if ! ls .git > /dev/null 2>&1; then
 		continue
 	fi
