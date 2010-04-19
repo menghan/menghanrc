@@ -33,11 +33,14 @@ sudo aptitude install -y \
 	build-essential manpages manpages-dev \
 	lftp apache2 openssh-server openssh-client \
 	postfix procmail mutt \
-	evince ibus ibus-table-extraphrase ibus-table-wubi im-switch conky \
-	ntfs-3g pcmanx-gtk2 rdesktop \
+	evince poppler-data \
+	ibus ibus-table-extraphrase ibus-table-wubi im-switch \
+	ntfs-3g pcmanx-gtk2 rdesktop stardict \
+	fluxbox fbpanel rxvt-unicode conky \
 	ttf-inconsolata \
 	python-doc vim-doc git-doc \
-	bash-completion unzip gawk less lsof screen sudo telnet wget curl
+	bash-completion unzip gawk less lsof screen sudo telnet wget curl \
+	mailutils
 
 # if with --new argument, it means bootstrap from the scratch
 if [[ "$1" != "--new" ]]; then
