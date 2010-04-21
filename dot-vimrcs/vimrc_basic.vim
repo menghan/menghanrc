@@ -168,3 +168,16 @@ if has("win32")
 	nnoremap ,exp :silent !start explorer "%:p:h"<CR>
 	nnoremap ,cmd :silent !start cmd /K "cd /d %:p:h"<CR>
 endif
+
+function! UpdateLastModifyTime()
+	for lineno in range(1, 10)
+		let line = getline(lineno)
+		let time = strftime("%c")
+		if match(line, 'Last update: ') >= 0
+			let line = substitute(line, '\w\{3}\ \d\{2}\ \w\{3}\ \d\{4}\ \d\{2}:\d\{2}:\d\{2}\ \w\{2}\ \w\{3}', time, "g")
+			silent call setline(lineno, line)
+			break
+		endif
+	endfor
+endfunction
+autocmd BufWritePre * :call UpdateLastModifyTime()
