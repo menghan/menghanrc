@@ -127,32 +127,11 @@ nnoremap ,d :bd<CR>
 nnoremap ,z <C-Z>
 nnoremap ,co :copen<CR>
 
-"for svn
-if !has('win32')
-	nnoremap ,sdiff :VCSDiff<CR>
-	nnoremap ,st :VCSStatus<CR><CR>
-	nnoremap ,sinfo :VCSInfo<CR>
-	nnoremap ,sci :VCSCommit<CR>
-	nnoremap ,sann :VCSAnnotate<CR>
-	nnoremap ,sadd :VCSAdd<CR><CR>
-	nnoremap ,sup :VCSUpdate<CR>
-	nnoremap ,srev :VCSReview<CR><CR>
-	nnoremap ,srm :VCSRemove<CR>
-endif
-
 "still not understand
 "run ex and normal command and redirect message to register *, use try-finally
 "to ensure that redir END will always be executed
 "command -nargs=* Mc redir @*> |try| exe "<args>" | finally | redir END | endtry
 "command -nargs=* Mn redir @*> |try| normal "<args>" | finally | redir END | endtry
-
-" [ setting of plugin ]
-"
-"for NERD_commenter
-let NERDCommentWholeLinesInVMode = 1
-let NERDShutUp = 1
-let NERDSpaceDelims = 1
-let NERDMenuMode = 0
 
 "don't load color's menu
 let g:did_color_sample_pack = 1
