@@ -48,7 +48,7 @@ set edit_headers=no
 set pager_index_lines=6
 set quit = yes
 #当用 thread 排序方式时，我们对各个 thread 的相对排序顺序。 
-set index_format="%3C%Z%{%b%d} %-15.15L (%4l) %s"
+set index_format="%3C%Z%{%b%d} %-8.8L(%4l) %s"
 # set header_cache="~/.mutt/cache/"
 # set maildir_header_cache_verify=no 
 hdr_order from to subject date
