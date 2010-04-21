@@ -153,7 +153,7 @@ function! UpdateLastModifyTime()
 		let line = getline(lineno)
 		let time = strftime("%c")
 		if match(line, 'Last update: ') >= 0
-			let line = substitute(line, '\w\{3}\ \d\{2}\ \w\{3}\ \d\{4}\ \d\{2}:\d\{2}:\d\{2}\ \w\{2}\ \w\{3}', time, "g")
+			let line = substitute(line, 'Last update: .*', 'Last update: ' . time, "g")
 			silent call setline(lineno, line)
 			break
 		endif
