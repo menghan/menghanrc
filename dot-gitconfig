@@ -6,7 +6,7 @@
 	cl = clean -f -d
 	ru = remote update origin
 	rs = remote show origin
-	recent = log --pretty=oneline -10
+	recent = log --abbrev-commit --pretty=oneline -10
 	last = log -p -1
 [color]
 	status = auto
