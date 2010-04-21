@@ -3,25 +3,17 @@
 	ci = commit -a -v
 	st = status
 	br = branch
-	rb = rebase
-	cl = clean -f
+	cl = clean -f -d
 	ru = remote update origin
-	pu = push
 	rs = remote show origin
-	sci = svn dcommit
-	srb = svn rebase
-	oneline = log --pretty=oneline --since='2 days ago'
-	onelog = log -p -1
-	unstage = reset HEAD --
-	last = log -1 HEAD
+	recent = log --pretty=oneline -10
+	last = log -p -1
 [color]
 	status = auto
 	branch = auto
 	ui = auto
 [core]
 	pager = less -FRSX
-[gui]
-	fontui = -family \"dejavu sans\" -size 9 -weight bold -slant roman -underline 0 -overstrike 0
 [user]
 	name = Menghan Zheng
 	email = menghan412@gmail.com
