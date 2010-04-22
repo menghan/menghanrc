@@ -40,4 +40,7 @@ fi
 if [ -f ~/.pythonstartup ]; then
 	export PYTHONSTARTUP=~/.pythonstartup
 fi
+if [ -f /etc/bash_completion ]; then
+	. /etc/bash_completion
+fi
 # vi:ft=sh:
