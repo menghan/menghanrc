@@ -1,5 +1,6 @@
 *.swp
 /.hg/
+/dot-fluxbox/init
 /dot-fluxbox/apps
 /dot-fluxbox/fbrun_history
 /dot-fluxbox/slitlist
