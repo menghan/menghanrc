@@ -23,5 +23,5 @@ let python_highlight_all = 1
 
 "syntax check
 if has('unix')
-	nnoremap <buffer> <C-F5> :!python -m py_compile %<CR>
+	nnoremap <buffer> <C-F5> :!python -m py_compile %; rm -f %c<CR>
 endif
