@@ -32,7 +32,7 @@ sudo aptitude install -y \
 	vim-gtk exuberant-ctags cscope tofrodos \
 	build-essential manpages manpages-dev \
 	lftp apache2 openssh-server openssh-client \
-	postfix procmail mutt \
+	postfix procmail mutt msmtp \
 	evince poppler-data \
 	ibus ibus-table-extraphrase ibus-table-wubi im-switch \
 	ntfs-3g pcmanx-gtk2 rdesktop stardict \
