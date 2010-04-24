@@ -7,29 +7,31 @@ ssh-add 2> /dev/null
 
 safe_source ()
 {
-    for i; do
-        if test -f $i; then
-            . $i
-        fi
-    done
+	if [ -f "$1" ]; then
+		source "$1"
+	fi
 }
 export -f safe_source
 
 builddebpackage ()
 {
-    sudo dpkg-buildpackage -rfakeroot -uc -b
+	sudo dpkg-buildpackage -rfakeroot -uc -b
 }
 export -f builddebpackage
 
 mktar ()
 {
-    tar czf $1.tar.gz $1 && rm $1 -rf
+	if [ -f $1 ]; then
+		gzip $1
+	elif [ -d $1 ]; then
+		tar czf $(dirname $1)/$(basename $1).tar.gz $1 && rm $1 -rf
+	fi
 }
 export -f mktar
 
 uptag ()
 {
-    ctags -R . && cscope -Rbkq
+	ctags -R . && cscope -Rbkq
 }
 export -f uptag
 

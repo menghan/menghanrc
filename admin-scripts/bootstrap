@@ -28,7 +28,7 @@ setup ()
 
 sudo aptitude update
 sudo aptitude install -y \
-	git-core tig git-svn subversion \
+	git-core tig git-svn subversion mercurial \
 	vim-gtk exuberant-ctags cscope tofrodos \
 	build-essential manpages manpages-dev \
 	lftp apache2 openssh-server openssh-client \
