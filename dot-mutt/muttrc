@@ -81,3 +81,6 @@ source ~/.mutt/color
 
 # mboxes的设定
 source ~/.mutt/mboxes
+
+# msmtp的设定
+source ~/.mutt/msmtp
