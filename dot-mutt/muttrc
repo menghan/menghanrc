@@ -80,4 +80,4 @@ source ~/.mutt/color
 #send2-hook '~f @gmail\.com' 'set sendmail="/usr/local/bin/msmtp"'
 
 # mboxes的设定
-source ~/.mutt/muttrc.mboxes
+source ~/.mutt/mboxes
