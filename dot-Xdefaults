@@ -5,5 +5,5 @@ urxvt.background:	black
 urxvt.foreground:	white
 urxvt.font:		xft:Inconsolata:pixelsize=17:antialias=true,\
 				xft:文泉驿等宽微米黑
-urxvt.geometry:		+320+228
+urxvt.geometry:		84x24+310+228
 urxvt.termName:		rxvt
