@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+# find package name from command name
+# Author: Menghan Zheng <menghan412@gmail.com>
+# Last update: Sat 24 Apr 2010 01:54:28 PM CST
+
+
+cmd2package ()
+{
+	cmd=$1
+	cmdinfo=$(type -a $cmd 2>/dev/null | head -n 1)
+	if test $?; then
+		echo "$cmd: command not found"
+		return
+	fi
+	if echo $cmdinfo | grep -q ' is a shell builtin'; then
+		echo $cmdinfo
+		return
+	fi
+	path=$(echo $cmdinfo | awk '{print $3}')
+	while true
+	do
+		oldpath=$path
+		if [ ! -L $path ]; then
+			break
+		fi
+		path=$(ls -l $path | awk '{print $NF}')
+		if [[ ! $path =~ "/" ]]; then
+			path=$oldpath
+			break
+		fi
+	done
+	dpkg -S $path
+}
+
+
+for cmd
+do
+	cmd2package $cmd
+done
