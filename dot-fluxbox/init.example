@@ -56,7 +56,7 @@ session.screen0.followModel:	SemiFollow
 session.screen0.fullMaximization:	false
 session.screen0.allowRemoteActions:	false
 session.screen0.strftimeFormat:	%d %b, %a %02k:%M:%S
-session.screen0.windowMenu:	/home/sky/.fluxbox/windowmenu
+session.screen0.windowMenu:	~/.fluxbox/windowmenu
 session.screen0.autoRaise:	true
 session.screen0.focusNewWindows:	true
 session.screen0.userFollowModel:	SemiFollow
@@ -81,4 +81,4 @@ session.appsFile:	~/.fluxbox/apps
 session.forcePseudoTransparency:	true
 session.ignoreBorder:	true
 session.cacheLife:	5l
-session.styleFile:	/home/sky/.fluxbox/skystyle
+session.styleFile:	~/.fluxbox/mystyle

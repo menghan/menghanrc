@@ -3,7 +3,7 @@ style.author:           Dmitry E. Oboukhov <unera@debian.org>
 style.date:             Wed Sep 3 18:27:11 UTC 2008
 
 background: 		fullscreen
-background.pixmap:      /home/sky/.fluxbox/wallpic/zol_download_TN_EA58034.jpg
+background.pixmap:      ~/.fluxbox/wallpic/zol_download_TN_EA58034.jpg
 
 window.font:			文泉驿正黑-12
 menu.frame.font:		dejavusans-10
