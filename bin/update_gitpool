@@ -1,19 +1,14 @@
 #!/usr/bin/env bash
 
-code="$HOME/codespace"
+code="$HOME/codespace/opensource"
 
 for p in $(ls $code)
 do
-	cd "$code/$p" > /dev/null 2>&1
-	if ! test $?; then
+	if ! cd "$code/$p" &>/dev/null; then
 		continue
 	fi
-	if ! ls .git > /dev/null 2>&1; then
+	if [ ! -d .git ]; then
 		continue
 	fi
-	if git br -a | grep -q trunk; then
-		git svn fetch
-	else
-		git remote update origin 2>/dev/null | sed '1d'
-	fi
+	git remote update 2>/dev/null | sed '1d'
 done
