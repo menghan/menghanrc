@@ -25,7 +25,7 @@ function! UpdateLastModifyTime()
 		let line = getline(lineno)
 		let time = strftime("%c")
 		if match(line, 'Last update:') >= 0
-			let line = substitute(line, 'Last update: .*', 'Last update: ' . time, "g")
+			let line = substitute(line, 'Last update:.*', 'Last update: ' . time, "g")
 			silent call setline(lineno, line)
 			break
 		endif
