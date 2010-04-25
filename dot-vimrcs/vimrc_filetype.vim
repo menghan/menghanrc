@@ -1,19 +1,3 @@
-" bash configure"
-"
-" don't need
-" autocmd BufRead,BufNewFile *.sh,bash_*,.bash_* set ft=sh
-
-" python configure"
-"
-autocmd BufNewFile *.py,*.pyw call setline(1,'#!/usr/bin/env python') |
-			\ call setline(2,'# -*- coding: utf-8 -*-') |
-			\ call setline(3,'') |
-			\ call setline(4,'') |
-			\ exe "normal G"
-"
-"for delete empty line before write
-autocmd BufWritePre *.py,*.pyw normal m`:%s/\s\+$//e ``
-
 " tex configure"
 "
 autocmd BufRead,BufNewFile *.tex set ft=latex

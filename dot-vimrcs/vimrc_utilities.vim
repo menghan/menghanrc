@@ -1,16 +1,3 @@
-" [UpdateTime() Update the timestamp in the header]
-function! UpdateTime()
-	for s:i in range(1,10)
-		let s:tmp=getline(s:i)
-		let s:time=strftime("%Y-%m-%d %H:%M:%S")
-		if match(s:tmp,'\d\{4}-\d\{2}-\d\{2}\ \d\{2}:\d\{2}:\d\{2}')>=0
-			let s:tmp=substitute(s:tmp,'\d\{4}-\d\{2}-\d\{2}\ \d\{2}:\d\{2}:\d\{2}',s:time,"g")
-			silent call setline(s:i,s:tmp)
-			break
-		endif
-	endfor
-endfunction
-
 function! Makeusaco()
 	w
 	if !filereadable('Makefile')
@@ -31,6 +18,17 @@ endfunction
 
 function! USACO_Init()
 	nnoremap <buffer> <F5> :call Makeusaco()<CR>
-	nnoremap <buffer> \id :! myindent.sh %<CR>:e<CR>
 endfunction
 
+function! UpdateLastModifyTime()
+	for lineno in range(1, 10)
+		let line = getline(lineno)
+		let time = strftime("%c")
+		if match(line, 'Last update:') >= 0
+			let line = substitute(line, 'Last update: .*', 'Last update: ' . time, "g")
+			silent call setline(lineno, line)
+			break
+		endif
+	endfor
+endfunction
+autocmd BufWritePre * :call UpdateLastModifyTime()

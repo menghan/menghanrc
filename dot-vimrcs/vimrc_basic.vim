@@ -35,7 +35,7 @@ set display=lastline,uhex
 " set formatoptions+=Mmn
 set guitablabel=%{tabpagenr()}.%t\ %m
 " set tabline
-set wildignore=*.lo,*.o,*.obj,*.exe " tab complete now ignores these
+set wildignore=*.lo,*.o,*.obj,*.exe,*.pyc " tab complete now ignores these
 
 " [diff options]
 set diffopt=filler,vertical
@@ -122,7 +122,6 @@ nnoremap ,k <C-W>k
 nnoremap ,l <C-W>l
 nnoremap ,q :q!<CR>
 nnoremap ,w :up<CR>
-nnoremap ,x :wqa<CR>
 nnoremap ,d :bd<CR>
 nnoremap ,z <C-Z>
 nnoremap ,co :copen<CR>
@@ -138,25 +137,6 @@ let g:did_color_sample_pack = 1
 
 " win32 configure
 if has("win32")
-	" set guifont=Terminus:h12:cANSI,Bitstream_Vera_Sans_Mono:i:h10.5,Fixedsys:h11
-	" set guifontwide=NSimSun:h11
-
-	"for source insight
-	"nnoremap <silent>  <C-F12> :!start "D:\Program Files\Source Insight 3\Insight3.exe" -i  +<C-R>=expand(line("."))<CR> %<CR>
-
 	nnoremap ,exp :silent !start explorer "%:p:h"<CR>
 	nnoremap ,cmd :silent !start cmd /K "cd /d %:p:h"<CR>
 endif
-
-function! UpdateLastModifyTime()
-	for lineno in range(1, 10)
-		let line = getline(lineno)
-		let time = strftime("%c")
-		if match(line, 'Last update: ') >= 0
-			let line = substitute(line, 'Last update: .*', 'Last update: ' . time, "g")
-			silent call setline(lineno, line)
-			break
-		endif
-	endfor
-endfunction
-autocmd BufWritePre * :call UpdateLastModifyTime()
