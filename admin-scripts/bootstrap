@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 
+# bootstrap program to setup personal env in Ubuntu/Debian Dist.
+
 backup ()
 {
 	if [ ! -e "$1" ]; then
@@ -54,10 +56,10 @@ fi
 if [ -d $HOME/codespace/menghanrc ]; then
 	backup $HOME/codespace/menghanrc
 fi
-echo 'please setup .ssh/config to make sure menghanrchost:.gitroot/menghanrc.git exists'
+echo 'please setup ENV to make sure git repo $MENGHANRC exists'
 echo 'after done, press Enter to continue'
 read
-mkdir -p $HOME/codespace && cd $HOME/codespace && git clone menghanrchost:.gitroot/menghanrc.git
+mkdir -p $HOME/codespace && cd $HOME/codespace && git clone $MENGHANRC
 if ! test $?; then
 	exit 1
 fi
