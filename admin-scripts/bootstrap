@@ -35,15 +35,15 @@ sudo aptitude install -y \
 	postfix procmail mutt msmtp \
 	evince poppler-data \
 	ibus ibus-table-extraphrase ibus-table-wubi im-switch \
-	ntfs-3g pcmanx-gtk2 rdesktop stardict \
+	pcmanx-gtk2 rdesktop stardict xchat \
 	fluxbox fbpanel rxvt-unicode conky \
 	ttf-dejavu ttf-dejavu-core ttf-dejavu-extra ttf-inconsolata \
 	ttf-wqy-microhei ttf-droid \
 	vim-doc git-doc \
-	ipython python-examples python-doc \
+	python python-examples python-doc ipython \
 	python3 python3-examples python3-doc \
 	bash-completion unzip gawk less lsof screen sudo telnet wget curl \
-	mailutils
+	mailutils html2text
 
 # if with --new argument, it means bootstrap from the scratch
 if [[ "$1" != "--new" ]]; then
