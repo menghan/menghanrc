@@ -45,4 +45,12 @@ fi
 if [ -f /etc/bash_completion ]; then
 	. /etc/bash_completion
 fi
+vim ()
+{
+	if [[ $# -ne 0 ]]; then
+		/usr/bin/env vim "$@"
+	else
+		/usr/bin/env vim -c 'VE .'
+	fi
+}
 # vi:ft=sh:

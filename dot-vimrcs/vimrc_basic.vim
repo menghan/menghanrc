@@ -140,3 +140,7 @@ if has("win32")
 	nnoremap ,exp :silent !start explorer "%:p:h"<CR>
 	nnoremap ,cmd :silent !start cmd /K "cd /d %:p:h"<CR>
 endif
+
+"VimExplorer
+let g:VEConf_showHiddenFiles = 0
+let g:VEConf_treePanelWidth = 20
