@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 if [[ $# -eq 0 || $# -gt 2 ]]; then
-	echo "Usage $0 pubkey.file some@host"
+	echo "Usage $0 [pubkey.file] some@host"
 	exit 1
 elif [[ $# -eq 2 ]]; then
-	$key="$1"
-	$host="$2"
+	key="$1"
+	host="$2"
 elif [[ $# -eq 1 ]]; then
-	$key="~/.ssh/id_rsa.pub"
-	$host="$1"
+	key=~/.ssh/id_rsa.pub
+	host="$1"
 fi
 
 if [ -f $key ]; then
