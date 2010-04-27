@@ -1,14 +1,28 @@
 #!/usr/bin/env bash
 
-code="$HOME/codespace/opensource"
+gitpool_rootdir=
 
-for p in $(ls $code)
+while getopts 'd:' OPTION
 do
-	if ! cd "$code/$p" &>/dev/null; then
+	case $OPTION in
+		d)
+			gitpool_rootdir="$OPTARG"
+			;;
+	esac
+done
+
+if [ -z "$gitpool_rootdir" -o ! -d "$gitpool_rootdir" ]; then
+	exit 1
+fi
+cd $gitpool_rootdir || exit 1
+for p in $(ls)
+do
+	if ! cd $p &>/dev/null; then
 		continue
 	fi
 	if [ ! -d .git ]; then
 		continue
 	fi
 	git remote update 2>/dev/null | sed '1d'
+	cd ..
 done
