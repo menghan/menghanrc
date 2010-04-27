@@ -7,7 +7,7 @@ mkdir -p $HOME/.vim/{after/syntax,doc,syntax,plugin}
 
 cp $PLUGINSRCDIR/*.vim $HOME/.vim/plugin
 for i in ColorSamplerPack.zip NERD_commenter.zip omnicppcomplete-0.41.zip \
-	bufexplorer.zip vst.zip snipMate.zip
+	bufexplorer.zip vst.zip snipMate.zip manpageview.zip
 do
 	yes|unzip $PLUGINSRCDIR/$i -d $HOME/.vim >/dev/null
 done
