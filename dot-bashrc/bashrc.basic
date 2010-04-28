@@ -50,7 +50,7 @@ vim ()
 	if [[ $# -ne 0 ]]; then
 		/usr/bin/env vim "$@"
 	else
-		/usr/bin/env vim -c 'VE .'
+		/usr/bin/env vim -c 'VE .' -c '1bd'
 	fi
 }
 # vi:ft=sh:
