@@ -4,7 +4,7 @@
 	st = status
 	br = branch
 	cl = clean -f -d
-	ru = remote update origin
+	ru = remote update
 	rs = remote show origin
 	recent = log --abbrev-commit --pretty=oneline -10
 	last = log -p -1
