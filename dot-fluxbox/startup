@@ -16,6 +16,10 @@
 
 # xrandr --output VGA --auto --output LVDS --off
 # xrandr --output LVDS --auto --rotate normal --pos 0x0 --panning 1366x768+0+132 --output VGA --auto --right-of LVDS
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+unset LANGUAGE
+update-menus &
 conky &
 if ! pidof urxvtd &> /dev/null; then
     urxvtd -q -o -f &
