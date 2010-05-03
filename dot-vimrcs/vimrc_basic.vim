@@ -42,7 +42,7 @@ set diffopt=filler,vertical
 
 " [ about status line ]
 set ruler
-set statusline=%k(%02n)%t%m%r%h%w\ \[%{&ff}:%{&fenc}:%Y]\ \[line=%04l/%04L\ col=%03c/%03{col(\"$\")-1}]\ [%p%%]%{GitBranchInfoString()}
+set statusline=%k(%02n)%t%m%r%h%w\ \[%{&ff}:%{&fenc}:%Y]\ \[line=%04l/%04L\ col=%03c/%03{col(\"$\")-1}]\ [%p%%]
 set laststatus=2
 
 " [tab stop options]

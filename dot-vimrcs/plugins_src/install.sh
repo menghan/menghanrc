@@ -6,8 +6,6 @@ TMPDIR="/tmp/installvimscripts$$.dir"
 mkdir -p $HOME/.vim/{after/syntax,doc,syntax,plugin}
 
 cp $PLUGINSRCDIR/*.vim $HOME/.vim/plugin
-cp -f $PLUGINSRCDIR/taq-vim-git-branch-info-0.1.5-0-gca86ec8/git-branch-info.vim \
-	$HOME/.vim/plugin
 cp -f $PLUGINSRCDIR/motemen-git-vim-cb110a2/plugin/git.vim \
 	$HOME/.vim/plugin
 cp -f $PLUGINSRCDIR/motemen-git-vim-cb110a2/syntax/*.vim \
