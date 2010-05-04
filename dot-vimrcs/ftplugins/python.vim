@@ -21,12 +21,16 @@ syntax on
 
 let python_highlight_all = 1
 
-"syntax check
 if has('unix')
 	nnoremap <buffer> \rr :!python %<CR>
+	nnoremap <buffer> \r5 :!python2.5 %<CR>
 	nnoremap <buffer> \r6 :!python2.6 %<CR>
 	nnoremap <buffer> \r3 :!python3.1 %<CR>
 	nnoremap <buffer> \rs :!python -m py_compile %; rm -f %c<CR>
-	nnoremap <buffer> \rp :set paste<CR>
-	nnoremap <buffer> \rn :set nopaste<CR>
 endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"highlight columns over 80
+""from http://vim.wikia.com/wiki/Highlight_long_lines
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+:au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>79v.\+', -1)

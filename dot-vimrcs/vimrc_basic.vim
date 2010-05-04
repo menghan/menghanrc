@@ -123,8 +123,9 @@ nnoremap ,l <C-W>l
 nnoremap ,q :q!<CR>
 nnoremap ,w :up<CR>
 nnoremap ,d :bd<CR>
-nnoremap ,z <C-Z>
 nnoremap ,co :copen<CR>
+nnoremap \pp :set paste<CR>
+nnoremap \pn :set nopaste<CR>
 
 "still not understand
 "run ex and normal command and redirect message to register *, use try-finally

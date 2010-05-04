@@ -53,4 +53,6 @@ vim ()
 		/usr/bin/env vim -c 'VE .' -c '1bd'
 	fi
 }
-# vi:ft=sh:
+if [ -d ~/.local/bin ]; then
+	export PATH=~/.local/bin:$PATH
+fi
