@@ -46,3 +46,8 @@ do
 	rm -f $HOME/.vim/snippets/$i
 	ln -s $HOME/.vimrcs/snippets/$i $HOME/.vim/snippets/$i
 done
+tar xf $PLUGINSRCDIR/vimcdoc-1.6.0.tar.gz
+cd vimcdoc-1.6.0
+./vimcdoc.sh -i > /dev/null
+cd ..
+rm -rf vimcdoc-1.6.0
