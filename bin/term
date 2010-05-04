@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+DEFAULT_TERMINAL="gnome-terminal"
+#DEFAULT_TERMINAL="urxvtc"
+
+cd $HOME
+exec $DEFAULT_TERMINAL
