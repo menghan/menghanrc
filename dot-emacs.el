@@ -33,12 +33,16 @@
 
 ; python config
 (setq py-block-comment-prefix "# ")
-(setq py-python-command "ipython")
+(setq py-python-command "python")
 
 
 ; display linum
 (require 'linum)
 (global-linum-mode)
+
+
+; display column number
+(column-number-mode t)
 
 
 ; Loading a Desktop Saved from a Previous Session at Startup
@@ -60,8 +64,3 @@
 ; use ibuffer to handle c-x c-b
 (require 'ibuffer)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
-
-
-; use ido. What is it?
-(require 'ido)
-(ido-mode t)
