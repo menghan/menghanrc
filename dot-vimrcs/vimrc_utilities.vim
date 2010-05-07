@@ -31,4 +31,4 @@ function! UpdateLastModifyTime()
 		endif
 	endfor
 endfunction
-autocmd BufWritePre * :call UpdateLastModifyTime()
+"autocmd BufWritePre * :call UpdateLastModifyTime()
