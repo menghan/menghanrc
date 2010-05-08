@@ -64,3 +64,7 @@
 ; use ibuffer to handle c-x c-b
 (require 'ibuffer)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
+
+
+; use C-c t to mark
+(global-set-key (kbd "C-c t") 'set-mark-command)
