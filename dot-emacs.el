@@ -38,7 +38,7 @@
 
 ; display linum
 (require 'linum)
-(global-linum-mode)
+(global-linum-mode 1)
 
 
 ; display column number
