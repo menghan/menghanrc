@@ -28,6 +28,8 @@ do
 		fi
 	elif [ -d .hg ]; then
 		hg update
+	elif [ -d .svn ]; then
+		svn update | grep -v 'At revision'
 	fi
 	cd ..
 done
