@@ -1,27 +1,31 @@
 #!/usr/bin/env bash
 
-gitpool_rootdir=
+repo_rootdir=
 
 while getopts 'd:' OPTION
 do
 	case $OPTION in
 		d)
-			gitpool_rootdir="$OPTARG"
+			repo_rootdir="$OPTARG"
 			;;
 	esac
 done
 
-if [ -z "$gitpool_rootdir" -o ! -d "$gitpool_rootdir" ]; then
+if [ -z "$repo_rootdir" -o ! -d "$repo_rootdir" ]; then
 	exit 1
 fi
-cd $gitpool_rootdir || exit 1
+cd $repo_rootdir || exit 1
 for p in $(ls)
 do
 	if ! cd $p &>/dev/null; then
 		continue
 	fi
 	if [ -d .git ]; then
-		git remote update 2>/dev/null | sed '1d'
+		if [ -d .git/svn ]; then
+			git svn fetch
+		else
+			git remote update 2>/dev/null | sed '1d'
+		fi
 	elif [ -d .hg ]; then
 		hg update
 	fi
