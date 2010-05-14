@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if ! ping -c 1 g.cn >/dev/null 2>&1; then
+	# Network is unreachable
+	exit 0
+fi
+
 repo_rootdir=
 
 while getopts 'd:' OPTION
