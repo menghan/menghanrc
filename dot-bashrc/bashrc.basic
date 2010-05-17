@@ -53,9 +53,7 @@ vim ()
 		/usr/bin/env vim -c 'VE .' -c '1bd'
 	fi
 }
-# ~/bin应该在.profile中source，GNOME等环境读取.profile
-if [ -d $HOME/.local/bin ]; then
-	export PATH=$HOME/.local/bin:$PATH
-fi
+
+export PATH=$HOME/.local/bin:$PATH
 
 # vi:ft=sh:
