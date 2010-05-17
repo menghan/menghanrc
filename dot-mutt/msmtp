@@ -1,0 +1,5 @@
+set sendmail="/usr/bin/msmtp"
+set use_from=yes
+set realname="Menghan Zheng"
+set from=menghan412@gmail.com
+set envelope_from=yes

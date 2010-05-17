@@ -1,0 +1,6 @@
+set sort=threads
+mailboxes "/var/mail/sky"
+mailboxes "=nginx"
+mailboxes "=nginx-devel"
+mailboxes "=memcached"
+mailboxes "=libevent-users"

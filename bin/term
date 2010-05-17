@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-DEFAULT_TERMINAL="gnome-terminal"
+DEFAULT_TERMINAL="gnome-terminal --geometry=84x24"
 #DEFAULT_TERMINAL="urxvtc"
 
 cd $HOME
