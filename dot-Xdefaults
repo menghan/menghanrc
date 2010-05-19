@@ -3,7 +3,7 @@ urxvt.transparent:	false
 urxvt.preeditType:	Root
 urxvt.background:	black
 urxvt.foreground:	white
-urxvt.font:		xft:Inconsolata:pixelsize=17:antialias=true,\
-				xft:文泉驿等宽微米黑
+urxvt*font:		xft:Dejavu Sans Mono:size=12:antialias=true:hinting=false,\
+						  xft:文泉驿等宽微米黑
 urxvt.geometry:		84x24+310+228
 urxvt.termName:		rxvt
