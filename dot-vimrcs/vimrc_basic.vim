@@ -145,3 +145,9 @@ endif
 "VimExplorer
 let g:VEConf_showHiddenFiles = 0
 let g:VEConf_treePanelWidth = 20
+
+"for NERD_commenter
+let NERDCommentWholeLinesInVMode = 1
+let NERDShutUp = 1
+let NERDSpaceDelims = 1
+let NERDMenuMode = 0
