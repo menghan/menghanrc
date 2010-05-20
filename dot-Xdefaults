@@ -4,6 +4,6 @@ urxvt.preeditType:	Root
 urxvt.background:	black
 urxvt.foreground:	white
 urxvt*font:		xft:Inconsolata:size=13:antialias=true:hinting=false,\
-						  xft:文泉驿等宽微米黑
+					     xft:WenQuanYi Micro Hei Mono
 urxvt.geometry:		84x24+310+228
 urxvt.termName:		rxvt
