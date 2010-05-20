@@ -1,6 +1,5 @@
 urxvt.scrollBar:	false
 urxvt.transparent:	false
-urxvt.preeditType:	Root
 urxvt.background:	black
 urxvt.foreground:	white
 urxvt*font:		xft:Inconsolata:size=13:antialias=true:hinting=false,\
