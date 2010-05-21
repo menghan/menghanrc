@@ -41,6 +41,13 @@ do
 	rm -f $HOME/.vim/ftplugin/$i
 	ln -s $HOME/.vimrcs/ftplugins/$i .
 done
+mkdir -p $HOME/.vim/indent
+cd $HOME/.vim/indent
+for i in `ls $HOME/.vimrcs/indent/`
+do
+	rm -f $HOME/.vim/indent/$i
+	ln -s $HOME/.vimrcs/indent/$i .
+done
 for i in `ls $HOME/.vimrcs/snippets/`
 do
 	rm -f $HOME/.vim/snippets/$i
