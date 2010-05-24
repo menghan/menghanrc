@@ -1,6 +1,7 @@
 urxvt.scrollBar:	false
 urxvt.transparent:	false
-urxvt.background:	black
+urxvt.background:	rgba:0000/0000/0000/ffff
+urxvt.depth:		32
 urxvt.foreground:	white
 urxvt*font:		xft:Inconsolata:size=13:antialias=true:hinting=false,\
 					     xft:WenQuanYi Micro Hei Mono
