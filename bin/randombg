@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-# set BACKGROUD_DIR in ~/.bashrc.local
-DISPLAY=":0.0" fbsetbg -r $BACKGROUD_DIR
