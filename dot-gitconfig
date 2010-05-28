@@ -1,6 +1,7 @@
 [alias]
 	co = checkout
 	ci = commit -a -v
+	cv = commit -v
 	st = status
 	br = branch
 	cl = clean -f -d
@@ -8,6 +9,7 @@
 	rs = remote show origin
 	recent = log --abbrev-commit --pretty=oneline -10
 	last = log -p -1
+	tco = diff --cached	# to commit
 [color]
 	status = auto
 	branch = auto
