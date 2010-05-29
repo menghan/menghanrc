@@ -25,8 +25,11 @@ if has('unix')
 	nnoremap <buffer> \rr :!python %<CR>
 	nnoremap <buffer> \r5 :!python2.5 %<CR>
 	nnoremap <buffer> \r6 :!python2.6 %<CR>
-	nnoremap <buffer> \r3 :!python3.1 %<CR>
-	nnoremap <buffer> \rs :!python -m py_compile %; rm -f %c<CR>
+	nnoremap <buffer> \r3 :!python3 %<CR>
+	setlocal errorformat=%f:%l:%n:\ %m
+	setlocal makeprg=pep8\ --repeat\ %
+	setlocal shellpipe=>%s\ 2>&1
+	nnoremap <buffer> <F5> :make<CR>
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
