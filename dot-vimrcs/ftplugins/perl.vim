@@ -4,3 +4,4 @@ if has('unix')
 endif
 setlocal cindent
 setlocal autoindent
+setlocal nu
