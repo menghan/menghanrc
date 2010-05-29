@@ -82,6 +82,11 @@ inoremap <C-K> <up>
 inoremap <C-A> <C-O>I
 inoremap <C-E> <C-O>A
 
+vnoremap <C-L> <right>
+vnoremap <C-H> <left>
+vnoremap <C-J> <down>
+vnoremap <C-K> <up>
+
 "do some useful map
 nnoremap Y y$
 nnoremap ]] ][
