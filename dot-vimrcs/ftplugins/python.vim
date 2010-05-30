@@ -36,4 +36,5 @@ endif
 "highlight columns over 80
 ""from http://vim.wikia.com/wiki/Highlight_long_lines
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-:au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>79v.\+', -1)
+" 有了pep8这个工具，暂时不用这个了
+" :au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>79v.\+', -1)
