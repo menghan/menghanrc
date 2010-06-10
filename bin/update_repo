@@ -27,14 +27,22 @@ do
 	fi
 	if [ -d .git ]; then
 		if [ -d .git/svn ]; then
-			git svn fetch
+			out=$(git svn fetch)
 		else
-			git remote update 2>/dev/null | sed '1d'
+			out=$(git remote update 2>/dev/null | \
+				grep -v 'Fetching ')
 		fi
 	elif [ -d .hg ]; then
-		hg update
+		out=$(hg pull | \
+			grep -v 'no changes found' | \
+			grep -v 'searching for changes' | \
+			grep -v 'pulling from')
 	elif [ -d .svn ]; then
-		svn update | grep -v 'At revision'
+		out=$(svn update | grep -v 'At revision')
+	fi
+	if [ ! -z "$out" ]; then
+		echo $out
+		echo "update available in repo $PWD"
 	fi
 	cd ..
 done
