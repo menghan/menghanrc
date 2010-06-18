@@ -31,6 +31,7 @@ if has('unix')
 	setlocal shellpipe=>%s\ 2>&1
 	nnoremap <buffer> <F5> :make<CR>
 endif
+nnoremap <buffer> \cl :%s/\ \+$//g<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "highlight columns over 80

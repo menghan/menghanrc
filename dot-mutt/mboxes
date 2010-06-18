@@ -1,10 +1,12 @@
 set sort=threads
 set sort_aux=reverse-last-date-received
 mailboxes "/var/mail/sky"
+mailboxes "=inbox"
+mailboxes "=tornado"
+mailboxes "=debian"
 mailboxes "=nginx"
 mailboxes "=nginx-devel"
 mailboxes "=memcached"
 mailboxes "=libevent-users"
 mailboxes "=pypy-dev"
-mailboxes "=debian"
 mailboxes "=mercurial"
