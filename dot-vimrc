@@ -1,4 +1,0 @@
-source $HOME/.vimrcs/vimrc_basic.vim
-source $HOME/.vimrcs/vimrc_encoding.vim
-source $HOME/.vimrcs/vimrc_utilities.vim
-source $HOME/.vimrcs/vimrc_filetype.vim
