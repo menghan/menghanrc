@@ -1,5 +1,21 @@
 [extensions]
-hgext.convert=
+convert =
+color =
+rebase =
+record =
+graphlog =
+pager =
+mq =
+fetch =
+transplant =
+purge =
+hgk =
+
 [ui]
 username = Menghan Zheng <menghan412@gmail.com>
 verbose = True
+
+[pager]
+pager = LESS='FSRX' less
+quiet = True
+ignore = version, help, update
