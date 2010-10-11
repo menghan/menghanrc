@@ -142,4 +142,4 @@
 
 ; set gui fonts
 (load "fontset-win")
-(huangq-fontset-consolas)
+; (huangq-fontset-consolas)
