@@ -5,6 +5,10 @@ export LC_CTYPE=zh_CN.UTF-8
 export EDITOR=vim
 ssh-add 2> /dev/null
 
+if [[ ! $PATH =~ "$HOME/bin" ]]; then
+	PATH="$HOME/bin:$PATH"
+fi
+
 safe_source ()
 {
 	if [ -f "$1" ]; then
@@ -51,5 +55,13 @@ vim ()
 		/usr/bin/env vim "$@"
 	else
 		/usr/bin/env vim -c 'VE .' -c '1bd'
+	fi
+}
+gvim ()
+{
+	if [[ $# -ne 0 ]]; then
+		/usr/bin/env gvim "$@"
+	else
+		/usr/bin/env gvim -c 'VE .' -c '1bd'
 	fi
 }
