@@ -1,7 +1,5 @@
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-export LANGUAGE=en_US:en
-export LC_CTYPE=zh_CN.UTF-8
 export EDITOR=vim
 ssh-add 2> /dev/null
 
@@ -55,13 +53,5 @@ vim ()
 		/usr/bin/env vim "$@"
 	else
 		/usr/bin/env vim -c 'VE .' -c '1bd'
-	fi
-}
-gvim ()
-{
-	if [[ $# -ne 0 ]]; then
-		/usr/bin/env gvim "$@"
-	else
-		/usr/bin/env gvim -c 'VE .' -c '1bd'
 	fi
 }
