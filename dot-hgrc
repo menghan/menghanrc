@@ -20,3 +20,9 @@ verbose = True
 pager = LESS='FSRX' less
 quiet = True
 ignore = version, help, update
+
+[diff]
+git=1
+
+[defaults]
+qnew = -e
