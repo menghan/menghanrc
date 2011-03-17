@@ -73,12 +73,23 @@ parse_git_branch() {
 	fi
 }
 
+parse_hg_branch() {
+	branch=$(hg branch 2>/dev/null)
+	if [ -n "$branch" ]; then
+		echo " (hg::$branch) "
+	fi
+}
+
 parse_branch() {
 	branch=$(parse_svn_branch)
 	if [ -n "$branch" ]; then
 		echo -n "$branch"
 	fi
 	branch=$(parse_git_branch)
+	if [ -n "$branch" ]; then
+		echo -n "$branch"
+	fi
+	branch=$(parse_hg_branch)
 	if [ -n "$branch" ]; then
 		echo -n "$branch"
 	fi
