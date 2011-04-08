@@ -1,11 +1,4 @@
 .*.swp
 .hg/
 .git/
-dot-fluxbox/init
-dot-fluxbox/apps
-dot-fluxbox/wallpic
-dot-fluxbox/fbrun_history
-dot-fluxbox/slitlist
-dot-fluxbox/lastwallpaper
-dot-fluxbox/fluxbox-menu
-dot-fluxbox/menudefs.hook
+dot-mutt/mboxes
