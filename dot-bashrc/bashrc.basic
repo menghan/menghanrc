@@ -81,6 +81,9 @@ parse_hg_branch() {
 }
 
 parse_branch() {
+	if [[ ! $PWD =~ "douban" ]]; then
+		return
+	fi
 	branch=$(parse_svn_branch)
 	if [ -n "$branch" ]; then
 		echo -n "$branch"

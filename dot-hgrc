@@ -13,6 +13,7 @@ purge =
 [ui]
 username = Menghan Zheng <menghan412@gmail.com>
 verbose = True
+ssh = ssh -C
 
 [pager]
 pager = LESS='FSRX' less
