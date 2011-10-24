@@ -2,6 +2,7 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export EDITOR=vim
 ssh-add 2> /dev/null
+stty -ixon > /dev/null 2>&1
 
 if [[ ! $PATH =~ "$HOME/bin" ]]; then
 	PATH="$HOME/bin:$PATH"

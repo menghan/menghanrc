@@ -10,6 +10,7 @@
 	recent = log --abbrev-commit --pretty=oneline -10
 	last = log -p -1
 	tco = diff --cached	# to commit
+	to = diff --cached	# to commit
 [color]
 	status = auto
 	branch = auto
