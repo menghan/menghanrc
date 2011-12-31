@@ -4,7 +4,11 @@ alias grep='grep --color=auto'
 alias l='ls -CF'
 alias la='ls -A'
 alias ll='ls -l'
-alias ls='ls --color=auto'
+if [[ `uname -a` =~ "Darwin" ]]; then
+	alias ls='ls -G'
+else
+	alias ls='ls --color=auto'
+fi
 alias lt='ls -lt'
 alias sr='screen'
 alias upalias='alias > ~/.bashrc.aliases'

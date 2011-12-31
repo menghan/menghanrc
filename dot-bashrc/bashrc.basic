@@ -47,6 +47,11 @@ if [ -f ~/.pythonstartup ]; then
 fi
 if [ -f /etc/bash_completion ]; then
 	. /etc/bash_completion
+else
+	# for mac ports
+	if [ -f /opt/local/etc/bash_completion ]; then
+		. /opt/local/etc/bash_completion
+	fi
 fi
 vim ()
 {
@@ -68,7 +73,7 @@ parse_svn_repository_root() {
 }
 
 parse_git_branch() {
-	branch=$(git branch 2>/dev/null | sed -e "/^\s/d" -e "s/^\*\s//")
+	branch=$(git branch 2>/dev/null | awk '/\*/ {print $2}')
 	if [ -n "$branch" ]; then
 		echo " (git::$branch) "
 	fi
