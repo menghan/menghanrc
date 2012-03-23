@@ -9,8 +9,8 @@
 	rs = remote show origin
 	recent = log --abbrev-commit --pretty=oneline -10
 	last = log -p -1
-	tco = diff --cached	# to commit
-	to = diff --cached	# to commit
+	tco = diff --staged	# to commit
+	to = diff --staged	# to commit
 [color]
 	status = auto
 	branch = auto
@@ -22,3 +22,9 @@
 	email = menghan412@gmail.com
 [log]
 	date = local
+
+# borrow from liuyie begins
+[alias]
+	sb = show-branch
+	gf = log --graph --oneline --decorate
+# borrow from liuyie ends
