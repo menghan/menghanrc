@@ -57,14 +57,6 @@ else
 		fi
 	fi
 fi
-vim ()
-{
-	if [[ $# -ne 0 ]]; then
-		/usr/bin/env vim "$@"
-	else
-		/usr/bin/env vim -c 'VE .' -c '1bd'
-	fi
-}
 
 parse_svn_branch() {
     parse_svn_url | sed -e 's#^'"$(parse_svn_repository_root)"'##g' | awk '{print " (svn::"$1") " }'
