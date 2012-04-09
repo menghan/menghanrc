@@ -33,7 +33,12 @@ load-plugins=
 # can either give multiple identifier separated by comma (,) or put this option
 # multiple time.
 #disable=
-disable=R0201
+# disable=R0201
+
+# missing docstring
+disable=C0111
+# locally disabling
+disable=I0011
 
 
 [REPORTS]
