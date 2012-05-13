@@ -40,7 +40,6 @@ disable=C0111
 # locally disabling
 disable=I0011
 
-
 [REPORTS]
 
 # Set the output format. Available formats are text, parseable, colorized, msvs
