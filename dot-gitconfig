@@ -28,3 +28,6 @@
 	sb = show-branch
 	gf = log --graph --oneline --decorate
 # borrow from liuyie ends
+
+[credential]
+	helper = osxkeychain
