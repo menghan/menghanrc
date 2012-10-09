@@ -3,7 +3,7 @@ function FindProxyForURL(url, host)
 	var proxy_douban = "PROXY 10.8.0.1:8118";
 	var proxy_null   = "DIRECT";
 
-	var re_twitter = /twitter\.com|t\.co/;
+	var re_twitter = /twitter\.com|t\.co|twimg\.com/;
 	var re_google = /google\.com|google\.com\.hk|google\.com\.jp|ssl\.gstatic\.com|googleusercontent\.com|googleapis\.com|goo\.gl|blogspot\.|blogblog\.com|blogger\.com/;
 	var re_youtube = /youtube\.com|ytimg\.com/;
 	var re_caoliu = /cl\./;

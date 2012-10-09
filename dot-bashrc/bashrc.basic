@@ -91,17 +91,20 @@ parse_branch() {
 	if [[ ! $PWD =~ "douban" ]]; then
 		return
 	fi
-	branch=$(parse_svn_branch)
-	if [ -n "$branch" ]; then
-		echo -n "$branch"
-	fi
 	branch=$(parse_git_branch)
 	if [ -n "$branch" ]; then
 		echo -n "$branch"
+		return
+	fi
+	branch=$(parse_svn_branch)
+	if [ -n "$branch" ]; then
+		echo -n "$branch"
+		return
 	fi
 	branch=$(parse_hg_branch)
 	if [ -n "$branch" ]; then
 		echo -n "$branch"
+		return
 	fi
 }
 
