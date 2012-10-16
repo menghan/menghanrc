@@ -2,17 +2,13 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias grep='grep --color=auto'
 alias l='ls -CF'
-alias la='ls -A'
 alias ll='ls -l'
-if [[ `uname -a` =~ "Darwin" ]]; then
+if [[ `uname` =~ "Darwin" ]]; then
 	alias ls='ls -G'
 else
 	alias ls='ls --color=auto'
 fi
 alias lt='ls -lt'
-alias sr='screen'
-alias upalias='alias > ~/.bashrc.aliases'
 alias brup='brew update && brew outdated && brew upgrade && brew cleanup'
-if [ -f ~/.bashrc.aliases.local ]; then
-	source ~/.bashrc.aliases.local
-fi
+
+safe_source ~/.bashrc.aliases.local

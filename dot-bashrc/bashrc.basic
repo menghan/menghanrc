@@ -4,6 +4,10 @@ export EDITOR=vim
 ssh-add 2> /dev/null
 stty -ixon > /dev/null 2>&1
 
+right_path="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
+if [[ ! $PATH =~ $right_path ]]; then
+	export PATH="$right_path:$PATH"
+fi
 if [[ ! $PATH =~ "$HOME/.local/bin" ]]; then
 	export PATH="$HOME/.local/bin:$PATH"
 fi
@@ -18,12 +22,6 @@ safe_source ()
 	fi
 }
 export -f safe_source
-
-builddebpackage ()
-{
-	sudo dpkg-buildpackage -rfakeroot -uc -b
-}
-export -f builddebpackage
 
 mktar ()
 {
@@ -41,40 +39,26 @@ uptag ()
 }
 export -f uptag
 
-if [ -f ~/.bashrc.IP ]; then
-	. ~/.bashrc.IP
-	export PS1="[\u@$SOMEIP(\h) \W]\$ "
-fi
 if [ -f ~/.pythonstartup ]; then
 	export PYTHONSTARTUP=~/.pythonstartup
 fi
-if [ -f /etc/bash_completion ]; then
-	. /etc/bash_completion
-else
-	if [[ `uname -a` =~ "Darwin" ]]; then
-		if [ -f `brew --prefix`/etc/bash_completion ]; then
-			. `brew --prefix`/etc/bash_completion
-		else
-			# for mac ports
-			if [ -f /opt/local/etc/bash_completion ]; then
-				. /opt/local/etc/bash_completion
-			fi
-		fi
-	fi
+safe_source /etc/bash_completion
+if [[ `uname` =~ "Darwin" ]]; then
+	safe_source /usr/local/etc/bash_completion
 fi
 
 parse_svn_branch() {
-    parse_svn_url | sed -e 's#^'"$(parse_svn_repository_root)"'##g' | awk '{print " (svn::"$1") " }'
+	parse_svn_url | sed -e 's#^'"$(parse_svn_repository_root)"'##g' | awk '{print " (svn::"$1") " }'
 }
 parse_svn_url() {
-    svn info 2>/dev/null | sed -ne 's#^URL: ##p'
+	svn info 2>/dev/null | sed -ne 's#^URL: ##p'
 }
 parse_svn_repository_root() {
-    svn info 2>/dev/null | sed -ne 's#^Repository Root: ##p'
+	svn info 2>/dev/null | sed -ne 's#^Repository Root: ##p'
 }
 
 parse_git_branch() {
-	branch=$(git branch 2>/dev/null | awk '/\*/ {print $2}')
+	branch=$(git branch --no-color 2> /dev/null | sed -n '/*/ s/* //p')
 	if [ -n "$branch" ]; then
 		echo " (git::$branch) "
 	fi
