@@ -18,6 +18,7 @@ function FindProxyForURL(url, host)
 	var re_feedburner = /feeds\.feedburner\.com/;
 	var re_mail_archive = /mail-archive\.com/;
 	var re_golang = /golang\.org/;
+	var re_python = /python\.org/;
 
 	if (re_twitter.test(host)) {
 		return proxy_douban;
@@ -62,6 +63,9 @@ function FindProxyForURL(url, host)
 		return proxy_douban;
 	}
 	if (re_golang.test(host)) {
+		return proxy_douban;
+	}
+	if (re_python.test(host)) {
 		return proxy_douban;
 	}
 

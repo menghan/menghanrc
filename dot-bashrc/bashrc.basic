@@ -5,10 +5,10 @@ ssh-add 2> /dev/null
 stty -ixon > /dev/null 2>&1
 
 if [[ ! $PATH =~ "$HOME/.local/bin" ]]; then
-	PATH="$HOME/.local/bin:$PATH"
+	export PATH="$HOME/.local/bin:$PATH"
 fi
 if [[ ! $PATH =~ "$HOME/bin" ]]; then
-	PATH="$HOME/bin:$PATH"
+	export PATH="$HOME/bin:$PATH"
 fi
 
 safe_source ()

@@ -13,3 +13,6 @@ alias lt='ls -lt'
 alias sr='screen'
 alias upalias='alias > ~/.bashrc.aliases'
 alias brup='brew update && brew outdated && brew upgrade && brew cleanup'
+if [ -f ~/.bashrc.aliases.local ]; then
+	source ~/.bashrc.aliases.local
+fi
