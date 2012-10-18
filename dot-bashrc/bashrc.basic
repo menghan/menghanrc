@@ -4,29 +4,25 @@ export EDITOR=vim
 ssh-add 2> /dev/null
 stty -ixon > /dev/null 2>&1
 
-right_path="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
-if [[ ! $PATH =~ $right_path ]]; then
+replace_path_out ()
+{
 	PATH=":$PATH:"
-	PATH=${PATH/:\/usr\/local\/bin:/:}
-	PATH=${PATH/:\/usr\/bin:/:}
-	PATH=${PATH/:\/bin:/:}
-	PATH=${PATH/:\/usr\/local\/sbin:/:}
-	PATH=${PATH/:\/usr\/sbin:/:}
-	PATH=${PATH/:\/sbin:/:}
-	PATH=${PATH:1}
+	PATH=${PATH/:$1:/:}
+	export PATH=${PATH:1}
 	if [ "x$PATH" != "x" ]; then
-		PATH=${PATH:0:$((${#PATH} - 1))}
-		export PATH="$right_path:$PATH"
-	else
-		export PATH="$right_path"
+		export PATH=${PATH:0:$((${#PATH} - 1))}
 	fi
-fi
-if [[ ! $PATH =~ "$HOME/.local/bin" ]]; then
-	export PATH="$HOME/.local/bin:$PATH"
-fi
-if [[ ! $PATH =~ "$HOME/bin" ]]; then
-	export PATH="$HOME/bin:$PATH"
-fi
+}
+
+replace_path_out /usr/local/bin
+replace_path_out /usr/bin
+replace_path_out /bin
+replace_path_out /usr/local/sbin
+replace_path_out /usr/sbin
+replace_path_out /sbin
+replace_path_out "$HOME/.local/bin"
+replace_path_out "$HOME/bin"
+export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH"
 
 safe_source ()
 {

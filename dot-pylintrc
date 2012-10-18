@@ -35,10 +35,8 @@ load-plugins=
 #disable=
 # disable=R0201
 
-# missing docstring
-disable=C0111
-# locally disabling
-disable=I0011
+# locally disabling, missing docstring, Line too long, Invalid name "..." (should match ...), Method could be a function, Too few public methods, Redefining built-in '...', Used builtin function
+disable=I0011,C0111,C0301,C0103,R0201,R0903,W0622,W0141
 
 [REPORTS]
 
