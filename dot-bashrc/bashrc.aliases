@@ -10,5 +10,3 @@ else
 fi
 alias lt='ls -lt'
 alias brup='brew update && brew outdated && brew upgrade && brew cleanup'
-
-safe_source ~/.bashrc.aliases.local
