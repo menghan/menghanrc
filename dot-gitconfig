@@ -22,6 +22,8 @@
 	email = menghan412@gmail.com
 [log]
 	date = local
+[blame]
+	date = local
 
 # borrow from liuyie begins
 [alias]

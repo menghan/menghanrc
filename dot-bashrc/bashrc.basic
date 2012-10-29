@@ -21,8 +21,9 @@ replace_path_out /usr/local/sbin
 replace_path_out /usr/sbin
 replace_path_out /sbin
 replace_path_out "$HOME/.local/bin"
+replace_path_out "$HOME/Library/Python/2.7/bin"
 replace_path_out "$HOME/bin"
-export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH"
+export PATH="$HOME/bin:$HOME/Library/Python/2.7/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH"
 
 safe_source ()
 {
