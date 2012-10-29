@@ -19,6 +19,7 @@ function FindProxyForURL(url, host)
 	var re_mail_archive = /mail-archive\.com/;
 	var re_golang = /golang\.org/;
 	var re_python = /python\.org/;
+	var re_nytimes = /nytimes\.com/;
 
 	if (re_twitter.test(host)) {
 		return proxy_douban;
@@ -66,6 +67,9 @@ function FindProxyForURL(url, host)
 		return proxy_douban;
 	}
 	if (re_python.test(host)) {
+		return proxy_douban;
+	}
+	if (re_nytimes.test(host)) {
 		return proxy_douban;
 	}
 
