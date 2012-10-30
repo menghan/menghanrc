@@ -33,3 +33,5 @@
 
 [credential]
 	helper = osxkeychain
+[svn]
+	pushmergeinfo = true
