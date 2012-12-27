@@ -13,13 +13,14 @@ function FindProxyForURL(url, host)
 	var re_ichangtou = /ichangtou\.com/;
 	var re_facebook = /facebook\.com/;
 	var re_dropbox = /dropbox\.com|dropboxdocs\.com/;
-	var re_amazon = /amazon\.com/;
+	var re_amazon = /amazon\.com|akamaihd\.net|akamai\.net/;
 	var re_slideshare = /slideshare\.net/;
 	var re_feedburner = /feeds\.feedburner\.com/;
 	var re_mail_archive = /mail-archive\.com/;
 	var re_golang = /golang\.org/;
 	var re_python = /python\.org/;
 	var re_nytimes = /nytimes\.com/;
+	var re_list_debian = /list\.debian\.org/;
 
 	if (re_twitter.test(host)) {
 		return proxy_douban;
@@ -70,6 +71,9 @@ function FindProxyForURL(url, host)
 		return proxy_douban;
 	}
 	if (re_nytimes.test(host)) {
+		return proxy_douban;
+	}
+	if (re_list_debian.test(host)) {
 		return proxy_douban;
 	}
 
