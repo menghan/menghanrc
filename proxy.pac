@@ -22,6 +22,7 @@ function FindProxyForURL(url, host)
 	var re_nytimes = /nytimes\.com/;
 	var re_list_debian = /list\.debian\.org/;
 	var re_sourceforge = /sourceforge\.net/;
+	var re_github = /github\.com/;
 
 	if (re_twitter.test(host)) {
 		return proxy_douban;
@@ -78,6 +79,9 @@ function FindProxyForURL(url, host)
 		return proxy_douban;
 	}
 	if (re_sourceforge.test(host)) {
+		return proxy_douban;
+	}
+	if (re_github.test(host)) {
 		return proxy_douban;
 	}
 
