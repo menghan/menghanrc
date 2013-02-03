@@ -11,7 +11,7 @@
 	last = log -p -1
 	tco = diff --staged	# to commit
 	to = diff --staged	# to commit
-	prd = !git remote update upstream && git diff `git merge-base HEAD upstream/master`
+	prd = !git remote update upstream &> /dev/null && git diff `git merge-base HEAD upstream/master`
 # borrow from liuyie begins
 	sb = show-branch
 	gf = log --graph --oneline --decorate
