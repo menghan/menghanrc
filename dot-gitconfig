@@ -11,6 +11,12 @@
 	last = log -p -1
 	tco = diff --staged	# to commit
 	to = diff --staged	# to commit
+	prd = !git remote update upstream && git diff `git merge-base HEAD upstream/master`
+# borrow from liuyie begins
+	sb = show-branch
+	gf = log --graph --oneline --decorate
+# borrow from liuyie ends
+
 [color]
 	status = auto
 	branch = auto
@@ -18,18 +24,12 @@
 [core]
 	pager = less -FRSX
 [user]
-	name = Menghan Zheng
+	name = Menghan
 	email = menghan412@gmail.com
 [log]
 	date = local
 [blame]
 	date = local
-
-# borrow from liuyie begins
-[alias]
-	sb = show-branch
-	gf = log --graph --oneline --decorate
-# borrow from liuyie ends
 
 [credential]
 	helper = osxkeychain
