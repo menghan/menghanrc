@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+system=`uname -a`
+if [[ $system =~ Darwin ]]; then
+	reattach-to-user-namespace -l bash -c 'tmux show-buffer | pbcopy'
+elif [[ $system =~ Linux ]]; then
+	tmux save-buffer - | xclip -i
+fi
