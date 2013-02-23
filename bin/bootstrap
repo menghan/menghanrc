@@ -69,7 +69,7 @@ fi
 if test $install_gui_software; then
 	sudo aptitude install --schedule-only -y \
 		evince poppler-data chmsee \
-		ibus ibus-table-extraphrase ibus-table-wubi im-config \
+		ibus ibus-table-extraphrase ibus-table-wubi im-switch \
 		pcmanx-gtk2 rdesktop rxvt-unicode \
 		ttf-dejavu ttf-dejavu-core ttf-dejavu-extra \
 		ttf-inconsolata ttf-liberation \
@@ -153,10 +153,6 @@ setup codespace/menghanrc/dot-toprc .toprc
 # setup tigrc
 cd
 setup codespace/menghanrc/dot-tigrc .tigrc
-
-# setup font
-cd
-setup codespace/menghanrc/dot-fonts.conf .fonts.conf
 
 # setup tmux
 cd
