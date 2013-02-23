@@ -35,7 +35,7 @@ install_cli_software=
 install_gui_software=
 install_dot_files=
 
-while getopts 'cgdb' OPTION
+while getopts 'cgd' OPTION
 do
 	case $OPTION in
 		c)
@@ -62,7 +62,7 @@ if test $install_cli_software || test $install_gui_software; then
 		gcc libc6-dev gawk make \
 		lftp openssh-server openssh-client \
 		bash-completion unzip zip gawk less lv lsof screen tmux sudo \
-		telnet xtail colordiff \
+		telnet xtail colordiff python2.7-doc \
 		p7zip-full wget curl unrar traceroute p7zip-rar
 fi
 
@@ -78,7 +78,7 @@ if test $install_gui_software; then
 		ttf-arphic-gbsn00lp ttf-arphic-gkai00mp \
 		ttf-arphic-ukai ttf-arphic-uming \
 		xfonts-intl-chinese xfonts-intl-chinese-big emacs-intl-fonts \
-		mesa-utils network-manager-openvpn-gnome
+		mesa-utils network-manager-openvpn-gnome xclip
 fi
 
 if test $install_cli_software || test $install_gui_software; then
@@ -111,6 +111,16 @@ if [ -f ~/.bashrc ]; then
 fi
 EOF
 fi
+
+cd
+mkdir -p codespace
+if [ ! -d codespace/menghanrc ]; then
+	git clone https://github.com/menghan/menghanrc.git codespace/menghanrc
+fi
+if [ ! -d codespace/vimfiles ]; then
+	git clone https://github.com/menghan/menghan-vimfiles.git codespace/vimfiles
+fi
+
 setup codespace/menghanrc/dot-bashrc/bashrc.basic .bashrc.basic
 setup codespace/menghanrc/dot-bashrc/bashrc.aliases .bashrc.aliases
 
@@ -147,3 +157,7 @@ setup codespace/menghanrc/dot-tigrc .tigrc
 # setup font
 cd
 setup codespace/menghanrc/dot-fonts.conf .fonts.conf
+
+# setup tmux
+cd
+setup codespace/menghanrc/dot-tmux.conf .tmux.conf
