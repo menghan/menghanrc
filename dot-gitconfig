@@ -14,6 +14,8 @@
 	prd = !git remote update upstream > /dev/null && git diff -w `git merge-base HEAD upstream/master`
 	pa = push --all
 	fh = log -p --graph --full-diff --find-copies-harder --
+	td = !gtdiff
+	md = !gmdiff
 # borrow from liuyie begins
 	sb = show-branch
 	gf = log --graph --oneline --decorate
