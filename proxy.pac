@@ -7,6 +7,7 @@ function FindProxyForURL(url, host)
 	var re_google = /google\.com|google\.com\.hk|google\.com\.jp|ssl\.gstatic\.com|googleusercontent\.com|googleapis\.com|goo\.gl|blogspot\.|blogblog\.com|blogger\.com/;
 	var re_youtube = /youtube\.com|ytimg\.com/;
 	var re_caoliu = /cl\./;
+	var re_vimeo = /vimeo\.com/;
 	var re_wordpress = /wordpress\.com/;
 	var re_trello = /trello\.com|amazonaws\.com|cloudfront\.net/;
 	var re_evernote = /evernote\.com/;
@@ -35,6 +36,9 @@ function FindProxyForURL(url, host)
 		return proxy_douban;
 	}
 	if (re_caoliu.test(host)) {
+		return proxy_douban;
+	}
+	if (re_vimeo.test(host)) {
 		return proxy_douban;
 	}
 	if (re_wordpress.test(host)) {
