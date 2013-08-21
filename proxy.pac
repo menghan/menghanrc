@@ -26,6 +26,7 @@ function FindProxyForURL(url, host)
 	var re_github = /github\.com/;
 	var re_piratebay = /thepiratebay/;
 	var re_bitly = /bit\.ly/;
+	var re_codeforces = /codeforces\.com|worker\.codeforces\.ru/;
 
 	if (re_twitter.test(host)) {
 		return proxy_douban;
@@ -94,6 +95,9 @@ function FindProxyForURL(url, host)
 		return proxy_douban;
 	}
 	if (re_bitly.test(host)) {
+		return proxy_douban;
+	}
+	if (re_codeforces.test(host)) {
 		return proxy_douban;
 	}
 

@@ -70,10 +70,7 @@ parse_svn_repository_root() {
 }
 
 parse_git_branch() {
-	branch=$(git branch --no-color 2> /dev/null | sed -n '/*/ s/* //p')
-	if [ -n "$branch" ]; then
-		echo " (git::$branch) "
-	fi
+	git branch --no-color 2> /dev/null | sed -n '/*/ s/* //p'
 }
 
 parse_hg_branch() {
@@ -86,22 +83,22 @@ parse_hg_branch() {
 parse_branch() {
 	branch=$(parse_git_branch)
 	if [ -n "$branch" ]; then
-		echo -n "$branch"
+		echo -n " (git::$branch) "
 		return
 	fi
-	if [[ ! $PWD =~ "douban" ]]; then
-		return
-	fi
-	branch=$(parse_svn_branch)
-	if [ -n "$branch" ]; then
-		echo -n "$branch"
-		return
-	fi
-	branch=$(parse_hg_branch)
-	if [ -n "$branch" ]; then
-		echo -n "$branch"
-		return
-	fi
+	# if [[ ! $PWD =~ "douban" ]]; then
+	#         return
+	# fi
+	# branch=$(parse_svn_branch)
+	# if [ -n "$branch" ]; then
+	#         echo -n "$branch"
+	#         return
+	# fi
+	# branch=$(parse_hg_branch)
+	# if [ -n "$branch" ]; then
+	#         echo -n "$branch"
+	#         return
+	# fi
 }
 
 
