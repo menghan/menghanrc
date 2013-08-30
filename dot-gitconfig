@@ -39,3 +39,5 @@
 	helper = osxkeychain
 [svn]
 	pushmergeinfo = true
+[help]
+	autocorrect = 1
