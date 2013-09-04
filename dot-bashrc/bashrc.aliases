@@ -10,3 +10,4 @@ else
 fi
 alias lt='ls -lt'
 alias brup='brew update && brew outdated && brew upgrade && brew cleanup'
+alias tcpmon='sudo tcpflow -X /dev/null -cp'
