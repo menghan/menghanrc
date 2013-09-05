@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 
 # assume that all local branches should be pushed to 'origin'
+REMOTE=origin
 
-if ! git diff-index --quiet HEAD --;
+if ! git diff-index --quiet HEAD --
 then
 	git status
 else
-	if git remote show origin | egrep -q '(fast-forwardable|local out of date)'; then
-		echo "may need a push"
-	fi
+	git remote | grep -q $REMOTE && git remote show $REMOTE | egrep -q '(fast-forwardable|local out of date)' && echo "may need a push"
 fi
