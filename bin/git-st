@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+git status
+git status | grep --color=auto '# Your branch is .*'
