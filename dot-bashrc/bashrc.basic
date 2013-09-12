@@ -111,4 +111,6 @@ GREEN="\[\033[0;32m\]"
 export PS1="\u@\h:\w$RED_BOLD\$(parse_branch)$BLACK\$ "
 
 # autojump
-[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+if [[ `uname` =~ "Darwin" ]]; then
+	[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+fi
