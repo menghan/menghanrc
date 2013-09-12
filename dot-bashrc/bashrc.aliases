@@ -11,6 +11,5 @@ fi
 alias lt='ls -lt'
 alias brup='brew update && brew outdated && brew upgrade && brew cleanup'
 alias tcpmon='sudo tcpflow -X /dev/null -cp'
-alias ta='tmux attach -t '
-alias tl='tmux ls'
-alias tn='tmux new-session -s '
+alias tatt='tmux attach -t '
+alias tls='tmux ls'
