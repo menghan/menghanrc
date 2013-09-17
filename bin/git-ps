@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 out=$(git push 3>&1 1>&2 2>&3)
-if echo "$out" | grep -q 'The current branch protocol has no upstream branch.'; then
+if echo "$out" | grep -q 'has no upstream branch.'; then
 	echo -n "The current branch has no upstream branch. Use remote origin? "
 	read remote
 	git push -u ${remote:-origin} $(git branch --no-color 2>/dev/null | sed -n '/*/ s/* //p')
