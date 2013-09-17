@@ -12,7 +12,6 @@
 	to = diff --staged	# to commit
 	prd = !git remote update upstream > /dev/null && git diff `git merge-base HEAD upstream/master`
 	pa = push --all
-	ps = push -u
 	fh = log -p --graph --full-diff --find-copies-harder --
 # borrow from liuyie begins
 	sb = show-branch
