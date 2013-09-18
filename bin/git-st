@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
+# see http://blog.menghan.me/git/2013/09/05/check-need-push-when-git-st.html
+
 git status
 git status | grep --color=auto '# Your branch is .*'
