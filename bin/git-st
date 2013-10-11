@@ -4,3 +4,4 @@
 
 git status
 git status | grep --color=auto '# Your branch is .*'
+exit 0
