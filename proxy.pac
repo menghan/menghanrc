@@ -4,7 +4,7 @@ function FindProxyForURL(url, host)
 	var proxy_null   = "DIRECT";
 
 	var re_twitter = /twitter\.com|t\.co|twimg\.com/;
-	var re_google = /google\.com|google\.com\.hk|google\.com\.jp|ssl\.gstatic\.com|googleusercontent\.com|googleapis\.com|goo\.gl|blogspot\.|blogblog\.com|blogger\.com/;
+	var re_google = /google\.com|google\.com\.hk|google\.com\.jp|gstatic\.com|googleusercontent\.com|googleapis\.com|goo\.gl|blogspot\.|blogblog\.com|blogger\.com|googlevideo\.com/;
 	var re_youtube = /youtube\.com|ytimg\.com/;
 	var re_caoliu = /cl\./;
 	var re_vimeo = /vimeo\.com/;
