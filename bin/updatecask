@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+installed=`find /opt/homebrew-cask/Caskroom -d 1 -type d | xargs basename`
+updated=`brew cask list`
+for app in $installed
+do
+	if echo "$updated" | grep -q "$app"
+	then
+		:
+	else
+		echo -n "$app is outdated, update? [y] "
+		read y
+		if [[ $y != "y" ]]
+		then
+			echo "keep $app as current version"
+		else
+			echo "updating $app ..."
+			brew cask uninstall "$app" && brew cask install "$app"
+		fi
+	fi
+done
