@@ -4,6 +4,9 @@ installed=`find /opt/homebrew-cask/Caskroom -d 1 -type d | xargs basename`
 updated=`brew cask list`
 for app in $installed
 do
+	if [[ -z `ls -A "/opt/homebrew-cask/Caskroom/$app"` ]]; then
+		continue
+	fi
 	if echo "$updated" | grep -q "$app"
 	then
 		:
