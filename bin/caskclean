@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+ROOM=/opt/homebrew-cask/Caskroom
+cd $ROOM
+installed=`find . -d 1 -type d | xargs basename`
+for app in $installed
+do
+	if [[ -z `ls -A "$app"` ]]; then
+		echo "remove empty dir $ROOM/$app"
+		rm -rf "$app"
+		continue
+	fi
+	for o in `ls -lt "$app" | sed "1,2d" | awk '{print $9}'`
+	do
+		echo "find outdated dir $app/$o"
+		if ps aux | grep "$ROOM/$app/$o" | grep -v grep | grep -q "$ROOM/$app/$o"
+		then
+			echo "find processes running from this dir, skip it"
+			continue
+		fi
+		echo -n "remove unused dir $app/$o? [y] "
+		read y
+		if [[ $y != "y" ]]
+		then
+			echo "keep dir $app/$o"
+		else
+			echo "remove $app/$o"
+			rm -rf "$app/$o"
+		fi
+	done
+done

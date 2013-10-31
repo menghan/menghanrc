@@ -9,7 +9,7 @@ else
 	alias ls='ls --color=auto'
 fi
 alias lt='ls -lt'
-alias brup='brew update && brew outdated && brew upgrade && brew cleanup'
+alias brup='echo "updating..." && brew update && brew outdated && echo "upgrading..." && brew upgrade && brew cleanup && echo "upgrading casks..." && caskupdate'
 alias tcpmon='sudo tcpflow -X /dev/null -cp'
 alias th='tmux attach -t '
 alias tl='tmux ls'

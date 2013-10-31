@@ -1,15 +1,18 @@
 #!/usr/bin/env bash
 
 installed=`find /opt/homebrew-cask/Caskroom -d 1 -type d | xargs basename`
-updated=`brew cask list`
+notupdated=`brew cask list`
 for app in $installed
 do
 	if [[ -z `ls -A "/opt/homebrew-cask/Caskroom/$app"` ]]; then
 		continue
 	fi
-	if echo "$updated" | grep -q "$app"
+	if echo "$notupdated" | grep -q "$app"
 	then
-		:
+		if brew cask info "$app" | grep -q "$app: latest"
+		then
+			echo "info: use in-app-upgrade for $app"
+		fi
 	else
 		echo -n "$app is outdated, update? [y] "
 		read y
