@@ -1,41 +1,12 @@
 #!/usr/bin/env bash
 
 
-# bootstrap program to setup personal env in Ubuntu/Debian Dist.
-
-backup ()
-{
-	if [ ! -e "$1" ]; then
-		return
-	fi
-	# don't backup symbolic link
-	if [ -h "$1" ]; then
-		return
-	fi
-	path=$(dirname "$1")
-	node=$(basename "$1")
-	mv "$1" "$path"/"$node"-$(LANG=C date +%F-%H-%M-%S)
-}
-
-setup ()
-{
-	src=$1
-	dst=$2
-
-	if test -z $src -o -z $dst; then
-		return
-	fi
-	backup $dst
-	rm -rf $dst
-	ln -s $src $dst
-}
-
+# bootstrap program to install essencial in Ubuntu/Debian Dist.
 
 install_cli_software=
 install_gui_software=
-install_dot_files=
 
-while getopts 'cgd' OPTION
+while getopts 'cg' OPTION
 do
 	case $OPTION in
 		c)
@@ -44,15 +15,11 @@ do
 		g)
 			install_gui_software=1
 			;;
-		d)
-			install_dot_files=1
-			;;
 		?)
 			;;
 	esac
 done
 
-# install essential softwares..
 if test $install_cli_software || test $install_gui_software; then
 	sudo aptitude update
 	sudo aptitude install --schedule-only -y \
@@ -84,76 +51,3 @@ fi
 if test $install_cli_software || test $install_gui_software; then
 	sudo aptitude
 fi
-
-if ! test $install_dot_files; then
-	exit 0
-fi
-
-# setup bash env
-cd
-if ! grep -q '.bashrc.basic' ~/.bashrc; then
-	echo "source ~/.bashrc.basic" >> ~/.bashrc
-fi
-if ! grep -q '.bashrc.aliases' ~/.bashrc; then
-	echo "source ~/.bashrc.aliases" >> ~/.bashrc
-fi
-if ! grep -q '.bashrc.local' ~/.bashrc; then
-	cat >> ~/.bashrc << EOF
-if [ -f ~/.bashrc.local ]; then
-	source ~/.bashrc.local
-fi
-EOF
-fi
-if ! grep -q '.bashrc' ~/.bash_profile; then
-	cat >> ~/.bash_profile << EOF
-if [ -f ~/.bashrc ]; then
-	source ~/.bashrc
-fi
-EOF
-fi
-
-cd
-mkdir -p codespace
-if [ ! -d codespace/menghanrc ]; then
-	git clone https://github.com/menghan/menghanrc.git codespace/menghanrc
-fi
-if [ ! -d codespace/vimfiles ]; then
-	git clone https://github.com/menghan/menghan-vimfiles.git codespace/vimfiles
-fi
-
-setup codespace/menghanrc/dot-bashrc/bashrc.basic .bashrc.basic
-setup codespace/menghanrc/dot-bashrc/bashrc.aliases .bashrc.aliases
-
-# setup vim env
-cd
-setup codespace/vimfiles .vim
-cd ~/.vim
-mkdir -p bundle
-cd bundle
-if [ ! -d vundle ]; then
-	git clone https://github.com/gmarik/vundle.git
-fi
-cd ~
-setup .vim/Additions/_vimrc.linux .vimrc
-setup .vim/Additions/_gvimrc.linux .gvimrc
-
-# setup git env
-cd
-setup codespace/menghanrc/dot-gitconfig .gitconfig
-
-# setup python env
-cd
-setup codespace/menghanrc/dot-pythonstartup .pythonstartup
-setup codespace/menghanrc/dot-pylintrc .pylintrc
-
-# setup toprc
-cd
-setup codespace/menghanrc/dot-toprc .toprc
-
-# setup tigrc
-cd
-setup codespace/menghanrc/dot-tigrc .tigrc
-
-# setup tmux
-cd
-setup codespace/menghanrc/dot-tmux.conf .tmux.conf
