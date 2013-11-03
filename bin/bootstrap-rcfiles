@@ -10,8 +10,8 @@ mkdir -p codespace
 (cd codespace/vimfiles && git pull)
 
 # bash
-ln -sf codespace/menghanrc/dot-bashrc/bashrc.basic .bashrc.basic
-ln -sf codespace/menghanrc/dot-bashrc/bashrc.aliases .bashrc.aliases
+ln -sf ~/codespace/menghanrc/dot-bashrc/bashrc.basic .bashrc.basic
+ln -sf ~/codespace/menghanrc/dot-bashrc/bashrc.aliases .bashrc.aliases
 touch .bashrc.local
 
 touch ~/.bashrc
@@ -26,10 +26,16 @@ grep -q '.bashrc' ~/.bash_profile || echo "[ -f ~/.bashrc ] && source ~/.bashrc"
 mkdir -p ~/.vim/bundle
 [ -d ~/.vim/bundle/vundle ] || git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 vim -c 'BundleInstall' -c qa
-ln -sf .vim/Additions/_vimrc.linux .vimrc
-ln -sf .vim/Additions/_gvimrc.linux .gvimrc
+ln -sf ~/.vim/Additions/_vimrc.linux .vimrc
+ln -sf ~/.vim/Additions/_gvimrc.linux .gvimrc
 
-ln -sf codespace/menghanrc/dot-gitconfig .gitconfig
-ln -sf codespace/menghanrc/dot-toprc .toprc
-ln -sf codespace/menghanrc/dot-tmux.conf .tmux.conf
-ln -sf codespace/menghanrc/dot-tigrc .tigrc
+ln -sf ~/codespace/menghanrc/dot-gitconfig .gitconfig
+ln -sf ~/codespace/menghanrc/dot-toprc .toprc
+ln -sf ~/codespace/menghanrc/dot-tmux.conf .tmux.conf
+ln -sf ~/codespace/menghanrc/dot-tigrc .tigrc
+
+mkdir -p bin
+for f in `ls ~/codespace/menghanrc/bin/git-*`
+do
+	ln -sf $f bin
+done
