@@ -10,13 +10,16 @@ mkdir -p codespace
 (cd codespace/vimfiles && git pull)
 
 # bash
-grep -q '.bashrc.basic' ~/.bashrc || echo "source ~/.bashrc.basic" >> ~/.bashrc
-grep -q '.bashrc.aliases' ~/.bashrc || echo "source ~/.bashrc.aliases" >> ~/.bashrc
-grep -q '.bashrc.local' ~/.bashrc || echo "[ -f ~/.bashrc.local ] && source ~/.bashrc.local" >> ~/.bashrc
-grep -q '.bashrc' ~/.bash_profile || echo "[ -f ~/.bashrc ] && source ~/.bashrc" >> ~/.bash_profile
 ln -sf codespace/menghanrc/dot-bashrc/bashrc.basic .bashrc.basic
 ln -sf codespace/menghanrc/dot-bashrc/bashrc.aliases .bashrc.aliases
 touch .bashrc.local
+
+touch ~/.bashrc
+grep -q '.bashrc.basic' ~/.bashrc || echo "source ~/.bashrc.basic" >> ~/.bashrc
+grep -q '.bashrc.aliases' ~/.bashrc || echo "source ~/.bashrc.aliases" >> ~/.bashrc
+grep -q '.bashrc.local' ~/.bashrc || echo "[ -f ~/.bashrc.local ] && source ~/.bashrc.local" >> ~/.bashrc
+touch ~/.bash_profile
+grep -q '.bashrc' ~/.bash_profile || echo "[ -f ~/.bashrc ] && source ~/.bashrc" >> ~/.bash_profile
 
 # vim
 [ -d ~/.vim ] || ln -sf codespace/vimfiles .vim
