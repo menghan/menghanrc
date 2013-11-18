@@ -21,7 +21,7 @@ do
 			echo "keep $app as current version"
 		else
 			echo "updating $app ..."
-			brew cask uninstall "$app" && brew cask install "$app"
+			brew cask install "$app"
 		fi
 	fi
 done
