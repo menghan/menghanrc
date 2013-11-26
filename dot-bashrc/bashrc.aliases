@@ -11,7 +11,5 @@ fi
 alias lt='ls -lt'
 alias brup='echo "updating..." && brew update && brew outdated && echo "upgrading..." && brew upgrade && brew cleanup && echo "upgrading casks..." && caskupdate && caskclean'
 alias tcpmon='sudo tcpflow -X /dev/null -cp'
-alias th='tmux attach -t '
-alias tl='tmux ls'
 alias godocserver='(godoc -http=:6066 &>/dev/null &)'
 alias startosxnotifierdaemon='if ps aux | grep "nc -l 9082" | grep -qv grep; then :; else while true; do msg=`nc -l 9082`; if [ ! $? ]; then break; fi; terminal-notifier -message "$msg"; done; fi'
