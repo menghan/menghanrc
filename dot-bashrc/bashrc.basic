@@ -115,10 +115,8 @@ if [[ `uname` =~ "Darwin" ]]; then
 	[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 fi
 
-# terminal-notifier don't works under tmux
 osxnotify () {
-	# TODO: start listener should be put here
-	echo "$*" | nc localhost 9082
+	terminal-notifier -message "\"$@\""
 }
 
 th()
