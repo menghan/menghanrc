@@ -3,7 +3,7 @@
 # see http://blog.menghan.me/git/2013/09/05/check-need-push-when-git-st.html
 
 if git status; then
-	git status | grep --color=auto '# Your branch is .*'
+	git status | egrep --color=auto '^.*Your branch is (ahead of|behind) .*$'
 	exit 0
 else
 	exit $?
