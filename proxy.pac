@@ -23,7 +23,7 @@ function FindProxyForURL(url, host)
 	var re_nytimes = /nytimes\.com/;
 	var re_list_debian = /list\.debian\.org/;
 	var re_sourceforge = /sourceforge\.net/;
-	var re_github = /github\.com/;
+	var re_github = /github\.com|github\.global\.ssl\.fastly\.net/;
 	var re_piratebay = /thepiratebay/;
 	var re_bitly = /bit\.ly/;
 	var re_codeforces = /codeforces\.com|worker\.codeforces\.ru/;

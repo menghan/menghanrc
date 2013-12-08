@@ -119,11 +119,18 @@ osxnotify () {
 	terminal-notifier -message "\"$@\""
 }
 
+# list tmux sessions or attach one or create one
 th()
 {
 	if [[ x"$1" == "x" ]]; then
 		tmux ls
 	else
-		tmux attach -t $1
+		if tmux ls | egrep -q "^$1"; then
+			tmux attach -t "$1"
+		else
+			echo -n "Create tmux session named \"$1\"? [Press enter to continue, ^C to abort]"
+			read
+			tmux new-session -s "$1"
+		fi
 	fi
 }
