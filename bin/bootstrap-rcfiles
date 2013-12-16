@@ -25,9 +25,9 @@ grep -q '.bashrc' ~/.bash_profile || echo "[ -f ~/.bashrc ] && source ~/.bashrc"
 [ -d ~/.vim ] || ln -sf codespace/vimfiles .vim
 mkdir -p ~/.vim/bundle
 [ -d ~/.vim/bundle/vundle ] || git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-vim -c 'BundleInstall' -c qa
 ln -sf ~/.vim/Additions/_vimrc.linux .vimrc
 ln -sf ~/.vim/Additions/_gvimrc.linux .gvimrc
+vim -c 'BundleInstall' -c qa
 
 ln -sf ~/codespace/menghanrc/dot-gitconfig .gitconfig
 ln -sf ~/codespace/menghanrc/dot-toprc .toprc
