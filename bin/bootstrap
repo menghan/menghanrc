@@ -29,8 +29,8 @@ if test $install_cli_software || test $install_gui_software; then
 		gcc libc6-dev gawk make \
 		lftp openssh-server openssh-client \
 		bash-completion unzip zip gawk less lv lsof screen tmux sudo \
-		telnet xtail colordiff python2.7-doc \
-		p7zip-full wget curl unrar traceroute p7zip-rar
+		telnet xtail colordiff python2.7-doc virtualenvwrapper \
+		p7zip-full wget curl unrar traceroute p7zip-rar tree
 fi
 
 if test $install_gui_software; then

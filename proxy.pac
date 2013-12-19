@@ -20,7 +20,7 @@ function FindProxyForURL(url, host)
 	var re_mail_archive = /mail-archive\.com/;
 	var re_golang = /golang\.org/;
 	var re_python = /python\.org/;
-	var re_nytimes = /nytimes\.com/;
+	var re_nytimes = /nytimes\.com|tmagazine\.com/;
 	var re_list_debian = /list\.debian\.org/;
 	var re_sourceforge = /sourceforge\.net/;
 	var re_github = /github\.com|github\.global\.ssl\.fastly\.net/;
