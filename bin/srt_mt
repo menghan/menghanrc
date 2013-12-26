@@ -1,0 +1,42 @@
+#!/usr/bin/env python
+# coding=utf-8
+
+import sys
+import re
+import datetime
+
+
+T_RE = re.compile(r'^(\d{2}:\d{2}:\d{2},\d{3})\s*-->\s*(\d{2}:\d{2}:\d{2},\d{3})$')
+D = datetime.datetime(2000, 1, 1, 0, 0, 0)
+
+
+def from_delta(delta):
+    return (delta + D).strftime('%H:%M:%S,') + ('%.3f' % (delta.microseconds / 1000000.0))[2:]
+
+
+def to_delta(string):
+    s, ms = string.split(',')
+    h, m, s = map(int, s.split(':'))
+    return datetime.timedelta(0, h * 3600 + m * 60 + s, int(ms[:3]) * 1000)
+
+
+def mv_time(line, dis):
+    m = T_RE.match(line)
+    if m is None:
+        if '--' in line:
+            print >> sys.stderr, 'ERROR LINE'
+        return line
+    t1, t2 = m.groups()
+    return '%s --> %s' % (from_delta(to_delta(t1) + dis), from_delta(to_delta(t2) + dis))
+
+
+def main():
+    wrong, right = sys.argv[1:3]
+    dis = to_delta(right) - to_delta(wrong)
+    for line in sys.stdin:
+        line = mv_time(line, dis)
+        print line.rstrip()
+
+
+if __name__ == '__main__':
+    main()
