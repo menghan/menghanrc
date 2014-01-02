@@ -115,8 +115,8 @@ if [[ `uname` =~ "Darwin" ]]; then
 	[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 fi
 
-osxnotify () {
-	terminal-notifier -message "\"$@\""
+osxnotify() {
+	terminal-notifier -message "\"$*\""
 }
 
 # list tmux sessions or attach one or create one
