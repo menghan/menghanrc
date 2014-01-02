@@ -134,3 +134,7 @@ th()
 		fi
 	fi
 }
+
+godoc() {
+	env godoc $1 | less
+}
