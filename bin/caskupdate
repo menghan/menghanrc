@@ -2,9 +2,13 @@
 
 installed=`find /opt/homebrew-cask/Caskroom -d 1 -type d | xargs basename`
 notupdated=`brew cask list`
+upgradeinapp="dash evernote firefox google-drive mou skype"
 for app in $installed
 do
 	if [[ -z `ls -A "/opt/homebrew-cask/Caskroom/$app"` ]]; then
+		continue
+	fi
+	if echo "$upgradeinapp" | grep -q "$app"; then
 		continue
 	fi
 	if echo "$notupdated" | grep -q "$app"
