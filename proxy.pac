@@ -28,6 +28,8 @@ function FindProxyForURL(url, host)
 	var re_bitly = /bit\.ly/;
 	var re_codeforces = /codeforces\.com|worker\.codeforces\.ru/;
 	var re_sstatic = /sstatic\.net/;
+	var re_mitbbs = /mitbbs\.com/;
+	var re_ycombinator = /news\.ycombinator\.com/;
 
 	if (re_twitter.test(host)) {
 		return proxy_douban;
@@ -102,6 +104,12 @@ function FindProxyForURL(url, host)
 		return proxy_douban;
 	}
 	if (re_sstatic.test(host)) {
+		return proxy_douban;
+	}
+	if (re_mitbbs.test(host)) {
+		return proxy_douban;
+	}
+	if (re_ycombinator.test(host)) {
 		return proxy_douban;
 	}
 
