@@ -17,6 +17,9 @@
 	sb = show-branch
 	gf = log --graph --oneline --decorate
 # borrow from liuyie ends
+# borrow from xieshi begins
+	df = diff
+# borrow from xieshi ends
 
 [color]
 	status = auto

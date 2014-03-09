@@ -33,6 +33,7 @@ ln -sf ~/codespace/menghanrc/dot-gitconfig .gitconfig
 ln -sf ~/codespace/menghanrc/dot-toprc .toprc
 ln -sf ~/codespace/menghanrc/dot-tmux.conf .tmux.conf
 ln -sf ~/codespace/menghanrc/dot-tigrc .tigrc
+mkdir -p ~/.pip && ln -sf ~/codespace/menghanrc/dot-pip-conf .pip/pip.conf
 
 mkdir -p bin
 for f in `ls ~/codespace/menghanrc/bin/git-*`
