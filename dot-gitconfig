@@ -28,7 +28,7 @@
 [core]
 	pager = less -FRSX
 [user]
-	name = Menghan
+	name = Menghan Zheng
 	email = menghan412@gmail.com
 [log]
 	date = local

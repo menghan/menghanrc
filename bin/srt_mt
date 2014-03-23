@@ -24,7 +24,7 @@ def mv_time(line, dis):
     m = T_RE.match(line)
     if m is None:
         if '--' in line:
-            print >> sys.stderr, 'ERROR LINE'
+            print >> sys.stderr, 'ERROR LINE: %r' % line
         return line
     t1, t2 = m.groups()
     return '%s --> %s' % (from_delta(to_delta(t1) + dis), from_delta(to_delta(t2) + dis))
@@ -34,8 +34,9 @@ def main():
     wrong, right = sys.argv[1:3]
     dis = to_delta(right) - to_delta(wrong)
     for line in sys.stdin:
+        line = line.rstrip()
         line = mv_time(line, dis)
-        print line.rstrip()
+        print line
 
 
 if __name__ == '__main__':
