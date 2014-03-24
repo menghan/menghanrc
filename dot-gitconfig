@@ -20,6 +20,8 @@
 # borrow from xieshi begins
 	df = diff
 # borrow from xieshi ends
+	dif = diff
+	up = "!git remote update -p; git merge --ff-only @{u}"
 
 [color]
 	status = auto
