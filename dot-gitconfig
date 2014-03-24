@@ -17,7 +17,7 @@
 	gf = log --graph --oneline --decorate  # from whyme
 	df = diff                              # from xieshi
 	dif = diff
-	up = "!git remote update -p; git merge --ff-only @{u}"
+	up = "!git remote update -p; git merge --ff-only @{u}"  # from http://stackoverflow.com/questions/15316601/in-what-cases-could-git-pull-be-harmful
 
 [color]
 	status = auto
