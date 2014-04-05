@@ -1,0 +1,24 @@
+#!/usr/bin/env python
+
+import sys
+import subprocess
+
+
+def main():
+    file, delta = sys.argv[1:3]
+    negative, delta = delta < 0, abs(float(delta))
+    h, m, s, ms = int(delta / 3600), int(delta / 60), int(delta), int((delta - int(delta)) * 1000)
+    f, t = '00:00:00,000', '%02d:%02d:%02d,%03d' % (h, m, s, ms)
+    if negative:
+        f, t = t, f
+    command = 'cp %s %s.orig' % (file, file)
+    print command
+    subprocess.call(command.split())
+    command = 'srt_mt %s %s' % (f, t)
+    print command
+    p = subprocess.Popen(command.split(), stdin=open(file + '.orig'), stdout=open(file, 'wb'))
+    p.wait()
+
+
+if __name__ == '__main__':
+    main()
