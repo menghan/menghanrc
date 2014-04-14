@@ -21,14 +21,6 @@ grep -q '.bashrc.local' ~/.bashrc || echo "[ -f ~/.bashrc.local ] && source ~/.b
 touch ~/.bash_profile
 grep -q '.bashrc' ~/.bash_profile || echo "[ -f ~/.bashrc ] && source ~/.bashrc" >> ~/.bash_profile
 
-# vim
-[ -d ~/.vim ] || ln -sf codespace/vimfiles .vim
-mkdir -p ~/.vim/bundle
-[ -d ~/.vim/bundle/vundle ] || git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-ln -sf ~/.vim/Additions/_vimrc.linux .vimrc
-ln -sf ~/.vim/Additions/_gvimrc.linux .gvimrc
-vim -c 'BundleInstall' -c qa
-
 ln -sf ~/codespace/menghanrc/dot-gitconfig .gitconfig
 ln -sf ~/codespace/menghanrc/dot-toprc .toprc
 ln -sf ~/codespace/menghanrc/dot-tmux.conf .tmux.conf
@@ -40,3 +32,13 @@ for f in `ls ~/codespace/menghanrc/bin/git-*`
 do
 	ln -sf $f bin
 done
+
+# vim
+if which vim >/dev/null 2>&1; then
+	[ -d ~/.vim ] || ln -sf codespace/vimfiles .vim
+	mkdir -p ~/.vim/bundle
+	[ -d ~/.vim/bundle/vundle ] || git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+	ln -sf ~/.vim/Additions/_vimrc.linux .vimrc
+	ln -sf ~/.vim/Additions/_gvimrc.linux .gvimrc
+	vim -c 'BundleInstall' -c qa
+fi
