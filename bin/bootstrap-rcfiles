@@ -4,10 +4,7 @@ cd $HOME
 
 mkdir -p codespace
 [ -d codespace/menghanrc ] || git clone https://github.com/menghan/menghanrc.git codespace/menghanrc
-[ -d codespace/vimfiles ] || git clone https://github.com/menghan/menghan-vimfiles.git codespace/vimfiles
-
 (cd codespace/menghanrc && git pull)
-(cd codespace/vimfiles && git pull)
 
 # bash
 ln -sf ~/codespace/menghanrc/dot-bashrc/bashrc.basic .bashrc.basic
@@ -35,6 +32,8 @@ done
 
 # vim
 if which vim >/dev/null 2>&1; then
+	[ -d codespace/vimfiles ] || git clone https://github.com/menghan/menghan-vimfiles.git codespace/vimfiles
+	(cd codespace/vimfiles && git pull)
 	[ -d ~/.vim ] || ln -sf codespace/vimfiles .vim
 	mkdir -p ~/.vim/bundle
 	[ -d ~/.vim/bundle/vundle ] || git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
