@@ -21,7 +21,9 @@ do
 done
 
 if test $install_cli_software || test $install_gui_software; then
-	sudo aptitude update
+	sudo apt-get update
+	which git >/dev/null 2>&1 || sudo apt-get install git
+	which aptitude >/dev/null 2>&1 || sudo apt-get install aptitude
 	sudo aptitude install --schedule-only -y \
 		git tig git-svn subversion git-doc \
 		vim-gtk exuberant-ctags cscope tofrodos vim-doc \
@@ -30,7 +32,7 @@ if test $install_cli_software || test $install_gui_software; then
 		lftp openssh-server openssh-client \
 		bash-completion unzip zip gawk less lv lsof screen tmux sudo \
 		telnet xtail colordiff python2.7-doc virtualenvwrapper \
-		p7zip-full wget curl unrar traceroute p7zip-rar tree
+		p7zip-full wget curl unrar traceroute p7zip-rar tree docker.io
 fi
 
 if test $install_gui_software; then
