@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+while ! $@
+do
+	echo sleep 60 seconds...
+	sleep 60
+done
