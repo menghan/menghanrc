@@ -21,7 +21,6 @@ grep -q '.bashrc' ~/.bash_profile || echo "[ -f ~/.bashrc ] && source ~/.bashrc"
 ln -sf ~/codespace/menghanrc/dot-gitconfig .gitconfig
 ln -sf ~/codespace/menghanrc/dot-toprc .toprc
 ln -sf ~/codespace/menghanrc/dot-tmux.conf .tmux.conf
-ln -sf ~/codespace/menghanrc/dot-tigrc .tigrc
 mkdir -p ~/.pip && ln -sf ~/codespace/menghanrc/dot-pip-conf .pip/pip.conf
 
 mkdir -p bin
