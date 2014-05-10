@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+ulimit -n 65536
+exec 2>&1
+exec setuidgid menghan /home/menghan/.go/bin/cow -rc /home/menghan/.cow/rc
