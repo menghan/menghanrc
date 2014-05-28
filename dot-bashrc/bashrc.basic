@@ -1,6 +1,7 @@
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export EDITOR=vim
+export GOPATH=$HOME/.go
 ssh-add 2> /dev/null
 stty -ixon > /dev/null 2>&1
 
@@ -23,7 +24,8 @@ replace_path_out /sbin
 replace_path_out "$HOME/.local/bin"
 replace_path_out "$HOME/Library/Python/2.7/bin"
 replace_path_out "$HOME/bin"
-export PATH="$HOME/bin:$HOME/Library/Python/2.7/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH"
+replace_path_out "$GOPATH/bin"
+export PATH="$HOME/bin:$HOME/Library/Python/2.7/bin:$HOME/.local/bin:$GOPATH/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH"
 
 safe_source ()
 {
@@ -137,4 +139,21 @@ th()
 
 godoc() {
 	env godoc $1 | less
+}
+
+function removeunuseoriginbranch ()
+{
+	git co master
+	git remote update -p origin upstream
+	git merge upstream/master --ff-only && git push origin master
+	git branch --merged | grep -v master | xargs git branch -d
+	for branch in `git remote show origin | grep tracked | awk '{print $1}'`
+	do
+		if [[ -z `git rev-list master..origin/$branch` ]]; then
+			if ! git branch | grep -q $branch; then
+				git push origin :$branch
+			fi
+		fi
+	done
+	git co -
 }
