@@ -145,6 +145,9 @@ class Ass2Srt():
                 if translate is not None and canlangconv:
                     ltext = langcer.convert(ltext)
 
+                # ignore lines startswith 'm ' or 'b ' or 'l '
+                if ltext.lstrip().startswith(('m ', 'b ', 'l ')):
+                    continue
                 # 加入到列表：
                 #print [lstart, lend, ltext]
                 sublst.append([lstart, lend, ltext])
