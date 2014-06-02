@@ -52,8 +52,10 @@ def srt_mt(lines, seconds):
     '''
     >>> list(srt_mt(['00:00:00,000 --> 00:00:01,000', 'line1', ''], 1.5))
     ['00:00:01,500 --> 00:00:02,500', 'line1', '']
-    >>> list(srt_mt(['00:00:00,000 --> 00:00:01,000', 'line1', ''], -1.5))
-    ['']
+    >>> list(srt_mt(['00:00:00,000 --> 00:00:01,000', 'line1', '', 'foo'], -1.5))
+    ['foo']
+    >>> list(srt_mt(['00:00:00,000 --> 00:00:01,000', 'line1', 'line2', ' ', 'foo'], -1.5))
+    ['foo']
     '''
     lines = iter(lines)
     delta = timedelta(seconds=seconds)
@@ -61,7 +63,9 @@ def srt_mt(lines, seconds):
         try:
             yield mv_time(lines.next(), delta)
         except InvalidTime:
-            lines.next()  # bypass the next line if current time is invalid
+            # bypass the next non-empty lines if current time is invalid
+            while lines.next().strip():
+                pass
 
 
 def usage():
@@ -75,9 +79,10 @@ def main():
     filename, delta = sys.argv[1:3]
     with open(filename) as f:
         content = f.read()
+    delta = float(delta)
+    adjusted = '\n'.join(srt_mt(content.splitlines(), delta))
     with open(filename, 'wb') as f:
-        for line in srt_mt(content.splitlines(), delta):
-            print >> f, line
+        f.write(adjusted)
 
 
 if __name__ == '__main__':
