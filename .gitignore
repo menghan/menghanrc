@@ -1,4 +1,5 @@
 .*.swp
+*.pyc
 .hg/
 .git/
 dot-mutt/mboxes
