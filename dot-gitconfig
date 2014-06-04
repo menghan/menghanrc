@@ -18,6 +18,7 @@
 	df = diff                              # from xieshi
 	dif = diff
 	up = "!git remote update -p; git merge --ff-only @{u}"  # from http://stackoverflow.com/questions/15316601/in-what-cases-could-git-pull-be-harmful
+	fp = log -p -m --first-parent --find-copies-harder
 
 [color]
 	status = auto
