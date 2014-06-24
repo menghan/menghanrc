@@ -146,7 +146,7 @@ class Ass2Srt():
                     ltext = langcer.convert(ltext)
 
                 # ignore lines startswith 'm ' or 'b ' or 'l '
-                if ltext.lstrip().startswith(('m ', 'b ', 'l ')):
+                if ltext.lstrip().startswith(('m ', 'b ', 'l ', 'mm ')):
                     continue
                 # 加入到列表：
                 #print [lstart, lend, ltext]
