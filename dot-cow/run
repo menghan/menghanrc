@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
+export HOME=/Users/menghan
 exec 2>&1
-exec setuidgid menghan /Users/menghan/.go/bin/cow -rc /Users/menghan/.cow/rc
+exec setuidgid menghan /Users/menghan/.go/bin/cow
