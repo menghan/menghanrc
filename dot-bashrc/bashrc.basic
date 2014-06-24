@@ -27,7 +27,8 @@ replace_path_out "$HOME/.local/bin"
 replace_path_out "$HOME/Library/Python/2.7/bin"
 replace_path_out "$HOME/bin"
 replace_path_out "$GOPATH/bin"
-export PATH="$HOME/bin:$HOME/Library/Python/2.7/bin:$HOME/.local/bin:$GOPATH/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH"
+replace_path_out "$GOROOT/bin"
+export PATH="$HOME/bin:$HOME/Library/Python/2.7/bin:$HOME/.local/bin:$GOPATH/bin:$GOROOT/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
 
 safe_source ()
 {
