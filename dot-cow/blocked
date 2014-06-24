@@ -17,6 +17,7 @@ blogger.com
 googlevideo.com
 youtube.com
 ytimg.com
+*.doubleclick.net
 
 # you know
 cl.*
@@ -58,4 +59,4 @@ mitbbs.com
 news.ycombinator.com
 docker.io
 
-typekit.net
+*.typekit.net
