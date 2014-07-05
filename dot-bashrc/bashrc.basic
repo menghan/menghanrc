@@ -160,3 +160,15 @@ function removeunuseoriginbranch ()
 	done
 	git co -
 }
+
+function dsyncto ()
+{
+	img=$1; repo=$2
+	if [[ -z "$repo" ]]; then
+		echo "Usage: dsyncto <image name> <repo addr>"
+		return
+	fi
+	docker tag "$img" "$repo/$img"
+	docker push "$repo/$img"
+	docker rmi "$repo/$img"
+}

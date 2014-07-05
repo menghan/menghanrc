@@ -1,0 +1,59 @@
+#!/usr/bin/env python
+# coding=utf-8
+
+import re
+import subprocess
+import sys
+import requests
+
+FIELDS_RE = re.compile('(.+?)  +(.+?)  +(.+?)  +(.+?)  +(.+)')
+UNSYNCED = 'not synced  '
+UPDATED  = 'updated     '
+OUTDATED = 'outdated    '
+NULL     = '            '
+TITLE    = 'SYNC STATUS '
+
+
+def output(tmpl, status):
+    print '%s %s' % (status, tmpl)
+
+
+def get_remote_id(registry, repo, tag):
+    url = 'http://%s/v1/repositories/%s/tags/%s' % (registry, repo, tag)
+    r = requests.get(url)
+    jr = r.json()
+    if isinstance(jr, dict) and jr.get('error'):
+        return None
+    return jr
+
+
+def main():
+    try:
+        registry = sys.argv[1]
+    except IndexError:
+        print 'Usage: %s <registry addr>' % sys.argv[0]
+        return
+    for line in subprocess.check_output(['docker', 'images']).splitlines():
+        m = FIELDS_RE.match(line.strip())
+        if not m:
+            continue
+        repo, tag, id, age, size = m.groups()
+        if size == 'VIRTUAL SIZE':
+            output(line, TITLE)
+        elif repo == '<none>':
+            output(line, NULL)
+        else:
+            if ':' in repo:
+                repo = repo.split('/', 1)[1]
+            remote_id = get_remote_id(registry, repo, tag)
+            if remote_id is None:
+                status = UNSYNCED
+            elif remote_id.startswith(id):
+                status = UPDATED
+            else:
+                status = OUTDATED
+            output(line, status)
+
+
+if __name__ == '__main__':
+    main()
