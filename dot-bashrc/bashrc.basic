@@ -163,12 +163,20 @@ function removeunuseoriginbranch ()
 
 function dsyncto ()
 {
-	img=$1; repo=$2
-	if [[ -z "$repo" ]]; then
-		echo "Usage: dsyncto <image name> <repo addr>"
+	registry=$1; img=$2
+	if [[ -z "$img" ]]; then
+		echo "Usage: dsyncto <registry addr> <image name>"
 		return
 	fi
-	docker tag "$img" "$repo/$img"
-	docker push "$repo/$img"
-	docker rmi "$repo/$img"
+	shift; shift
+	while true; do
+		if [[ -z "$img" ]]; then
+			break
+		fi
+		docker tag "$img" "$registry/$img"
+		docker push "$registry/$img"
+		docker rmi "$registry/$img"
+		img="$1"
+		shift
+	done
 }
