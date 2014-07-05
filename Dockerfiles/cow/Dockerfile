@@ -2,10 +2,12 @@ FROM ubuntu:14.04
 
 MAINTAINER menghan
 
-RUN apt-get install -y git
-RUN apt-get install -y --no-install-recommends mercurial openvpn dnsmasq golang-go
-
-RUN GOPATH=/usr/local go get github.com/cyfdecyf/cow
+RUN apt-get update && \
+	apt-get install -y --no-install-recommends aptitude git && \
+	aptitude install -y mercurial openvpn dnsmasq openssh-server golang-go && \
+	GOPATH=/usr/local go get github.com/menghan/cow && \
+	aptitude remove -y git mercurial aptitude golang-go && \
+	apt-get clean
 
 # openvpn configuration
 ADD openvpn/ /etc/openvpn/
@@ -14,5 +16,7 @@ ADD openvpn/ /etc/openvpn/
 RUN echo 'conf-dir=/etc/dnsmasq.conf.d' >> /etc/dnsmasq.conf
 ADD dnsmasq.conf /etc/dnsmasq.conf.d/
 
-ADD start-all.sh /usr/local/bin/
-CMD start-all.sh
+RUN mkdir -p /dev/net && mknod /dev/net/tun c 10 200
+RUN echo 'root:passwd' | chpasswd
+
+CMD service openvpn restart; service dnsmasq restart; service ssh restart; cow -rc /.cow/rc
