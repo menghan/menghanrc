@@ -144,7 +144,7 @@ godoc() {
 	env godoc $1 | less
 }
 
-function removeunuseoriginbranch ()
+removeunuseoriginbranch ()
 {
 	git co master
 	git remote update -p origin upstream
@@ -179,4 +179,11 @@ function dsyncto ()
 		img="$1"
 		shift
 	done
+}
+
+initgo ()
+{
+	go get -u github.com/golang/lint/golint
+	go get -u code.google.com/p/go.tools/cmd/godoc
+	go get -u github.com/tools/godep
 }

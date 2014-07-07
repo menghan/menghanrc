@@ -8,9 +8,8 @@ if [[ `uname` =~ "Darwin" ]]; then
 else
 	alias ls='ls --color=auto'
 fi
-alias lt='ls -lt'
-alias brup='echo "updating..." && brew update && brew outdated && echo "upgrading..." && brew upgrade && brew cleanup && echo "upgrading casks..." && caskupdate && caskclean'
+alias lt='ls -lat'
+alias brup='echo "updating..." && brew update && brew outdated && echo "upgrading..." && brew upgrade && brew cleanup'
 alias tcpmon='sudo tcpflow -X /dev/null -cp'
-alias godocserver='(godoc -http=:6066 &>/dev/null &)'
 alias proxyisok='curl -I http://youtube.com'
 alias tigfp='tig --first-parent -m --find-copies-harder'
