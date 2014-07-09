@@ -4,7 +4,9 @@ out=$(git push 3>&1 1>&2 2>&3)
 if echo "$out" | grep -q 'has no upstream branch.'; then
 	echo -n "The current branch has no upstream branch. Use remote origin? "
 	read remote
-	git push -u ${remote:-origin} $(git branch --no-color 2>/dev/null | sed -n '/*/ s/* //p')
+	branch=$(git branch --no-color 2>/dev/null | sed -n '/*/ s/* //p')
+	echo git push -u ${remote:-origin} $branch
+	git push -u ${remote:-origin} $branch
 else
 	echo "$out"
 fi
