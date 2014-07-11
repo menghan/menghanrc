@@ -6,6 +6,7 @@ import sys
 import requests
 import argparse
 import logging
+import subprocess
 
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.StreamHandler())
