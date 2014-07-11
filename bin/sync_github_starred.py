@@ -28,7 +28,7 @@ def main():
     if args.dir:
         try:
             os.chdir(args.dir)
-        except IOError as e:
+        except OSError as e:
             logger.error('chdir %s failed: %s', args.dir, e)
             sys.exit(-1)
     else:
