@@ -17,6 +17,5 @@ RUN echo 'conf-dir=/etc/dnsmasq.conf.d' >> /etc/dnsmasq.conf
 ADD dnsmasq.conf /etc/dnsmasq.conf.d/
 
 RUN mkdir -p /dev/net && mknod /dev/net/tun c 10 200
-RUN echo 'root:passwd' | chpasswd
 
 CMD service openvpn restart; service dnsmasq restart; service ssh restart; cow -rc /.cow/rc
