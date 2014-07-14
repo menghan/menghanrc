@@ -26,7 +26,7 @@ if test $install_cli_software || test $install_gui_software; then
 	which aptitude >/dev/null 2>&1 || sudo apt-get install aptitude
 	sudo aptitude install --schedule-only -y \
 		git tig git-svn subversion git-doc \
-		vim-gtk exuberant-ctags cscope tofrodos vim-doc \
+		vim exuberant-ctags cscope tofrodos vim-doc \
 		build-essential manpages manpages-dev gdb \
 		gcc libc6-dev gawk make \
 		lftp openssh-server openssh-client \
