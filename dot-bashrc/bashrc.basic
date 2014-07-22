@@ -1,3 +1,6 @@
+# disable bash's history expandation
+set +o histexpand
+
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export EDITOR=vim
@@ -161,7 +164,7 @@ removeunuseoriginbranch ()
 	git co -
 }
 
-function dsyncto ()
+dsyncto ()
 {
 	registry=$1; img=$2
 	if [[ -z "$img" ]]; then
