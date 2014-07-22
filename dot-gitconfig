@@ -19,6 +19,11 @@
 	dif = diff
 	up = "!git remote update -p; git merge --ff-only @{u}"  # from http://stackoverflow.com/questions/15316601/in-what-cases-could-git-pull-be-harmful
 	fp = log -p -m --first-parent --find-copies-harder
+	# http://stackoverflow.com/questions/2657935/checking-for-a-dirty-index-or-untracked-files-with-git
+	untracked = ls-files --other --error-unmatch --exclude-standard
+	# http://stackoverflow.com/questions/3878624/how-do-i-programmatically-determine-if-there-are-uncommited-changes
+	unstaged = diff-files --exit-code --ignore-submodules --
+	uncommited = diff-index --cached --exit-code HEAD --ignore-submodules --
 
 [color]
 	status = auto

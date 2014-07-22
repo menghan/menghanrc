@@ -2,4 +2,4 @@
 
 export HOME=/Users/menghan
 exec 2>&1
-exec setuidgid menghan /Users/menghan/.go/bin/cow
+exec setuidgid menghan $HOME/.go/bin/cow -debug=true -request=true -reply=true -v=true -logFile=$HOME/.cow/log
