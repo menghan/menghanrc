@@ -13,3 +13,4 @@ alias brup='echo "updating..." && brew update && brew outdated && echo "upgradin
 alias tcpmon='sudo tcpflow -X /dev/null -cp'
 alias proxyisok='curl -I http://youtube.com'
 alias tigfp='tig --first-parent -m --find-copies-harder'
+alias pyhton='python'

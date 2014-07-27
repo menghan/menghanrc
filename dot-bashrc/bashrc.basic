@@ -189,6 +189,7 @@ initgo ()
 {
 	go get -u github.com/golang/lint/golint
 	go get -u code.google.com/p/go.tools/cmd/godoc
+	go get -u code.google.com/p/go.tools/cmd/vet
 	go get -u github.com/tools/godep
 	go get -u github.com/jstemmer/gotags
 }
