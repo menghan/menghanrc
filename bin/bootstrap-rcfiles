@@ -33,6 +33,7 @@ ln -sf ~/codespace/menghanrc/bin/bootstrap-rcfiles bin
 ln -sf ~/codespace/menghanrc/bin/retry bin
 ln -sf ~/codespace/menghanrc/bin/srt_mt.py bin
 ln -sf ~/codespace/menghanrc/bin/calcsum bin
+ln -sf ~/codespace/menghanrc/bin/punzip bin
 
 # vim
 if which vim >/dev/null 2>&1; then
