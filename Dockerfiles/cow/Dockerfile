@@ -8,7 +8,7 @@ RUN apt-get install -y mercurial git supervisor
 ADD http://golang.org/dl/go1.3.linux-amd64.tar.gz /usr/local/
 RUN ln -s /usr/local/go/bin/go /usr/local/bin/go
 
-RUN GOPATH=/usr/local go get github.com/menghan/cow
+RUN GOPATH=/usr/local /usr/local/bin/go get github.com/menghan/cow
 ADD cow.conf /etc/supervisor/conf.d/
 
 VOLUME /var/log/supervisor
