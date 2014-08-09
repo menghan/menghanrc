@@ -5,8 +5,9 @@ MAINTAINER menghan
 
 RUN adduser --uid 1000 --group --system user
 
-ADD install-dropbox.sh /usr/local/bin/
-RUN install-dropbox.sh
+RUN apt-get update
+RUN apt-get install -y wget
+RUN wget -q -O - https://www.dropbox.com/download?plat=lnx.x86_64 | tar xzf -
 
 USER user
 ENV HOME /home/user
