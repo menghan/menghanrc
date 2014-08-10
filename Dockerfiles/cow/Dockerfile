@@ -2,9 +2,6 @@ from menghan/supervisor
 
 maintainer menghan <menghan412@gmail.com>
 
-RUN apt-get update
-RUN apt-get install -y mercurial git wget
-
 RUN apt-get update && \
 	apt-get install -y mercurial git wget && \
 	wget -qO- http://golang.org/dl/go1.3.linux-amd64.tar.gz | tar -xz -C /usr/local && \
