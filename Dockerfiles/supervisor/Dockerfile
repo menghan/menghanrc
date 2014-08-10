@@ -13,5 +13,4 @@ RUN mkdir -p /var/log/supervisor /var/run/supervisor && \
 VOLUME /var/log/supervisor/
 VOLUME /var/run/supervisor/
 
-USER user
 CMD /usr/bin/supervisord -n
