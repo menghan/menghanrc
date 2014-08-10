@@ -11,6 +11,7 @@ RUN apt-get update && \
 	GOPATH=/usr/local /usr/local/go/bin/go get github.com/menghan/cow && \
 	rm -rf /usr/local/go && \
 	apt-get purge -y mercurial git wget && \
+	apt-get autoremove -y
 	apt-get clean
 
 ADD cow.conf /etc/supervisor/conf.d/
