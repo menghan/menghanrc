@@ -3,12 +3,15 @@ from menghan/supervisor
 maintainer menghan <menghan412@gmail.com>
 
 RUN apt-get update
-RUN apt-get install -y mercurial git
+RUN apt-get install -y mercurial git wget
 
-ADD http://golang.org/dl/go1.3.linux-amd64.tar.gz /usr/local/
-RUN tar -C /usr/local -xf /usr/local/go1.3.linux-amd64.tar.gz || true
-
-RUN GOPATH=/usr/local /usr/local/go/bin/go get github.com/menghan/cow
+RUN apt-get update && \
+	apt-get install -y mercurial git wget && \
+	wget -qO- http://golang.org/dl/go1.3.linux-amd64.tar.gz | tar -xz -C /usr/local && \
+	GOPATH=/usr/local /usr/local/go/bin/go get github.com/menghan/cow && \
+	rm -rf /usr/local/go && \
+	apt-get purge -y mercurial git wget && \
+	apt-get clean
 
 ADD cow.conf /etc/supervisor/conf.d/
 
