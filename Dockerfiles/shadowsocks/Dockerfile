@@ -1,7 +1,9 @@
 FROM menghan/supervisor
 MAINTAINER Menghan Zheng <menghan412@gmail.com>
 
-RUN apt-get update && apt-get install -y python-pip python-m2crypto git
+RUN apt-get update && \
+	apt-get install -y python-pip python-m2crypto git && \
+	apt-get clean
 
 RUN pip install "git+http://github.com/menghan/shadowsocks.git@master"
 
