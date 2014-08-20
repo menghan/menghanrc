@@ -162,7 +162,7 @@ removeunuseoriginbranch ()
 		fi
 	done
 	git co -
-	git remote update
+	git remote update -p
 }
 
 dsyncto ()
