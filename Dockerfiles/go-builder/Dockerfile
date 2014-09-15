@@ -18,5 +18,6 @@ RUN GOPATH=/usr/local /usr/local/bin/go get code.google.com/p/go.tools/cmd/vet
 
 VOLUME ["/data"]
 WORKDIR /data
+ENV GOPATH /data
 
 CMD ["go", "help"]
