@@ -16,4 +16,7 @@ RUN GOPATH=/usr/local /usr/local/bin/go get github.com/tools/godep
 RUN GOPATH=/usr/local /usr/local/bin/go get github.com/jstemmer/gotags
 RUN GOPATH=/usr/local /usr/local/bin/go get code.google.com/p/go.tools/cmd/vet
 
+VOLUME ["/data"]
+WORKDIR /data
+
 CMD ["go", "help"]
