@@ -1,4 +1,4 @@
-FROM menghan/supervisor
+FROM debian:wheezy
 MAINTAINER Menghan Zheng <menghan412@gmail.com>
 
 RUN apt-get update && \
@@ -7,7 +7,7 @@ RUN apt-get update && \
 
 RUN pip install "git+http://github.com/menghan/shadowsocks.git@master"
 
-ADD shadowsocks.conf /etc/supervisor/conf.d/
 ADD shadowsocks.json /etc/
 
-USER user
+USER nobody
+CMD /usr/local/bin/ssserver -c /etc/shadowsocks.json
