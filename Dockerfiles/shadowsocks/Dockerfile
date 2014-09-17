@@ -5,7 +5,7 @@ RUN apt-get update && \
 	apt-get install -y python-pip python-m2crypto git && \
 	pip install "git+http://github.com/menghan/shadowsocks.git@master" && \
 	apt-get purge -y python-pip python-m2crypto+ git && \
-	apt-get autoremove && \
+	apt-get autoremove -y && \
 	apt-get clean
 
 ADD shadowsocks.json /etc/
