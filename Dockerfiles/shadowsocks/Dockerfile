@@ -3,9 +3,10 @@ MAINTAINER Menghan Zheng <menghan412@gmail.com>
 
 RUN apt-get update && \
 	apt-get install -y python-pip python-m2crypto git && \
+	pip install "git+http://github.com/menghan/shadowsocks.git@master" && \
+	apt-get purge -y python-pip python-m2crypto+ git && \
+	apt-get autoremove && \
 	apt-get clean
-
-RUN pip install "git+http://github.com/menghan/shadowsocks.git@master"
 
 ADD shadowsocks.json /etc/
 
