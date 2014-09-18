@@ -20,9 +20,14 @@ def main():
     fi, fo = (sys.argv[1:] + [None, None])[:2]
     fi = open(fi, 'rb') if fi else sys.stdin
     fo = open(fo, 'wb') if fo else sys.stdout
-    json.dump(json.load(fi), EncWriteWrapper(fo), sort_keys=True,
-              indent=4, separators=(',', ': '), ensure_ascii=False)
-    fo.write('\n')
+    try:
+        json.dump(json.load(fi), EncWriteWrapper(fo), sort_keys=True,
+                  indent=4, separators=(',', ': '), ensure_ascii=False)
+        fo.write('\n')
+    except IOError as e:
+        if e.strerror == 'Broken pipe':
+            return
+        raise
 
 
 if __name__ == '__main__':
