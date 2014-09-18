@@ -3,6 +3,27 @@
 import sys
 import json
 
-json.dump(json.load(sys.stdin), sys.stdout, sort_keys=True,
-          indent=4, separators=(',', ': '), ensure_ascii=False)
-sys.stdout.write('\n')
+
+class EncWriteWrapper(object):
+
+    def __init__(self, wrapped, encoding='utf-8'):
+        self.wrapped = wrapped
+        self.encoding = encoding
+
+    def write(self, s):
+        if isinstance(s, unicode):
+            s = s.encode(self.encoding)
+        self.wrapped.write(s)
+
+
+def main():
+    fi, fo = (sys.argv[1:] + [None, None])[:2]
+    fi = open(fi, 'rb') if fi else sys.stdin
+    fo = open(fo, 'wb') if fo else sys.stdout
+    json.dump(json.load(fi), EncWriteWrapper(fo), sort_keys=True,
+              indent=4, separators=(',', ': '), ensure_ascii=False)
+    fo.write('\n')
+
+
+if __name__ == '__main__':
+    main()
