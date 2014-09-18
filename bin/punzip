@@ -6,6 +6,14 @@
 import os
 import sys
 import zipfile
+import chardet
+
+
+def to_utf8(string):
+    enc = chardet.detect(string)['encoding']
+    if enc.lower() == 'gb2312':
+        enc = 'gbk'
+    return unicode(string, enc).encode('utf8')
 
 
 if __name__ == '__main__':
@@ -15,10 +23,7 @@ if __name__ == '__main__':
         with zipfile.ZipFile(sys.argv[1]) as zf:
             nlist = zf.namelist()
             for n in sorted(nlist):
-                try:
-                    m = unicode(n, 'gbk').encode('utf8')
-                except:
-                    m = n
+                m = to_utf8(n)
                 if m.endswith('/'):
                     os.makedirs(m)
                 else:
