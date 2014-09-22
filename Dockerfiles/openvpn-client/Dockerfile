@@ -11,4 +11,4 @@ RUN mkdir -p /etc/dnsmasq.conf.d && echo 'conf-dir=/etc/dnsmasq.conf.d' >> /etc/
 
 RUN mkdir -p /dev/net && mknod /dev/net/tun c 10 200
 
-CMD service dnsmasq start; /usr/sbin/openvpn "$(ls /etc/openvpn/*.ovpn /etc/openvpn/*.conf)"
+CMD service dnsmasq start; cd /etc/openvpn; /usr/sbin/openvpn "$(ls *.ovpn *.conf 2>/dev/null)"
