@@ -20,4 +20,5 @@ VOLUME ["/data"]
 WORKDIR /data
 ENV GOPATH /data
 
-CMD ["go", "help"]
+ENTRYPOINT ["go"]
+CMD ["help"]
