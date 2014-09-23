@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM menghan/userbase
 
 MAINTAINER Menghan Zheng <menghan412@gmail.com>
 
