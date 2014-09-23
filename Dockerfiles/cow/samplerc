@@ -1,0 +1,6 @@
+listen = http://0.0.0.0:7777
+# proxy = socks5://127.0.0.1:1080
+# proxy = http://127.0.0.1:8080
+# proxy = http://user:password@127.0.0.1:8080
+# proxy = ss://aes-128-cfb:password@1.2.3.4:8388
+# proxy = cow://aes-128-cfb:password@1.2.3.4:8388
