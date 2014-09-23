@@ -1,4 +1,4 @@
-FROM menghan/userbase
+FROM menghan/base
 
 MAINTAINER Menghan Zheng <menghan412@gmail.com>
 

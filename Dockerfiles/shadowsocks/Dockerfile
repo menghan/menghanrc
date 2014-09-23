@@ -1,4 +1,4 @@
-FROM debian:wheezy
+FROM debian:latest
 MAINTAINER Menghan Zheng <menghan412@gmail.com>
 
 RUN apt-get update && \
