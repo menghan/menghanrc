@@ -1,7 +1,5 @@
-FROM debian:wheezy
+FROM menghan/userbase
 MAINTAINER Menghan Zheng <menghan412@gmail.com>
-
-RUN useradd --system --create-home --user-group user
 
 RUN apt-get update && \
 	apt-get install -y supervisor && \
