@@ -20,8 +20,14 @@ def main():
     fi, fo = (sys.argv[1:] + [None, None])[:2]
     fi = open(fi, 'rb') if fi else sys.stdin
     fo = open(fo, 'wb') if fo else sys.stdout
+    s = fi.read()
     try:
-        json.dump(json.load(fi), EncWriteWrapper(fo), sort_keys=True,
+        obj = json.loads(s)
+    except ValueError:
+        fo.write(s)
+        return
+    try:
+        json.dump(obj, EncWriteWrapper(fo), sort_keys=True,
                   indent=4, separators=(',', ': '), ensure_ascii=False)
         fo.write('\n')
     except IOError as e:
