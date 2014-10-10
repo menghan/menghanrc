@@ -24,7 +24,7 @@ def test_speed(addr):
 
 
 def report(result):
-    best = sorted(sum(result.values(), [])).next()
+    best = sorted(sum(result.values(), []))[0]
     for addr, addr_results in result.iteritems():
         if best in addr_results:
             loss, worst_ping, dl_speed = int(best[0]), best[1], 10/best[2]
