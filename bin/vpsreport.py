@@ -17,6 +17,10 @@ providers = {
         'index': 'https://www.linode.com/speedtest',
         're': re.compile(ur'speedtest.[^. ]*.linode.com'),
     },
+    'vultr': {
+        'index': 'https://www.vultr.com/faq/#downloadspeedtests',
+        're': re.compile(ur'[^. ]-ping.vultr.com'),
+    },
 }
 
 
