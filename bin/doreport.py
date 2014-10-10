@@ -40,6 +40,7 @@ def main():
     for i in xrange(3):
         for addr in re.findall(ur'ipv4.speedtest-[^.]*.digitalocean.com',
                                requests.get(index).text):
+            addr = addr[5:]  # remove 'ipv4.'
             result[addr].append(test_speed(addr))
     report(result)
 
