@@ -11,15 +11,15 @@ import requests
 providers = {
     'digitalocean': {
         'index': 'http://ipv4.speedtest-sgp1.digitalocean.com/',
-        're': re.compile(ur'speedtest-[^.]*.digitalocean.com'),
+        're': re.compile(ur'speedtest-[-\w]*.digitalocean.com'),
     },
     'linode': {
         'index': 'https://www.linode.com/speedtest',
-        're': re.compile(ur'speedtest.[^. ]*.linode.com'),
+        're': re.compile(ur'speedtest.[-\w]*.linode.com'),
     },
     'vultr': {
         'index': 'https://www.vultr.com/faq/#downloadspeedtests',
-        're': re.compile(ur'[^. ]-ping.vultr.com'),
+        're': re.compile(ur'[-\w]*-ping.vultr.com'),
     },
 }
 
