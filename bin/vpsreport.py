@@ -35,7 +35,12 @@ def test_speed(addr):
 
 def report(results):
     for provider, provider_results in results.iteritems():
-        best = sorted(sum(provider_results.values(), []))[0]
+        total = sum(provider_results.values(), [])
+        total = filter(lambda _, worst: worst != 0, total)
+        if not total:
+            print '%s mtr failed' % provider.title()
+            continue
+        best = sorted(total)[0]
         for addr, addr_results in provider_results.iteritems():
             if best in addr_results:
                 loss, worst_ping = int(best[0]), best[1]
