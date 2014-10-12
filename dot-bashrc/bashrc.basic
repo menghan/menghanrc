@@ -35,18 +35,7 @@ export PATH="$HOME/bin:$HOME/Library/Python/2.7/bin:$HOME/.local/bin:$GOPATH/bin
 
 safe_source ()
 {
-	if [ -f "$1" ]; then
-		source "$1"
-	fi
-}
-
-mktar ()
-{
-	if [ -f $1 ]; then
-		gzip $1
-	elif [ -d $1 ]; then
-		tar czf $(dirname $1)/$(basename $1).tar.gz $1 && rm -rf $1
-	fi
+	[[ -s "$1" ]] && source "$1"
 }
 
 uptag ()
@@ -58,8 +47,10 @@ if [ -f ~/.pythonstartup ]; then
 	export PYTHONSTARTUP=~/.pythonstartup
 fi
 safe_source /etc/bash_completion
+safe_source /usr/share/autojump/autojump.sh
 if [[ `uname` =~ "Darwin" ]]; then
 	safe_source /usr/local/etc/bash_completion
+	safe_source `brew --prefix`/etc/autojump.sh
 fi
 
 export GIT_AUTHOR_NAME="Menghan"
