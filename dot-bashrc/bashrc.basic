@@ -31,7 +31,7 @@ replace_path_out "$HOME/Library/Python/2.7/bin"
 replace_path_out "$HOME/bin"
 replace_path_out "$GOPATH/bin"
 replace_path_out "$GOROOT/bin"
-export PATH="$HOME/bin:$HOME/Library/Python/2.7/bin:$HOME/.local/bin:$GOPATH/bin:$GOROOT/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
+export PATH="$HOME/bin:$GOPATH/bin:$GOROOT/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
 
 safe_source ()
 {
@@ -180,4 +180,13 @@ initgo ()
 	go get -u code.google.com/p/go.tools/cmd/vet
 	go get -u github.com/tools/godep
 	go get -u github.com/jstemmer/gotags
+}
+
+uppyenv ()
+{
+	if [[ -z $2 ]]; then
+		echo Usage: uppyenv env-name requirements.txt
+		return
+	fi
+	"$HOME/.virtualenvs/$1/bin/pip" install -r "$2"
 }
