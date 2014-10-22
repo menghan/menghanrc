@@ -6,7 +6,4 @@ for ((i=500; i<5000; i++)); do
 	addgroup --system --gid "$i" "$(printf "group%04d" $i)" --quiet
 	adduser --system --no-create-home --disabled-password --disabled-login --uid "$i" --gid "$i" "$(printf "user%04d" $i)" --quiet
 done
-apt-get purge -y adduser
-apt-get autoremove -y
-apt-get clean
 rm -rf /var/lib/apt/lists/*
