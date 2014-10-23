@@ -55,48 +55,13 @@ fi
 
 export GIT_AUTHOR_NAME="Menghan"
 
-parse_svn_branch() {
-	parse_svn_url | sed -e 's#^'"$(parse_svn_repository_root)"'##g' | awk '{print " (svn::"$1") " }'
-}
-parse_svn_url() {
-	svn info 2>/dev/null | sed -ne 's#^URL: ##p'
-}
-parse_svn_repository_root() {
-	svn info 2>/dev/null | sed -ne 's#^Repository Root: ##p'
-}
-
-parse_git_branch() {
-	git branch --no-color 2> /dev/null | sed -n '/*/ s/* //p'
-}
-
-parse_hg_branch() {
-	branch=$(hg branch 2>/dev/null)
-	if [ -n "$branch" ]; then
-		echo " (hg::$branch) "
-	fi
-}
-
 parse_branch() {
-	branch=$(parse_git_branch)
+	branch=$(git branch --no-color 2> /dev/null | sed -n '/*/ s/* //p')
 	if [ -n "$branch" ]; then
 		echo -n " (git::$branch) "
 		return
 	fi
-	# if [[ ! $PWD =~ "douban" ]]; then
-	#         return
-	# fi
-	# branch=$(parse_svn_branch)
-	# if [ -n "$branch" ]; then
-	#         echo -n "$branch"
-	#         return
-	# fi
-	# branch=$(parse_hg_branch)
-	# if [ -n "$branch" ]; then
-	#         echo -n "$branch"
-	#         return
-	# fi
 }
-
 
 BLACK="\[\033[0;38m\]"
 RED="\[\033[0;31m\]"
@@ -105,11 +70,6 @@ BLUE="\[\033[01;34m\]"
 GREEN="\[\033[0;32m\]"
 
 export PS1="\u@\h:\w$RED_BOLD\$(parse_branch)$BLACK\$ "
-
-# autojump
-if [[ `uname` =~ "Darwin" ]]; then
-	[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
-fi
 
 osxnotify() {
 	terminal-notifier -message "\"$*\""
