@@ -3,7 +3,7 @@
 set -e
 
 if [[ -z $3 ]]; then
-	echo "usage: backup src dst container_host_name"
+	echo "Usage: $0 src dst container_host_name"
 	exit 1
 fi
 
