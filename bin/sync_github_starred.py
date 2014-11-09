@@ -23,31 +23,42 @@ def parse_args():
     return args
 
 
-def main():
-    args = parse_args()
-    if args.dir:
-        try:
-            os.chdir(args.dir)
-        except OSError as e:
-            logger.error('chdir %s failed: %s', args.dir, e)
-            sys.exit(-1)
-    else:
-        logger.info('use pwd %s as working directory', os.environ['PWD'])
-    link = 'https://api.github.com/users/%s/starred' % args.username
+def iter_repos(link):
     while True:
         response = requests.get(link)
         for repo in response.json():
-            repo_name = repo['full_name']
-            basename = repo_name.split('/')[1]
-            if os.path.exists(basename):
-                logger.info('directory %s exists, don\'t clone %s', basename, repo_name)
-                continue
-            logger.info('Cloning repo %s', repo_name)
-            subprocess.call(['git', 'clone', repo['clone_url']])
+            yield repo
         links = dict([map(str.strip, reversed(segment.split(';'))) for segment in response.headers['link'].split(',')])
         if 'rel="next"' not in links:
             break
         link = links['rel="next"'].strip('<>')
+
+
+def clone_repo(repo, fetched):
+    repo_name = repo['full_name']
+    if not os.path.exists(repo_name):
+        if repo_name in fetched:
+            return
+        logger.info('Cloning repository \'%s\'', repo_name)
+        subprocess.check_call(['git', 'clone', repo['clone_url'], repo_name],
+                              stdout=open(os.devnull, 'wb'), stderr=open(os.devnull, 'wb'))
+        fetched.add(repo_name)
+
+
+def main():
+    args = parse_args()
+    if args.dir:
+        os.chdir(args.dir)
+    logger.info('use %s as working directory', os.environ['PWD'])
+    try:
+        fetched = set(map(str.strip, open('.synced')))
+    except IOError:
+        fetched = set()
+    for repo in iter_repos('https://api.github.com/users/%s/starred' % args.username):
+        clone_repo(repo, fetched)
+    with open('.synced', 'wb') as f:
+        for repo_name in fetched:
+            f.write('%s\n' % repo_name)
 
 
 if __name__ == '__main__':
