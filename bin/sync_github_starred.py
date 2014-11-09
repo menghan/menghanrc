@@ -7,6 +7,7 @@ import requests
 import argparse
 import logging
 import subprocess
+import threading
 
 logger = logging.getLogger(__name__)
 logger.addHandler(logging.StreamHandler())
@@ -39,10 +40,16 @@ def clone_repo(repo, fetched):
     if not os.path.exists(repo_name):
         if repo_name in fetched:
             return
-        logger.info('Cloning repository \'%s\'', repo_name)
-        subprocess.check_call(['git', 'clone', repo['clone_url'], repo_name],
-                              stdout=open(os.devnull, 'wb'), stderr=open(os.devnull, 'wb'))
-        fetched.add(repo_name)
+
+        def clone():
+            logger.info('Cloning repository \'%s\'', repo_name)
+            subprocess.check_call(['git', 'clone', repo['clone_url'], repo_name],
+                                  stdout=open(os.devnull, 'wb'), stderr=open(os.devnull, 'wb'))
+            fetched.add(repo_name)
+
+        t = threading.Thread(target=clone)
+        t.start()
+        return t
 
 
 def main():
@@ -54,8 +61,13 @@ def main():
         fetched = set(map(str.strip, open('.synced')))
     except IOError:
         fetched = set()
+    threads = []
     for repo in iter_repos('https://api.github.com/users/%s/starred' % args.username):
-        clone_repo(repo, fetched)
+        t = clone_repo(repo, fetched)
+        if t is not None:
+            threads.append(t)
+    for t in threads:
+        t.join()
     with open('.synced', 'wb') as f:
         for repo_name in fetched:
             f.write('%s\n' % repo_name)
