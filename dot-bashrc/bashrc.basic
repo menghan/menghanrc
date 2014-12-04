@@ -5,8 +5,6 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export EDITOR=vim
 export GOPATH=$HOME/.go
-export GOROOT=/usr/local/go
-export GOSRC=$GOROOT/src
 ssh-add 2> /dev/null
 stty -ixon > /dev/null 2>&1
 
