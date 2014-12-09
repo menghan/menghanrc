@@ -1,8 +1,8 @@
 # disable bash's history expandation
 set +o histexpand
 
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+export LANG=C
+export LC_ALL=C
 export EDITOR=vim
 export GOPATH=$HOME/.go
 ssh-add 2> /dev/null
