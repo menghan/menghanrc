@@ -8,6 +8,6 @@ fi
 
 while ! "$@"
 do
-	echo sleep $interval seconds...
+	echo ">>> Retry \"$@\" after sleeping $interval seconds..."
 	sleep $interval
 done
