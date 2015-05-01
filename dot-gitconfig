@@ -31,6 +31,7 @@
 	ui = auto
 [core]
 	pager = less -FRSX
+	excludesfile = ~/.gitignore
 [user]
 	name = Menghan Zheng
 	email = menghan412@gmail.com

@@ -19,6 +19,7 @@ touch ~/.bash_profile
 grep -q '.bashrc' ~/.bash_profile || echo "[ -f ~/.bashrc ] && source ~/.bashrc" >> ~/.bash_profile
 
 ln -sf ~/codespace/menghanrc/dot-gitconfig .gitconfig
+ln -sf ~/codespace/menghanrc/dot-gitignore .gitignore
 ln -sf ~/codespace/menghanrc/dot-toprc .toprc
 ln -sf ~/codespace/menghanrc/dot-tmux.conf .tmux.conf
 ln -sf ~/codespace/menghanrc/dot-tigrc .tigrc
