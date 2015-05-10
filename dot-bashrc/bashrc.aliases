@@ -9,7 +9,7 @@ else
 	alias ls='ls --color=auto'
 fi
 alias lt='ls -lat'
-alias brup='echo "updating..." && brew update && brew outdated && echo "upgrading..." && brew upgrade && brew cleanup'
+alias brup='brew update >/dev/null && brew outdated && brew upgrade --all && brew cleanup && brew doctor | grep -v "^Your system is ready to brew.$"'
 alias tcpmon='sudo tcpflow -X /dev/null -cp'
 alias proxyisok='curl -I http://youtube.com'
 alias unproxy='unset http_proxy; unset https_proxy; unset all_proxy;'
