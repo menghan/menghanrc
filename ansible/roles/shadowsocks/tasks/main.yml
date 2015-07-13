@@ -2,6 +2,7 @@
 
 - name: Enable the backports repository to install `docker.io`
   apt_repository: repo="deb http://http.debian.net/debian jessie-backports main" state=present
+  tags: packages
 
 - name: Install packages
   apt: update_cache=yes name={{ item }} state=present
@@ -10,15 +11,9 @@
   - python-docker
   tags: packages
 
-- name: Run shadowsocks
-  docker:
-    image: menghan/shadowsocks
-    detach: True
-    name: "{{ item.name }}"
-    ports: "{{ item.port }}:{{ item.port }}"
-    publish_all_ports: yes
-    state: started
-    pull: always
-    volumes: "{{ item.config }}:/etc/shadowsocks.json"
-    restart_policy: always
+- name: Shadowsocks runner
+  copy: src=runshadowsocks dest=/usr/local/bin/runshadowsocks mode=0755
+
+- name: Run shadowsocks instances
+  command: /usr/local/bin/runshadowsocks {{ item }}
   with_items: shadowsocks_instances
