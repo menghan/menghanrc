@@ -1,12 +1,15 @@
-FROM menghan/base
+FROM debian:latest
 MAINTAINER Menghan Zheng <menghan412@gmail.com>
 
+ENV LANG C.UTF-8
+
 RUN apt-get update && \
-	apt-get install -y python-pip git python-pkg-resources && \
-	pip install "git+http://github.com/menghan/shadowsocks.git@master" && \
-	apt-get purge -y python-pip git && \
+	apt-get install -y python-pip && \
+	pip install shadowsocks && \
+	apt-get purge -y python-pip && \
 	apt-get autoremove -y && \
-	apt-get clean
+	apt-get clean && \
+	rm -rf /var/lib/apt/lists/*
 
 ADD shadowsocks.json /etc/
 
