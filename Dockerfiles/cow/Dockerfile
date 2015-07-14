@@ -1,15 +1,16 @@
-FROM menghan/golang
-
+FROM golang:latest
 MAINTAINER Menghan Zheng <menghan412@gmail.com>
 
-RUN GOPATH=/usr/local /usr/local/bin/go get github.com/menghan/cow
+ENV LANG C.UTF-8
+
+RUN GOPATH=/usr/local go get github.com/menghan/cow
 ADD samplerc /rc
 
 RUN mkdir -p /var/tmp/.cow && chown nobody:nogroup /var/tmp/.cow
 VOLUME /var/tmp/.cow
 
-ENV HOME /var/tmp
 USER nobody
+ENV HOME /var/tmp
 
 ENTRYPOINT ["/usr/local/bin/cow"]
 CMD ["-h"]
