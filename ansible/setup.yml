@@ -1,5 +1,11 @@
 ---
 
-- hosts: dosgp1
+- hosts: shadowsockses
   roles:
   - shadowsocks
+  tags: shadowsocks,proxy
+
+- hosts: localhost
+  roles:
+  - rcfiles
+  tags: rc
