@@ -10,6 +10,23 @@
   - setup_rc
   tags: rc
 
+- hosts: dockers
+  tasks:
+  - name: start cow
+    docker:
+      image: menghan/cow
+      state: reloaded
+      command: "-rc /var/tmp/.cow/rc"
+      expose:
+      - 7777
+      ports:
+      - "7777:7777"
+      volumes:
+      - "{{ ansible_env.HOME }}/.cow/rc:/var/tmp/.cow/rc"
+      pull: missing
+      docker_api_version: 1.18
+  tags: docker
+
 - hosts: shadowsockses
   roles:
   - shadowsocks
