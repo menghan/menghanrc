@@ -1,0 +1,58 @@
+---
+
+- name: Setup apt source
+  copy: src=sources.list dest=/etc/apt/sources.list
+
+- name: Update cache
+  apt: update_cache=yes
+
+- name: Install packages
+  apt: name={{ item }} state=present
+  with_items:
+  - aptitude
+  - runit
+  - daemontools
+  - git
+  - tig
+  - git-svn
+  - subversion
+  - git-doc
+  - vim
+  - exuberant-ctags
+  - cscope
+  - tofrodos
+  - vim-doc
+  - build-essential
+  - manpages
+  - manpages-dev
+  - gdb
+  - gcc
+  - libc6-dev
+  - gawk
+  - make
+  - autojump
+  - lftp
+  - openssh-server
+  - openssh-client
+  - bash-completion
+  - unzip
+  - zip
+  - gawk
+  - less
+  - lv
+  - lsof
+  - screen
+  - tmux
+  - sudo
+  - telnet
+  - xtail
+  - colordiff
+  - python2.7-doc
+  - virtualenvwrapper
+  - p7zip-full
+  - wget
+  - curl
+  - unrar
+  - traceroute
+  - p7zip-rar
+  - tree

@@ -1,0 +1,16 @@
+---
+
+- hosts: devs
+  roles:
+  - install_packages
+  tags: package
+
+- hosts: devs
+  roles:
+  - setup_rc
+  tags: rc
+
+- hosts: shadowsockses
+  roles:
+  - shadowsocks
+  tags: shadowsocks,proxy
