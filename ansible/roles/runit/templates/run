@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+ulimit -n 1048576
+exec 2>&1
+
+{{ command }}
