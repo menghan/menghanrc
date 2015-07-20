@@ -34,5 +34,5 @@
 
 - hosts: shadowsockses
   roles:
-  - { role: shadowsocks, mirror_country: us }
+  - { role: shadowsocks, mirror_country: jp }
   tags: shadowsocks,proxy
