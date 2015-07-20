@@ -1,15 +1,5 @@
 ---
 
-- name: Enable the backports repository to install `docker.io`
-  apt_repository: repo="deb http://http.debian.net/debian jessie-backports main" state=present
-  tags: packages
-
-- name: Install packages
-  apt: update_cache=yes name={{ item }} state=present
-  with_items:
-  - docker.io
-  tags: packages
-
 - name: Run shadowsocks instances
   docker:
     image: menghan/shadowsocks
@@ -23,6 +13,6 @@
     # - "{{ item.config }}:/etc/shadowsocks.json"  # see https://github.com/ansible/ansible-modules-core/issues/1158
     - "{{ item.config_dir }}:/var/etc"
     pull: missing
-    command: "/usr/local/bin/ssserver -c  /var/etc/shadowsocks.json"
+    command: "/usr/local/bin/ssserver -c /var/etc/shadowsocks.json"
     docker_api_version: 1.18
   with_items: shadowsocks_instances
