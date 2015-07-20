@@ -11,6 +11,11 @@
   tags: rc
 
 - hosts: dockers
+  roles:
+  - setup_docker
+  tags: docker
+
+- hosts: gbyte
   tasks:
   - name: start cow
     docker:
@@ -22,10 +27,10 @@
       ports:
       - "7777:7777"
       volumes:
-      - "{{ ansible_env.HOME }}/.cow/rc:/var/tmp/.cow/rc"
+      - "/home/menghan/.cow/rc:/var/tmp/.cow/rc"
       pull: missing
       docker_api_version: 1.18
-  tags: docker
+  tags: docker,cow
 
 - hosts: shadowsockses
   roles:
