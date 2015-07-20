@@ -6,8 +6,21 @@
 - name: Install packages
   apt: update_cache=yes name={{ item }} state=present
   with_items:
-  - lxc-docker
+  - apt-transport-https
   - python-pip
+
+- name: Setup apt docker.list
+  copy: src=docker.list dest=/etc/apt/sources.list.d
+  register: init_docker
+
+- name: Import docker repository key
+  command: apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
+  when: init_docker.changed
+
+- name: Install packages
+  apt: update_cache=yes name={{ item }} state=present
+  with_items:
+  - lxc-docker
 
 - name: Install required python packages
   pip: name={{ item }} state=present
