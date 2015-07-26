@@ -13,7 +13,9 @@
 - hosts: dockers
   roles:
   - setup_docker
-  tags: docker
+  tags:
+  - docker
+  - package
 
 - hosts: gbyte
   tasks:
@@ -30,7 +32,26 @@
       - "/home/menghan/.cow/rc:/var/tmp/.cow/rc"
       pull: missing
       docker_api_version: 1.18
-  tags: docker,cow
+    tags:
+    - docker
+    - cow
+  - name: start airvideohd
+    docker:
+      command: "/opt/AirVideoServerHD --config=/etc/airvideohd/Server.properties"
+      image: menghan/airvideohd
+      state: reloaded
+      expose:
+      - 45633
+      ports:
+      - "45633:45633"
+      volumes:
+      - "/mnt/anonynas:/nas"
+      - "/home/menghan/bin/airvideohd:/etc/airvideohd"
+      pull: missing
+      docker_api_version: 1.18
+    tags:
+    - docker
+    - airvideohd
 
 - hosts: shadowsockses
   roles:
