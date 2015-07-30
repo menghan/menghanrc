@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-# turn `remote-run localhost echo_args.sh hi a\ b\(c\[d\]\)` to `ssh localhost echo_args.sh "hi" "a\ b\(c\[d\]\)"`
-
-remote="$1"
-shift
-cmd=$(while [[ -n "$1" ]]; do echo "$1"; shift; done | \
-	python -c "import sys; print ' '.join('"%s"' % s.replace(' ', r'\ ').replace('(', r'\(').replace(')', r'\)').replace('[', r'\[').replace(']', r'\]') for s in sys.stdin.read().splitlines())")
-ssh "$remote" "$cmd"
