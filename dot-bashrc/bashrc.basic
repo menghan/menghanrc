@@ -77,12 +77,12 @@ osxnotify() {
 th()
 {
 	if [[ x"$1" == "x" ]]; then
-		tmux ls
+		tmux ls 2>/dev/null
 	else
-		if tmux ls | egrep -q "^$1"; then
+		if tmux ls 2>/dev/null | egrep -q "^$1"; then
 			tmux attach -t "$1"
 		else
-			echo -n "Create tmux session named \"$1\"? [Press enter to continue, ^C to abort]"
+			echo -n "Create tmux session named \"$1\"? [Press ENTER to continue, ^C to abort] "
 			read
 			tmux new-session -s "$1"
 		fi
