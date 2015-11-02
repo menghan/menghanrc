@@ -6,6 +6,7 @@
   - "{{ ansible_env.HOME }}/codespace"
   - "{{ ansible_env.HOME }}/bin"
   - "{{ ansible_env.HOME }}/.pip"
+  ignore_errors: yes
 
 - name: Clone rcfiles
   git: repo="https://github.com/menghan/{{ item }}"
@@ -38,6 +39,7 @@
   - { src: "menghanrc/bin/calcsum", dest: "bin/calcsum" }
   - { src: "menghanrc/bin/punzip", dest: "bin/punzip" }
   - { src: "menghanrc/bin/jsonpretty", dest: "bin/jsonpretty" }
+  ignore_errors: yes
 
 - name: Touch files
   file: dest="{{ ansible_env.HOME }}/{{ item }}" state=touch
