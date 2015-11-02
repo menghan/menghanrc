@@ -47,6 +47,7 @@
   - .bashrc.local
   - .bashrc
   - .bash_profile
+  ignore_errors: yes
 
 - name: Setup .bashrc
   lineinfile: dest="{{ ansible_env.HOME }}/.bashrc" state=present regexp="{{ item.regexp }}" line="{{ item.line }}"
