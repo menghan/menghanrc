@@ -1,11 +1,13 @@
 localhost
 gbyte
 gbyte2 ubuntu_release=wily
+raspberrypi
 
 [devs]
 localhost
 gbyte
 gbyte2
+raspberrypi
 
 [dockers]
 gbyte
