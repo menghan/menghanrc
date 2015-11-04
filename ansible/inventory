@@ -1,12 +1,15 @@
 localhost
 gbyte
+gbyte2
 
 [devs]
 localhost
 gbyte
+gbyte2
 
 [dockers]
 gbyte
+gbyte2
 
 [shadowsockses]
 dosgp2
