@@ -12,7 +12,9 @@
   - docker
   - package
 
-- hosts: gbyte
+- hosts:
+  - gbyte
+  - gbyte2
   tasks:
   - name: start cow
     docker:

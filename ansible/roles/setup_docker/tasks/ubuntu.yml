@@ -1,12 +1,10 @@
 ---
 
-- name: Setup apt source.list
-  template: src=sources.list dest=/etc/apt/sources.list
-
-- name: Install apt-transport-https
+- name: Install apt-transport-https and python-pip
   apt: update_cache=yes name={{ item }} state=present
   with_items:
   - apt-transport-https
+  - python-pip
 
 - name: Setup apt docker.list
   copy: src=docker.list dest=/etc/apt/sources.list.d
