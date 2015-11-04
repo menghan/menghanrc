@@ -1,7 +1,7 @@
 ---
 
 - name: Setup apt source
-  copy: src=sources.list dest=/etc/apt/sources.list
+  template: src=sources.list dest=/etc/apt/sources.list
 
 - name: Update cache
   apt: update_cache=yes

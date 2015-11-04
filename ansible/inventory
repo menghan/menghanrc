@@ -1,6 +1,6 @@
 localhost
 gbyte
-gbyte2
+gbyte2 ubuntu_release=wily
 
 [devs]
 localhost
