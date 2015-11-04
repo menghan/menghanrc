@@ -28,7 +28,7 @@
       volumes:
       - "/home/menghan/.cow/rc:/var/tmp/.cow/rc"
       pull: missing
-      docker_api_version: 1.18
+      docker_api_version: "1.18"
     tags:
     - docker
     - cow
@@ -45,7 +45,7 @@
       - "/mnt/anonynas:/nas"
       - "/home/menghan/bin/airvideohd:/etc/airvideohd"
       pull: missing
-      docker_api_version: 1.18
+      docker_api_version: "1.18"
     tags:
     - docker
     - airvideohd
