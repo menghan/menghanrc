@@ -27,7 +27,6 @@
   - gdb
   - gcc
   - libc6-dev
-  - gawk
   - make
   - autojump
   - lftp
@@ -55,5 +54,4 @@
   - traceroute
   - p7zip-rar
   - tree
-  - exuberant-ctags
   # - runit
