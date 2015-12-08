@@ -1,0 +1,20 @@
+#!/bin/bash
+
+DHT_PORT=6885
+TCP_PORT=6957
+RPC_PORT=6800
+docker run \
+	--name aria2c \
+	-d --restart=always \
+	-p $DHT_PORT:$DHT_PORT/udp -p $TCP_PORT:$TCP_PORT/tcp -p $RPC_PORT:$RPC_PORT/tcp \
+	-v /usr/bin/aria2c:/usr/bin/aria2c:ro \
+	-v /usr/lib/arm-linux-gnueabihf:/usr/lib/arm-linux-gnueabihf:ro \
+	-v /etc/ssl:/etc/ssl:ro \
+	-v /mnt/nas/aria2:/mnt/nas/aria2 \
+	-v /home/pi/.aria2:/home/nobody/.aria2 \
+	-u nobody \
+	-e HOME=/home/nobody \
+	resin/rpi-raspbian:latest \
+	/usr/bin/aria2c -d /mnt/nas/aria2 \
+	--save-session=/home/nobody/.aria2/aria2.session --input-file=/home/nobody/.aria2/aria2.session \
+	--listen-port=$TCP_PORT --dht-listen-port=$DHT_PORT --rpc-listen-port=$RPC_PORT
