@@ -19,10 +19,13 @@ class EncWriteWrapper(object):
 
 def subtree(obj, path):
     for seg in path.split('/'):
-        if not isinstance(obj, dict):
-            return None
         if seg == '':
             continue
+        if isinstance(obj, list) and seg.isdigit():
+            obj = obj[int(seg)]
+            continue
+        if not isinstance(obj, dict):
+            return None
         if seg not in obj:
             return None
         obj = obj[seg]
