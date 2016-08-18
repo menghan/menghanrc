@@ -1,1 +1,1 @@
-deb http://get.docker.io/ubuntu docker main
+deb https://apt.dockerproject.org/repo ubuntu-xenial main

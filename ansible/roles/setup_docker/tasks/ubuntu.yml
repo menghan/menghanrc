@@ -5,21 +5,28 @@
   with_items:
   - apt-transport-https
   - python-pip
+  - ca-certificates
+  - linux-image-extra-virtual
 
 - name: Setup apt docker.list
   copy: src=docker.list dest=/etc/apt/sources.list.d
   register: init_docker
 
 - name: Import docker repository key
-  command: apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9
+  command: apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
   when: init_docker.changed
+
+- name: Install packages
+  apt: name={{ item }} state=absent
+  with_items:
+  - lxc-docker
 
 - name: Install packages
   apt: update_cache=yes name={{ item }} state=present
   with_items:
-  - lxc-docker
+  - docker-engine
 
 - name: Install required python packages
-  pip: name={{ item }} state=present
+  pip: name={{ item }} state=present extra_args='--disable-pip-version-check'
   with_items:
   - docker-py
