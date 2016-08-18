@@ -14,7 +14,7 @@
   register: init_docker
 
 - name: Import docker repository key
-  command: apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
+  command: apt-key adv --keyserver hkp://ipv4.pool.sks-keyservers.net --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
   when: init_docker.changed
 
 - name: Remove obsolate package lxc-docker
