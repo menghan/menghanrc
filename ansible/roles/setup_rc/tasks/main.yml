@@ -39,6 +39,8 @@
   - { src: "menghanrc/bin/calcsum", dest: "bin/calcsum" }
   - { src: "menghanrc/bin/punzip", dest: "bin/punzip" }
   - { src: "menghanrc/bin/jsonpretty", dest: "bin/jsonpretty" }
+  - { src: "menghanrc/bin/bullet", dest: "bin/bullet" }
+  - { src: "menghanrc/bin/bulletme", dest: "bin/bulletme" }
   ignore_errors: yes
 
 - name: Touch files
