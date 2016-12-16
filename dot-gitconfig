@@ -51,3 +51,5 @@
 	autocorrect = 1
 [push]
 	default = simple
+[http "https://github.intra.douban.com/"]
+	sslCAInfo = /Users/menghan/Documents/Douban CA.pem
