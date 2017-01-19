@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-CONFIG="$(realpath "$1")"
-PORT="$(sed -n 's#\s*"server_port":\s*\([0-9]*\),\?#\1#p' "$CONFIG")"
-NAME=shadowsocks-runner-"$(basename "$CONFIG")"
-
-docker restart "$NAME" && exit 0
-docker run -d --name "$NAME" --restart=always -p "$PORT":"$PORT" -v "$CONFIG":/etc/shadowsocks.json menghan/shadowsocks

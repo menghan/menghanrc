@@ -1,6 +1,0 @@
----
-
-- name: Setup docker environment
-  include: ubuntu.yml
-  when: ansible_distribution == "Ubuntu"
-  tags: packages

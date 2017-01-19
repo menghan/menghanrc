@@ -1,6 +1,0 @@
-deb http://{{ mirror_country | default('cn') }}.archive.ubuntu.com/ubuntu/ {{ ubuntu_release | default("trusty") }} main restricted universe multiverse
-deb http://{{ mirror_country | default('cn') }}.archive.ubuntu.com/ubuntu/ {{ ubuntu_release | default("trusty") }}-updates main restricted universe multiverse
-deb http://{{ mirror_country | default('cn') }}.archive.ubuntu.com/ubuntu/ {{ ubuntu_release | default("trusty") }}-security main restricted universe multiverse
-deb-src http://{{ mirror_country | default('cn') }}.archive.ubuntu.com/ubuntu/ {{ ubuntu_release | default("trusty") }} main restricted universe multiverse
-deb-src http://{{ mirror_country | default('cn') }}.archive.ubuntu.com/ubuntu/ {{ ubuntu_release | default("trusty") }}-updates main restricted universe multiverse
-deb-src http://{{ mirror_country | default('cn') }}.archive.ubuntu.com/ubuntu/ {{ ubuntu_release | default("trusty") }}-security main restricted universe multiverse

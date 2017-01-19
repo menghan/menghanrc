@@ -1,4 +1,0 @@
-.*\.py[c|o]
-build/
-.*\.egg-info
-dist/.*\.egg
