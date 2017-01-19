@@ -8,11 +8,11 @@ set -e
 
 count=${1:-1}
 
-T=$(mktemp)
 for ((i=1; i<=$count; i++))
 do
-	output=$(ls `printf "%02d" $i`* | head -n1 | sed 's/-[a-zA-Z0-9]\{15\}_part[0-9]\{1,\}.flv/.flv/')
+	T=$(mktemp -p .)
+	output=$(ls `printf "%02d" $i`*_part*.flv | head -n1 | sed 's/-[a-zA-Z0-9]\{15\}_part[0-9]\{1,\}.flv/.flv/')
 	ls -v1 `printf "%02d" $i`* | sed -e "s/^/file \'/" -e "s/$/\'/" > "$T"
-	ffmpeg -f concat -safe -1 -i "$T" -c copy "$output"
+	ffmpeg -f concat -safe -1 -i "$T" -c copy -y "$output"
 	rm -f "$T"
 done
