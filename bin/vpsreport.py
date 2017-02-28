@@ -88,8 +88,9 @@ def main():
         logging.warn('all tests failed')
         return
     results = []
+    avg = lambda l: sum(l) / len(l)
     for addr, addr_results in raw_results.iteritems():
-        results.append((addr,) + tuple(map(sum, zip(*addr_results))))
+        results.append((addr,) + tuple(map(avg, zip(*addr_results))))
     results.sort(key=compare_mtr_result_key)
     best_result = results[0]
     best_addr = best_result[0]
