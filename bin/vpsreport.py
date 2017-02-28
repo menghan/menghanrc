@@ -10,8 +10,8 @@ from collections import defaultdict
 import sh
 import requests
 
-using = 'vjp2'
-using_loc = 'hnd-jp-ping.vultr.com'
+using = '45.76.177.184'
+using_loc = 'sgp-ping.vultr.com'
 providers = {
     'linode': {
         'index': 'https://www.linode.com/speedtest',
@@ -72,7 +72,7 @@ def compare_mtr_result_key(result):
 
 def main():
     need_total = '--total' in sys.argv
-    results = []
+    raw_results = defaultdict(list)
     for i in xrange(3):
         for addr in get_test_addresses(need_total):
             logging.debug('testing %s ...', addr)
@@ -82,11 +82,14 @@ def main():
                 logging.warn('test %s failed: %s', addr, e)
                 continue
             logging.warn('test %s done. loss: %s, avg(std): %s(%s), worst: %s', addr.rjust(35), loss, avg, std, worst)
-            results.append((addr, loss, avg, std, worst))
+            raw_results[addr].append((loss, avg, std, worst))
     
-    if not results:
+    if not raw_results:
         logging.warn('all tests failed')
         return
+    results = []
+    for addr, addr_results in raw_results.iteritems():
+        results.append((addr,) + tuple(map(sum, zip(*addr_results))))
     results.sort(key=compare_mtr_result_key)
     best_result = results[0]
     best_addr = best_result[0]
