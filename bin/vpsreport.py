@@ -51,7 +51,11 @@ def main():
             index, reobj = config['index'], config['re']
             for addr in set(reobj.findall(requests.get(index).text)):
                 logging.warn('testing %s from provider %s...', addr, provider)
-                loss, worst = test_speed(addr)
+                try:
+                    loss, worst = test_speed(addr)
+                except Exception as e:
+                    logging.warn('test %s from provider %s failed: %s', addr, provider, e)
+                    continue
                 logging.warn('test %s from provider %s done. loss: %s, worst: %s', addr, provider, loss, worst)
                 result[provider][addr].append(test_speed(addr))
         break
