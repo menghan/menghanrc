@@ -21,6 +21,10 @@ providers = {
         'index': 'https://www.vultr.com/faq/#downloadspeedtests',
         're': re.compile(ur'[-\w]*-ping.vultr.com'),
     },
+    'digitalocean': {
+        'index': 'http://speedtest-sgp1.digitalocean.com/',
+        're': re.compile(ur'speedtest-[\w]*.digitalocean.com'),
+    },
 }
 re_near = re.compile('(jp|sgp|japan|singapore|tokyo)')
 
@@ -54,7 +58,7 @@ def get_test_addresses(need_total=False):
     yield using
     for provider, config in providers.iteritems():
         index, reobj = config['index'], config['re']
-        for retry in xrange(3):
+        for retry in xrange(10):
             try:
                 for addr in set(reobj.findall(requests.get(index).text)):
                     if need_total or re_near.search(addr):
