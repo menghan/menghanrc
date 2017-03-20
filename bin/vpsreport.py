@@ -77,7 +77,7 @@ def compare_mtr_result_key(result):
 def main():
     need_total = '--total' in sys.argv
     raw_results = defaultdict(list)
-    for i in xrange(3):
+    for i in xrange(10):
         for addr in get_test_addresses(need_total):
             logging.debug('testing %s ...', addr)
             try:
