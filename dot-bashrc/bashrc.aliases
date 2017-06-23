@@ -11,6 +11,7 @@ fi
 alias lt='ls -lat'
 alias brup='brew update >/dev/null && brew outdated && brew upgrade --all && brew cleanup && brew doctor | grep -v "^Your system is ready to brew.$"'
 alias tcpmon='sudo tcpflow -X /dev/null -cp'
+alias proxy='export http_proxy=http://proxy.intra.menghan.me:8888; export https_proxy=http://proxy.intra.menghan.me:8888; proxyisok'
 alias proxyisok='curl -I http://youtube.com'
 alias unproxy='unset http_proxy; unset https_proxy; unset all_proxy;'
 alias tigfp='tig --first-parent -m --find-copies-harder'
