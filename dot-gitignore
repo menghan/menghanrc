@@ -1,1 +1,5 @@
 .*.swp
+.vscode
+*.py[c|o]
+*.[a|o]
+*.so
