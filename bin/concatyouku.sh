@@ -19,7 +19,7 @@ count=${1:-1}
 for ((i=1; i<=$count; i++))
 do
 	T=$($MKTEMP -p .)
-	output=$(ls *`printf "%02d" $i`*_part*.mp4 | head -n1 | $SED 's/-[a-zA-Z0-9]\{15\}_part[0-9]\{1,\}.mp4/.mp4/')
+	output=$(ls *`printf "%02d" $i`*_part*.mp4 | head -n1 | $SED 's/-[a-zA-Z0-9]\{7,15\}_part[0-9]\{1,\}.mp4/.mp4/')
 	$LS -v1 *`printf "%02d" $i`*_part*.mp4 | $SED -e "s/^/file \'/" -e "s/$/\'/" > "$T"
 	ffmpeg -f concat -safe -1 -i "$T" -c copy -y "$output"
 	rm -f "$T"
