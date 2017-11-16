@@ -147,3 +147,17 @@ uppyenv ()
 	fi
 	"$HOME/.virtualenvs/$1/bin/pip" install -r "$2"
 }
+
+function gobuild ()
+{
+	pkg="$GOLANG_PACKAGE"
+	if [[ -z $pkg ]]; then
+		pkg="$(cat .golang_package_name 2>/dev/null)"
+		if test $? != 0; then
+			echo "Set current directory's golang package name into .golang_package_name or env GOLANG_PACKAGE"
+			return 1
+		fi
+	fi
+	sudo docker run --rm -v "$(pwd)":"/go/src/$pkg" -w "/go/src/$pkg" golang:1-stretch go build "${pkg}/${1}" && \
+		sudo chown $(id -u):$(id -g) "$(basename ${pkg}/${1})"
+}
