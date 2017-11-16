@@ -20,3 +20,4 @@ alias drmi='docker rmi "$(echo `docker images | grep "^<none> "` | cut -d " " -f
 alias sst='ssh -t'
 alias ap='ansible-playbook'
 alias bootstrap_rcfiles_ansible='ansible-playbook -c local -i localhost, ~/codespace/menghanrc/ansible/rc.yml'
+alias dep='n=$(cat .golang_package_name) && sudo docker run --rm -u "$(id -u):$(id -g)" -w /go/src/$n -v $(pwd):/go/src/$n menghan/dep'
