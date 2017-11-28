@@ -8,8 +8,10 @@
 	rs = remote show origin
 	recent = log --abbrev-commit --pretty=oneline -10
 	to = diff --staged --find-copies-harder	# to commit
-	prd = !git remote update upstream > /dev/null && git diff `git merge-base ${1:-HEAD} upstream/master` --find-copies-harder
-	prs = !git remote update upstream > /dev/null && git diff `git merge-base ${1:-HEAD} upstream/master` --find-copies-harder --stat
+	prd = !git remote update upstream > /dev/null && git diff `git merge-base HEAD upstream/master` --find-copies-harder $1
+	prs = !git remote update upstream > /dev/null && git diff `git merge-base HEAD upstream/master` --find-copies-harder --stat
+	prbd = !git remote update upstream > /dev/null && git diff `git merge-base ${1:-HEAD} upstream/master` --find-copies-harder
+	prbs = !git remote update upstream > /dev/null && git diff `git merge-base ${1:-HEAD} upstream/master` --find-copies-harder --stat
 	pa = push --all
 	fh = log -p --graph --full-diff --find-copies-harder --
 	sb = show-branch                       # from whyme
