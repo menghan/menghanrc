@@ -2,6 +2,7 @@
 set +o histexpand
 
 export LANG=en_US.UTF-8
+export LANGUAGE=en_US
 export LC_ALL=en_US.UTF-8
 export EDITOR=vim
 ssh-add 2> /dev/null
