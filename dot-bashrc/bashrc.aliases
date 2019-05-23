@@ -20,4 +20,3 @@ alias drmi='docker rmi "$(echo `docker images | grep "^<none> "` | cut -d " " -f
 alias sst='ssh -t'
 alias ap='ansible-playbook'
 alias bootstrap_rcfiles_ansible='ansible-playbook -c local -i localhost, ~/codespace/menghanrc/ansible/rc.yml'
-alias dep='n=$(cat .golang_package_name) && sudo docker run --rm --net host -u "$(id -u):$(id -g)" -e http_proxy=$http_proxy -e https_proxy=$https_proxy -w /go/src/$n -v "$HOME/.netrc:/home/user_$(id -u)/.netrc:ro" -v $(pwd):/go/src/$n menghan/dep'
