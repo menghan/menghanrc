@@ -89,7 +89,7 @@ th()
 }
 
 godoc() {
-	env godoc $1 | less
+	go doc -all $1 | less
 }
 
 removeunuseoriginbranch ()
