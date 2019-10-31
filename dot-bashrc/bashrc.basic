@@ -68,6 +68,8 @@ GREEN="\[\033[0;32m\]"
 
 export PS1="\u@\h:\w$RED_BOLD\$(parse_branch)$BLACK\$ "
 
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
 osxnotify() {
 	terminal-notifier -message "\"$*\""
 }
