@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [[ -z "$1" ]]; then
+	echo 'Usage: $0 <goversion>'
+	exit 1
+fi
+version="$1"
+
+cd ~
+go get golang.org/dl/go$version
+~/./go/bin/go$version download
+cd ~/bin
+ln -sf ~/go/bin/go$version
+ln -sf ./go$version go
+
+go version
