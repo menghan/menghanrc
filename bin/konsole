@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+cd
+export QT_SCREEN_SCALE_FACTORS=1
+exec /usr/bin/konsole
