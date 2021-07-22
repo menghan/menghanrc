@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 cd
 export QT_SCREEN_SCALE_FACTORS=1
+export QT_IM_MODULE=ibus
 exec /usr/bin/konsole
