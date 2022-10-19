@@ -92,7 +92,7 @@ th()
 			read
 			tmux new-session -s "$1" \; detach-client
 			cd $HOME
-			tmux attatch -t "$1"
+			tmux attach -t "$1"
 		fi
 	fi
 }
