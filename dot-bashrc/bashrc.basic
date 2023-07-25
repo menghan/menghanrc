@@ -3,11 +3,12 @@ set +o histexpand
 
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US
+export TERM=xterm
 export LC_ALL=en_US.UTF-8
 export EDITOR=vim
-export XMODIFIERS=@im=ibus
-export GTK_IM_MODULE=ibus
-export QT_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus # essential
+export GTK_IM_MODULE=ibus # essential
+export QT_IM_MODULE=ibus # essential
 export QT4_IM_MODULE=ibus
 export QT5_IM_MODULE=ibus
 ssh-add 2> /dev/null
