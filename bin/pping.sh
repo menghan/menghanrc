@@ -4,7 +4,7 @@
 
 while true
 do
-	date
+	echo -n "ping $@ at "; date
 	ping -c 10 $@ | grep time --line-buffered | tee /tmp/ping$@ | grep time=
 	grep -q ', 0% packet loss' /tmp/ping$@ || loss=1
 	if [[ -n $loss ]]; then
