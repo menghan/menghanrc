@@ -3,3 +3,4 @@
 *.py[c|o]
 *.[a|o]
 *.so
+.aider*
