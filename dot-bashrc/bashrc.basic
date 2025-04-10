@@ -3,7 +3,7 @@ set +o histexpand
 
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US
-export TERM=xterm
+export TERM=xterm-256color
 export LC_ALL=en_US.UTF-8
 export EDITOR=vim
 export XMODIFIERS=@im=ibus # essential

@@ -20,3 +20,4 @@ alias drmi='docker rmi "$(echo `docker images | grep "^<none> "` | cut -d " " -f
 alias sst='ssh -t'
 alias ap='ansible-playbook'
 alias bootstrap_rcfiles_ansible='ansible-playbook -c local -i localhost, ~/codespace/menghanrc/ansible/rc.yml'
+alias nvim='NVIM_APPNAME=lazyvim /home/menghan/bin/nvim'
