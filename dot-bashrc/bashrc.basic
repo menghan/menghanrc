@@ -6,11 +6,13 @@ export LANGUAGE=en_US
 export TERM=xterm-256color
 export LC_ALL=en_US.UTF-8
 export EDITOR=vim
-export XMODIFIERS=@im=ibus # essential
-export GTK_IM_MODULE=ibus # essential
-export QT_IM_MODULE=ibus # essential
-export QT4_IM_MODULE=ibus
-export QT5_IM_MODULE=ibus
+# export XMODIFIERS=@im=ibus # essential
+# export GTK_IM_MODULE=ibus # essential
+# export QT_IM_MODULE=ibus # essential
+unset GTK_IM_MODULE
+unset QT_IM_MODULE
+# export QT4_IM_MODULE=ibus
+# export QT5_IM_MODULE=ibus
 ssh-add 2> /dev/null
 stty -ixon > /dev/null 2>&1
 
