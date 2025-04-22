@@ -1,16 +1,30 @@
 #!/usr/bin/env bash
 
-# set -e
+target="$1"
+if [[ -z "$target" ]]; then
+	echo Usage: "$(basename $0)" target
+	exit 1
+fi
 
+shift
+interval="$1"
+if [[ -z "$interval" ]]; then
+	interval="1"
+fi
+
+mkdir -p /dev/shm/tmp
+TMP="/dev/shm/tmp"
+
+host=$(hostname)
 while true
 do
-	echo -n "ping $@ from `hostname` at "; date
-	ping -c 10 $@ | grep time --line-buffered | tee /tmp/ping$@ | grep time=
-	grep -q ', 0% packet loss' /tmp/ping$@ || loss=1
+	echo -n "$host ping $target at "; date
+	ping -c 5 $target | grep time --line-buffered | tee $TMP/ping-$target | grep time=
+	grep -q ', 0% packet loss' $TMP/ping-$target || loss=1
 	if [[ -n $loss ]]; then
-		egrep --color ' [0-9]*% packet loss' /tmp/ping$@
+		egrep --color ' [0-9]*% packet loss' $TMP/ping-$target
 	fi
 	loss=
 	echo
-	sleep 0.2
+	sleep "$interval"
 done
