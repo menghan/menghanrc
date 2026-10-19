@@ -1,6 +1,11 @@
 .*.swp
+.*.swo
 .vscode
 *.py[c|o]
 *.[a|o]
 *.so
 .aider*
+.claude
+ToRemove
+.pi/extensions
+.pi/.gitignore
